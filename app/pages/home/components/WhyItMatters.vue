@@ -9,12 +9,12 @@
         <div class="container max-w-315! relative">
             <div class="grid lg:grid-cols-7 lg:gap-20 gap-10">
 
-                <div class="lg:col-span-3 lg:self-start" data-reveal="scale">
-                    <div class="group relative rounded-2xl overflow-hidden lg:h-auto lg:aspect-4/3 md:h-100 size-full">
+                <div class="lg:col-span-3" data-reveal="scale">
+                    <div class="group relative rounded-2xl overflow-hidden lg:h-full md:h-100 size-full">
                         <NuxtLink to="/contact" class="absolute inset-0 z-10" aria-label="Book a session"></NuxtLink>
 
                         <img src="/images/other/work-step.jpg" alt="A quiet moment before a session"
-                             class="rounded-2xl size-full object-cover transition-transform duration-[1.4s] ease-soft group-hover:scale-105">
+                             class="lg:absolute lg:inset-0 rounded-2xl size-full object-cover transition-transform duration-[1.4s] ease-soft group-hover:scale-105">
 
                         <div class="absolute inset-0 bg-linear-to-t from-default-950/60 to-transparent"></div>
 
