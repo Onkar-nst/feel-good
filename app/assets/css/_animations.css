@@ -1,0 +1,218 @@
+/*
+_animations.css
+
+Motion for a listening service: things arrive, they don't perform.
+Everything here is soft, slow-out, and fully disabled under prefers-reduced-motion —
+this site is read by people who are already overwhelmed.
+*/
+
+
+/* ──────────────────────────────────────────────
+   Scroll reveal
+   Hidden state only applies once `reveal-ready` is on <html> (set by an inline
+   head script), so server-rendered HTML and no-JS visitors always see content.
+   ────────────────────────────────────────────── */
+
+html.reveal-ready [data-reveal] {
+    opacity: 0;
+    transition:
+        opacity 0.9s var(--ease-soft),
+        transform 0.9s var(--ease-soft),
+        filter 0.9s var(--ease-soft);
+    transition-delay: var(--reveal-delay, 0ms);
+    will-change: opacity, transform;
+}
+
+html.reveal-ready [data-reveal="up"],
+html.reveal-ready [data-reveal=""] { transform: translateY(28px); }
+html.reveal-ready [data-reveal="down"]  { transform: translateY(-24px); }
+html.reveal-ready [data-reveal="left"]  { transform: translateX(34px); }
+html.reveal-ready [data-reveal="right"] { transform: translateX(-34px); }
+html.reveal-ready [data-reveal="scale"] { transform: scale(0.94); }
+html.reveal-ready [data-reveal="soft"]  { transform: translateY(16px); filter: blur(6px); }
+html.reveal-ready [data-reveal="mask"]  { clip-path: inset(0 0 100% 0); transform: translateY(12px); }
+
+html.reveal-ready [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    clip-path: inset(0 0 0 0);
+}
+
+
+/* ──────────────────────────────────────────────
+   Ambient motion
+   ────────────────────────────────────────────── */
+
+@keyframes fgc-float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50%      { transform: translateY(-14px) rotate(0.6deg); }
+}
+
+@keyframes fgc-breathe {
+    0%, 100% { transform: scale(1);    opacity: 0.55; }
+    50%      { transform: scale(1.12); opacity: 0.8; }
+}
+
+@keyframes fgc-drift {
+    0%   { transform: translate(0, 0) scale(1); }
+    33%  { transform: translate(28px, -22px) scale(1.06); }
+    66%  { transform: translate(-20px, 16px) scale(0.96); }
+    100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes fgc-draw {
+    from { stroke-dashoffset: 320; }
+    to   { stroke-dashoffset: 0; }
+}
+
+@keyframes fgc-pulse-ring {
+    0%   { box-shadow: 0 0 0 0 rgb(110 139 118 / 0.45); }
+    70%  { box-shadow: 0 0 0 12px rgb(110 139 118 / 0); }
+    100% { box-shadow: 0 0 0 0 rgb(110 139 118 / 0); }
+}
+
+.animate-float   { animation: fgc-float 7s ease-in-out infinite; }
+.animate-breathe { animation: fgc-breathe 9s ease-in-out infinite; }
+.animate-drift   { animation: fgc-drift 22s ease-in-out infinite; }
+.animate-pulse-ring { animation: fgc-pulse-ring 2.6s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+
+@keyframes fgc-pulse-whatsapp {
+    0%   { box-shadow: 0 0 0 0 rgb(37 211 102 / 0.5); }
+    70%  { box-shadow: 0 0 0 14px rgb(37 211 102 / 0); }
+    100% { box-shadow: 0 0 0 0 rgb(37 211 102 / 0); }
+}
+.animate-pulse-whatsapp { animation: fgc-pulse-whatsapp 2.8s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+
+.delay-1 { animation-delay: -3s; }
+.delay-2 { animation-delay: -6s; }
+.delay-3 { animation-delay: -9s; }
+
+
+/* ──────────────────────────────────────────────
+   Soft ambient colour fields behind hero / CTA sections
+   ────────────────────────────────────────────── */
+
+.aura {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(72px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+
+/* ──────────────────────────────────────────────
+   Hand-drawn underline that draws itself into view
+   ────────────────────────────────────────────── */
+
+.underline-stroke path {
+    stroke-dasharray: 320;
+    stroke-dashoffset: 320;
+}
+
+.is-visible .underline-stroke path,
+.underline-stroke.is-visible path {
+    animation: fgc-draw 1.4s var(--ease-soft) 0.45s forwards;
+}
+
+
+/* ──────────────────────────────────────────────
+   Cards
+   ────────────────────────────────────────────── */
+
+.card-lift {
+    transition:
+        transform 0.5s var(--ease-soft),
+        box-shadow 0.5s var(--ease-soft),
+        border-color 0.5s var(--ease-soft);
+}
+
+.card-lift:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px -22px rgb(28 22 20 / 0.28);
+}
+
+/* Warm wash that fades in from the bottom of a card on hover */
+.card-wash::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(to top, var(--color-primary-soft), transparent 62%);
+    opacity: 0;
+    transition: opacity 0.5s var(--ease-soft);
+    pointer-events: none;
+}
+
+.card-wash:hover::after { opacity: 1; }
+
+
+/* ──────────────────────────────────────────────
+   Marquee band
+   ────────────────────────────────────────────── */
+
+@keyframes fgc-marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+
+.marquee-track {
+    display: flex;
+    width: max-content;
+    animation: fgc-marquee 46s linear infinite;
+    will-change: transform;
+}
+
+.marquee:hover .marquee-track { animation-play-state: paused; }
+
+
+/* ──────────────────────────────────────────────
+   Reading progress bar
+   ────────────────────────────────────────────── */
+
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    inset-inline: 0;
+    height: 2px;
+    z-index: 60;
+    background: linear-gradient(to right, var(--color-primary), var(--color-accent));
+    transform-origin: 0 50%;
+    transform: scaleX(0);
+    pointer-events: none;
+}
+
+
+/* ──────────────────────────────────────────────
+   Respect the reader
+   ────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+    html.reveal-ready [data-reveal] {
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+        clip-path: none !important;
+        transition: none !important;
+    }
+
+    .animate-float,
+    .animate-breathe,
+    .animate-drift,
+    .animate-pulse-ring,
+    .animate-pulse-whatsapp,
+    .marquee-track,
+    .infinite-scroll,
+    .infinite-scroll-inverse {
+        animation: none !important;
+    }
+
+    .underline-stroke path { stroke-dashoffset: 0; }
+
+    .card-lift:hover { transform: none; }
+
+    *, *::before, *::after {
+        scroll-behavior: auto !important;
+    }
+}

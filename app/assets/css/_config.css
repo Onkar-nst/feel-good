@@ -1,0 +1,55 @@
+/* Themes Config */
+
+
+@theme {
+    --font-body: "Inter", sans-serif;
+    --font-heading: "Fraunces", "Iowan Old Style", Georgia, serif;
+
+    /* Brand — lifted from thefeelgoodcenter.in's own palette.
+       Yellow is a LIGHT colour, so unlike the clay it replaced it can only carry
+       fills, never text. Anything sitting on it uses --color-primary-ink; anything
+       that used to be clay *text* moves to --color-pink. */
+    --color-primary: #FFE170;
+    --color-primary-soft: #FBE8A6;
+    --color-primary-ink: #2E2E2E;
+
+    /* Secondary — the brand pink, for numerals, accents and emphasis text. */
+    --color-pink: #F788A3;
+    --color-pink-soft: #FDE1E8;
+
+    /* Tertiary — their sage, for quiet accents and "safe space" moments. */
+    --color-accent: #6E8C84;
+    --color-accent-soft: #E3EBE4;
+
+    /* Warm cream, used as the alternate section ground instead of cold grey. */
+    --color-cream: #FAF6F1;
+    --color-cream-deep: #F3ECE3;
+
+    --color-body-bg: #FFFDFB;
+    --color-body-color: var(--color-stone-600);
+
+    /* Neutrals moved from cold zinc to warm stone — this alone warms every surface. */
+    --color-default-50: var(--color-stone-50);
+    --color-default-100: var(--color-stone-100);
+    --color-default-200: var(--color-stone-200);
+    --color-default-300: var(--color-stone-300);
+    --color-default-400: var(--color-stone-400);
+    --color-default-500: var(--color-stone-500);
+    --color-default-600: var(--color-stone-600);
+    --color-default-700: var(--color-stone-700);
+    --color-default-800: var(--color-stone-800);
+    --color-default-900: var(--color-stone-900);
+    --color-default-950: #1C1614;
+
+    --tw-leading: 1.5em;
+    --text-xs--line-height: 1.5em;
+    --text-sm--line-height: 1.5em;
+    --text-base--line-height: 1.5em;
+    --text-lg--line-height: 1.5em;
+    --text-xl--line-height: 1.5em;
+    --text-2xl--line-height: 1.5em;
+    --text-3xl--line-height: 1.5em;
+    --text-7xl--line-height: 1.5em;
+
+    --ease-soft: cubic-bezier(0.16, 1, 0.3, 1);
+}

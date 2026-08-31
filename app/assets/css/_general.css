@@ -1,0 +1,190 @@
+/* 
+_general.css
+*/
+
+
+@layer base {
+    html {
+        @apply w-full scroll-smooth;
+    }
+
+    body {
+        @apply font-body bg-body-bg text-body-color md:text-base text-sm leading-[1.5em] font-normal overflow-x-clip;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply font-heading leading-[1.3em] font-medium text-default-900;
+    }
+
+    button:not(:disabled),
+    [role="button"]:not(:disabled) {
+        @apply cursor-pointer;
+    }
+}
+
+select,
+input,
+textarea {
+    @apply transition-all duration-200 focus:ring-0 focus:outline-0;
+}
+
+
+.container {
+    @apply lg:px-7.5 px-5 max-w-[1500px] mx-auto;
+}
+
+
+.container-full {
+    @apply mx-auto max-w-full lg:px-12.5 md:px-7.5 px-4;
+}
+
+
+/* Navbar Active Link */
+#navbar a.active {
+    @apply text-pink decoration-current;
+
+    span {
+        @apply scale-100;
+    }
+
+
+}
+
+#navbar .hs-dropdown-menu a.active {
+    @apply bg-primary/8;
+}
+
+
+
+/* Infinite horizontal scroll */
+
+/* Normal direction */
+@keyframes infinite-scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+.infinite-scroll {
+    animation: infinite-scroll 100s linear infinite;
+    will-change: transform;
+}
+
+/* Inverse direction */
+@keyframes infinite-scroll-inverse {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+.infinite-scroll-inverse {
+    animation: infinite-scroll-inverse 100s linear infinite;
+    will-change: transform;
+}
+
+/* ──────────────────────────────────────────────
+   Component classes
+
+   These live in @layer components so any Tailwind utility written in the
+   markup still wins over them — `btn-light text-primary` behaves the way
+   you'd expect, rather than the class quietly overriding the utility.
+   ────────────────────────────────────────────── */
+
+@layer components {
+
+    /* Buttons — one shared treatment so every CTA on the site behaves alike */
+
+    .btn,
+    .btn-primary,
+    .btn-light,
+    .btn-outline {
+        @apply relative inline-flex items-center justify-center gap-2.5 overflow-hidden rounded-full font-medium transition-all duration-500;
+        transition-timing-function: var(--ease-soft);
+    }
+
+    .btn-primary {
+        @apply bg-primary text-primary-ink;
+        box-shadow: 0 10px 26px -14px rgb(243 198 63 / 0.85);
+    }
+
+    .btn-primary:hover {
+        box-shadow: 0 16px 34px -14px rgb(247 136 163 / 0.9);
+        transform: translateY(-2px);
+    }
+
+    .btn-light {
+        @apply bg-white text-default-950;
+        box-shadow: 0 10px 26px -16px rgb(28 22 20 / 0.5);
+    }
+
+    .btn-light:hover { transform: translateY(-2px); }
+
+    .btn-outline {
+        @apply border border-default-300 bg-transparent text-default-950;
+    }
+
+    .btn-outline:hover {
+        @apply border-primary text-default-950;
+        transform: translateY(-2px);
+    }
+
+    .btn-lg { @apply px-9 py-4.5 text-base; }
+    .btn-md { @apply px-6 py-3 text-sm; }
+
+    /* Deeper wash sliding up behind the label */
+    .btn-fill::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: var(--color-pink);
+        transform: translateY(101%);
+        transition: transform 0.55s var(--ease-soft);
+    }
+
+    .btn-fill:hover::before { transform: translateY(0); }
+    .btn-fill > * { position: relative; z-index: 1; }
+
+
+    /* Eyebrow — the small tag above section headings */
+
+    /* Section label. Plain uppercase text, no pill. */
+    .eyebrow {
+        @apply inline-block text-xs font-medium tracking-[0.18em] text-default-600 uppercase;
+    }
+
+
+    /* Display headings */
+
+    .h-display {
+        @apply font-heading text-default-950;
+        letter-spacing: -0.02em;
+        text-wrap: balance;
+    }
+
+
+    /* Grain — a faint paper tooth over flat colour fields, so large warm
+       areas don't read as plastic. */
+
+    .grain::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.5;
+        mix-blend-mode: multiply;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.32'/%3E%3C/svg%3E");
+    }
+}

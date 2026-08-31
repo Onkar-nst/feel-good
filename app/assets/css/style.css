@@ -1,0 +1,30 @@
+/*
+Template Name: Copora - Creative SaaS Tailwind CSS 4 Template
+Version: 1.0.0
+Author: Unifato
+Website: https://unifato.com/
+Email: unifato.themes@gmail.com
+File: Style CSS File
+*/
+
+/* Tailwind CSS */
+@import "tailwindcss";
+
+/* Preline UI */
+@source "../../../node_modules/preline/dist/*.js";
+@import "../../../node_modules/preline/variants.css";
+
+
+/* Tailwind Plugin */
+@plugin "@tailwindcss/typography";
+@plugin "@tailwindcss/forms";
+
+
+/* Iconify Icons */
+/* @plugin "@iconify/tailwind4" {
+    prefixes: tabler, lucide;
+} */
+
+@import "./_config.css";
+@import "./_general.css";
+@import "./_animations.css";

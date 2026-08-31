@@ -1,0 +1,32 @@
+{
+  "name": "copora-nuxt",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@iconify/json": "^2.2.483",
+    "@iconify/tailwind4": "^1.2.3",
+    "@iconify/vue": "^5.0.1",
+    "lightgallery": "^2.9.0",
+    "nuxt": "^4.4.6",
+    "preline": "4.0.1",
+    "smoothscroll-for-websites": "^1.5.1",
+    "tailwindcss": "^4.2.4",
+    "vue": "^3.5.34",
+    "vue-easy-lightbox": "^1.19.0",
+    "vue-router": "^5.0.7"
+  },
+  "devDependencies": {
+    "@nuxt/eslint": "^1.15.2",
+    "@nuxt/image": "^2.0.0",
+    "@tailwindcss/forms": "^0.5.11",
+    "@tailwindcss/typography": "^0.5.19",
+    "@tailwindcss/vite": "^4.3.0"
+  }
+}
