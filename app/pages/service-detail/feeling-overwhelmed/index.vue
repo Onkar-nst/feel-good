@@ -1,6 +1,6 @@
 <template>
     <!-- ── Hero ─────────────────────────────────────────────────── -->
-    <section class="relative overflow-hidden pt-10 pb-10 md:pt-14 md:pb-14 lg:pt-16 lg:pb-16">
+    <section class="pt-10 md:pt-14 lg:pt-16 pb-6 md:pb-7 lg:pb-8 relative overflow-hidden">
         <div class="absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
             <div class="aura animate-drift size-[34rem] -top-44 -start-40 bg-primary-soft/60"></div>
             <div class="aura animate-drift delay-2 size-[26rem] top-1/4 -end-32 bg-pastel-soft/70"></div>
@@ -44,9 +44,11 @@
                 </div>
 
                 <div class="relative" data-reveal="scale">
-                    <div class="group relative mx-auto w-full max-w-md overflow-hidden rounded-3xl aspect-[4/5]">
-                        <img src="/images/other/kinjal-founder.jpg"
-                             alt="Kinjal Shah, who holds the listening sessions"
+                    <!-- Native 5:4, so the room and the light survive rather than being
+                         cropped away by a portrait frame. -->
+                    <div class="group relative mx-auto w-full max-w-xl overflow-hidden rounded-3xl aspect-[5/4]">
+                        <img src="/images/other/about-image.jpg"
+                             alt="Someone sitting quietly at home during an online listening session"
                              class="size-full object-cover transition-transform duration-[1.4s] ease-soft group-hover:scale-105">
                     </div>
                 </div>
@@ -55,9 +57,9 @@
     </section>
 
     <!-- ── Recognition ──────────────────────────────────────────── -->
-    <section class="relative overflow-hidden pt-10 pb-10 md:pt-14 md:pb-14 lg:pt-16 lg:pb-16 bg-cream">
+    <section class="pt-6 md:pt-7 lg:pt-8 pb-6 md:pb-7 lg:pb-8 relative overflow-hidden bg-cream">
         <div class="container">
-            <div class="lg:mb-12 mb-9 lg:max-w-[54ch]">
+            <div class="lg:mb-12 mb-9 mx-auto lg:max-w-[54ch] text-center">
                 <div class="eyebrow mb-5" data-reveal="soft">Does this sound familiar</div>
                 <h2 class="h-display lg:text-4xl md:text-3xl text-2xl mb-4" data-reveal="up">
                     Overwhelmed rarely looks like falling apart
@@ -79,53 +81,78 @@
                 </div>
             </div>
 
-            <p class="mt-9 text-lg text-default-950 font-medium" data-reveal="up">
+            <p class="mt-9 text-center text-lg text-default-950 font-medium" data-reveal="up">
                 If you recognised yourself more than once, that is reason enough to talk.
             </p>
         </div>
     </section>
 
     <!-- ── What this is, and what it is not ─────────────────────── -->
-    <section class="pt-10 pb-10 md:pt-14 md:pb-14 lg:pt-16 lg:pb-16">
+    <section class="pt-6 md:pt-7 lg:pt-8 pb-6 md:pb-7 lg:pb-8 ">
         <div class="container">
-            <div class="lg:mb-12 mb-9 text-center">
-                <div class="eyebrow mb-5" data-reveal="soft">Before you book</div>
-                <h2 class="h-display lg:text-4xl md:text-3xl text-2xl" data-reveal="up">
-                    Being clear about what this is
-                </h2>
-            </div>
+            <!-- Side-by-side rather than a narrow centred column: the heading and the
+                 safety note hold the left rail so the section fills its width. -->
+            <div class="grid lg:grid-cols-12 lg:gap-12 gap-9 items-start">
 
-            <div class="grid md:grid-cols-2 gap-5 lg:max-w-4xl mx-auto">
-                <div class="relative overflow-hidden rounded-3xl bg-mint grain p-7 lg:p-8" data-reveal="up">
-                    <h3 class="h-display text-mint-ink! text-xl mb-5">What it is</h3>
-                    <ul role="list" class="space-y-3">
-                        <li v-for="(item, idx) in isData" :key="idx" class="flex items-start gap-3">
-                            <Icon icon="tabler:check" class="mt-1 size-4 shrink-0 text-mint-ink" />
-                            <span class="text-mint-ink/85">{{ item }}</span>
-                        </li>
-                    </ul>
+                <div class="lg:col-span-4 lg:sticky lg:top-28">
+                    <div class="eyebrow mb-5" data-reveal="soft">Before you book</div>
+
+                    <h2 class="h-display lg:text-4xl md:text-3xl text-2xl mb-4" data-reveal="up">
+                        Being clear about what this is
+                    </h2>
+
+                    <p class="text-default-600 lg:max-w-[38ch]" data-reveal="up" style="--reveal-delay:120ms">
+                        No surprises, no small print. Here is exactly what a session
+                        does and does not include.
+                    </p>
+
+                    <div class="mt-7 rounded-2xl border border-default-200 bg-cream p-5" data-reveal="up" style="--reveal-delay:220ms">
+                        <div class="mb-2 flex items-center gap-2 text-default-950">
+                            <Icon icon="tabler:lifebuoy" class="size-4.5 text-pink" />
+                            <span class="text-sm font-medium">If you need more than listening</span>
+                        </div>
+                        <p class="text-sm text-default-600">
+                            Listening helps, but it is not treatment. If you are in immediate distress,
+                            please call Tele MANAS on
+                            <a href="tel:14416" class="font-medium text-default-950 underline decoration-pink underline-offset-2">14416</a>.
+                            It is free and open 24 hours a day.
+                        </p>
+                    </div>
                 </div>
 
-                <div class="relative overflow-hidden rounded-3xl border border-default-200 bg-white p-7 lg:p-8" data-reveal="up" style="--reveal-delay:120ms">
-                    <h3 class="h-display text-xl mb-5">What it is not</h3>
-                    <ul role="list" class="space-y-3">
-                        <li v-for="(item, idx) in isNotData" :key="idx" class="flex items-start gap-3">
-                            <Icon icon="tabler:x" class="mt-1 size-4 shrink-0 text-default-400" />
-                            <span class="text-default-600">{{ item }}</span>
-                        </li>
-                    </ul>
+                <div class="lg:col-span-8 grid sm:grid-cols-2 gap-5">
+                    <div class="relative overflow-hidden rounded-3xl border border-accent/25 bg-accent-soft p-7 lg:p-8" data-reveal="up">
+                        <h3 class="h-display text-xl mb-5 flex items-center gap-2.5">
+                            <Icon icon="tabler:circle-check" class="size-5 text-accent" />
+                            What it is
+                        </h3>
+                        <ul role="list" class="space-y-3.5">
+                            <li v-for="(item, idx) in isData" :key="idx" class="flex items-start gap-3">
+                                <Icon icon="tabler:check" class="mt-1 size-4 shrink-0 text-accent" />
+                                <span class="text-default-700">{{ item }}</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="relative overflow-hidden rounded-3xl border border-default-200 bg-cream p-7 lg:p-8" data-reveal="up" style="--reveal-delay:120ms">
+                        <h3 class="h-display text-xl mb-5 flex items-center gap-2.5">
+                            <Icon icon="tabler:circle-x" class="size-5 text-default-400" />
+                            What it is not
+                        </h3>
+                        <ul role="list" class="space-y-3.5">
+                            <li v-for="(item, idx) in isNotData" :key="idx" class="flex items-start gap-3">
+                                <Icon icon="tabler:x" class="mt-1 size-4 shrink-0 text-default-400" />
+                                <span class="text-default-600">{{ item }}</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-
-            <p class="mx-auto mt-8 lg:max-w-[62ch] text-center text-sm text-default-500" data-reveal="up">
-                Listening helps, but it is not treatment. If you are in immediate distress,
-                please call Tele MANAS on 14416. It is free and open 24 hours a day.
-            </p>
         </div>
     </section>
 
     <!-- ── How a session goes ───────────────────────────────────── -->
-    <section class="relative overflow-hidden pt-10 pb-10 md:pt-14 md:pb-14 lg:pt-16 lg:pb-16">
+    <section class="pt-6 md:pt-7 lg:pt-8 pb-6 md:pb-7 lg:pb-8 relative overflow-hidden">
         <div class="container max-w-315!">
             <div class="relative overflow-hidden rounded-3xl bg-periwinkle grain lg:p-14 md:p-10 p-7" data-reveal="scale">
                 <div class="absolute inset-0" aria-hidden="true">
@@ -154,7 +181,7 @@
     </section>
 
     <!-- ── Proof ────────────────────────────────────────────────── -->
-    <section class="pt-10 pb-10 md:pt-14 md:pb-14 lg:pt-16 lg:pb-16 bg-cream">
+    <section class="pt-6 md:pt-7 lg:pt-8 pb-6 md:pb-7 lg:pb-8 bg-cream">
         <div class="container lg:max-w-3xl! text-center">
             <div class="eyebrow mb-6" data-reveal="soft">From someone who booked</div>
 
@@ -175,7 +202,7 @@
     </section>
 
     <!-- ── FAQ ──────────────────────────────────────────────────── -->
-    <section class="pt-10 pb-10 md:pt-14 md:pb-14 lg:pt-16 lg:pb-16">
+    <section class="pt-6 md:pt-7 lg:pt-8 pb-10 md:pb-14 lg:pb-16 ">
         <div class="container lg:max-w-3xl!">
             <div class="lg:mb-10 mb-8 text-center">
                 <div class="eyebrow mb-5" data-reveal="soft">Common questions</div>
@@ -281,7 +308,9 @@ const faqData = [
   }
 ]
 
-const openIndex = ref<number | null>(null)
+// First question starts open, so the column reads as answers rather than
+// a list of closed headings.
+const openIndex = ref<number | null>(0)
 const toggle = (idx: number) => { openIndex.value = openIndex.value === idx ? null : idx }
 
 const whatsappLink =

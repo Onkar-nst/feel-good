@@ -1,14 +1,14 @@
 <template>
-    <section class="relative size-full overflow-hidden md:py-14.5 py-10">
+    <section class="relative size-full overflow-hidden md:py-20 py-12">
 
         <div class="container">
             <div class="grid lg:grid-cols-5 lg:gap-25 gap-10">
                 <div class="lg:col-span-3">
                     <div class="flex flex-col lg:gap-15 gap-7.5 h-full">
                         <div>
-                            <div class="mb-2.5 text-sm text-default-950">Explore Our Offerings</div>
+                            <div class="eyebrow mb-5">Explore Our Offerings</div>
 
-                            <h1 class="lg:text-[56px] md:text-5xl text-4xl text-default-950 mb-2.5">Understanding and Supporting Your Journey</h1>
+                            <h1 class="h-display lg:text-[64px] md:text-5xl text-[38px] leading-[1.08] mb-5">Understanding and Supporting Your Journey</h1>
 
                             <p>A safe, judgment free space to talk, express, and feel lighter. One session. One conversation. One step toward emotional ease.</p>
 
@@ -27,7 +27,7 @@
                         </div>
 
                         <div class="mt-auto">
-                            <h2 class="mb-2.5 text-xl">What we offer</h2>
+                            <h2 class="h-display text-xl mb-4">What we offer</h2>
 
                              <div class="flex flex-wrap items-center gap-4">
                                 <div v-for="(offer, idx) in offers" :key="idx" class="py-2.5 px-4 rounded bg-default-100 text-default-950">

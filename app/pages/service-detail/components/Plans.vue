@@ -1,11 +1,11 @@
 <template>
-    <section class="lg:py-27.5 md:py-25 py-15">
+    <section class="pt-10 pb-10 md:pt-14 md:pb-14 lg:pt-16 lg:pb-16">
         <div class="container">
 
             <div class="lg:mb-12.5 mb-7.5">
-                <div class="mb-2 text-sm text-default-950">{{ eyebrow }}</div>
+                <div class="eyebrow mb-5">{{ eyebrow }}</div>
 
-                <h2 class="mb-5 lg:text-5xl md:text-4xl text-3xl">{{ title }}</h2>
+                <h2 class="h-display lg:text-5xl md:text-4xl text-3xl mb-5">{{ title }}</h2>
 
                 <div class="lg:max-w-3/5 space-y-2.5">
                     <p v-for="(line, idx) in intro" :key="idx">{{ line }}</p>
@@ -17,7 +17,7 @@
                 <div v-for="(plan, idx) in plans" :key="idx" class="p-6 rounded-xl border border-default-200 flex flex-col">
                     <div class="text-sm text-default-500 mb-5">{{ plan.number }}</div>
 
-                    <h3 class="text-2xl text-default-950 mb-4">{{ plan.title }}</h3>
+                    <h3 class="h-display text-2xl mb-4">{{ plan.title }}</h3>
 
                     <div v-if="plan.prices?.length" class="space-y-1.5 mb-6">
                         <div v-for="(price, pIdx) in plan.prices" :key="pIdx" class="text-default-950 font-medium">{{ price }}</div>

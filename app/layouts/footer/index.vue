@@ -27,7 +27,7 @@
         <!-- ── Services ─────────────────────────────────────── -->
         <!-- Two sub-columns: nine links in one stack was what made this footer tall. -->
         <div class="lg:col-span-5">
-          <h3 class="text-sm text-lagoon-ink/65 mb-3.5">Services</h3>
+          <h3 class="eyebrow text-lagoon-ink/65! mb-3.5">Services</h3>
 
           <!-- CSS columns rather than a grid: a grid couples the row heights, so a
                link that wraps to two lines leaves a gap beside its shorter neighbour. -->
@@ -41,7 +41,7 @@
 
         <!-- ── Pages ────────────────────────────────────────── -->
         <div class="lg:col-span-3">
-          <h3 class="text-sm text-lagoon-ink/65 mb-3.5">Pages</h3>
+          <h3 class="eyebrow text-lagoon-ink/65! mb-3.5">Pages</h3>
 
           <div class="flex md:flex-col flex-wrap items-start gap-x-6 gap-y-2">
             <NuxtLink v-for="(item, index) in pageLinkData" :key="index" :to="item.link"
@@ -56,7 +56,7 @@
       <div class="mt-9 pt-7 border-t border-lagoon-ink/15 flex flex-col md:flex-row md:items-center justify-between gap-5">
 
         <div class="flex flex-wrap items-center gap-4">
-          <h3 class="text-lagoon-ink text-lg">Let's talk. Let's feel good.</h3>
+          <h3 class="h-display text-lagoon-ink text-lg">Let's talk. Let's feel good.</h3>
 
           <NuxtLink to="/contact" class="btn-primary btn-fill btn-md group">
             <span>Book a Session</span>

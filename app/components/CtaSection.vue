@@ -1,5 +1,5 @@
 <template>
-    <section class="pt-10 pb-10 md:pt-14 md:pb-14 lg:pt-16 lg:pb-16">
+    <section class="pt-6 md:pt-7 lg:pt-8 pb-10 md:pb-14 lg:pb-16">
         <div class="container max-w-315!">
             <div class="relative overflow-hidden rounded-3xl bg-lagoon text-center grain lg:py-20 lg:px-24 py-12 px-5"
                  data-reveal="scale">

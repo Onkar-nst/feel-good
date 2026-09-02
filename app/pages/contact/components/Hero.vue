@@ -1,5 +1,5 @@
 <template>
-    <section class="relative overflow-hidden pt-10 pb-10 md:pt-14 md:pb-14 lg:pt-16 lg:pb-16">
+    <section class="relative overflow-hidden pt-10 pb-6 md:pt-14 md:pb-7 lg:pt-16 lg:pb-8">
 
         <!-- Ambient colour fields, same treatment as the home hero -->
         <div class="absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
@@ -15,7 +15,7 @@
                 <div class="lg:col-span-3">
                     <div class="eyebrow mb-5" data-reveal="soft">Get in Touch</div>
 
-                    <h1 class="h-display lg:text-[56px] md:text-5xl text-4xl leading-[1.08] mb-4" data-reveal="up">
+                    <h1 class="h-display lg:text-[64px] md:text-5xl text-[38px] leading-[1.08] mb-4" data-reveal="up">
                         We're Here to Listen and Help
                     </h1>
 
@@ -45,7 +45,7 @@
                 </aside>
             </div>
 
-            <div class="grid lg:grid-cols-5 lg:gap-10 gap-8 items-start">
+            <div class="grid lg:grid-cols-5 lg:gap-10 gap-8">
 
                 <!-- ── Form ─────────────────────────────────────────── -->
                 <div class="lg:col-span-3 rounded-2xl border border-default-200 bg-white lg:p-8 p-6 shadow-[0_24px_60px_-40px_rgb(28_22_20/0.35)]"
@@ -111,7 +111,7 @@
                         <div class="aura animate-drift delay-2 size-56 -bottom-16 -start-10 bg-primary-soft/50"></div>
                     </div>
 
-                    <div class="relative">
+                    <div class="relative flex h-full flex-col">
                         <div class="eyebrow mb-5 text-periwinkle-ink/70!">What happens next</div>
 
                         <ol class="space-y-6 mb-9" data-reveal-group>
@@ -126,7 +126,7 @@
                             </li>
                         </ol>
 
-                        <div class="border-t border-periwinkle-ink/15 pt-7">
+                        <div class="mt-auto border-t border-periwinkle-ink/15 pt-7">
                             <p class="text-sm text-periwinkle-ink/80 mb-4">Would you rather just talk now?</p>
 
                             <div class="flex flex-wrap gap-3">

@@ -1,11 +1,11 @@
 <template>
-   <section class="relative size-full overflow-hidden md:py-14.5 py-10">
+   <section class="relative size-full overflow-hidden md:py-20 py-12">
 
         <div class="container max-w-245!">
             <div class="mb-7.5 space-y-7.5 text-center">
                 <p>September 5, 2025</p>
 
-                <h1 class="md:text-[56px] text-5xl leading-[1.2em] text-default-950">
+                <h1 class="h-display lg:text-[64px] md:text-5xl text-[38px] leading-[1.08]">
                     Technology vs. Human: Why Heartfelt Listening Still Matters in an AI Age
                 </h1>
 
@@ -16,7 +16,7 @@
                 <img src="/images/blog/details.webp" alt="Technology vs. Human" class="rounded-lg size-full mb-12.5">
             </div>
 
-            <h2 class="text-[32px] mb-2.5">Both can hear you. Only one truly listens</h2>
+            <h2 class="h-display lg:text-4xl md:text-3xl text-2xl mb-4">Both can hear you. Only one truly listens</h2>
 
             <p class="mb-5">
                 Let's be honest. Most of us talk to our phones more than we talk to our friends. We ask chatbots for help sleeping. We type "I'm feeling low" into an app. We get responses that sound soothing… but somehow, still feel distant.
@@ -28,7 +28,7 @@
 
             <p class="mb-12.5">That's where human listening still makes all the difference.</p>
 
-            <h2 class="text-[32px] mb-2.5">AI Has Changed How We Cope</h2>
+            <h2 class="h-display lg:text-4xl md:text-3xl text-2xl mb-4">AI Has Changed How We Cope</h2>
 
             <p class="mb-5">In the last few years, AI has transformed the wellness space. Tools like Wysa, Replika, and Woebot are designed to support people with stress, anxiety, and decision fatigue. And honestly? They help.</p>
 
@@ -44,7 +44,7 @@
 
             <p class="mb-12.5">But they're still tools. Not connection.</p>
 
-            <h2 class="text-[32px] mb-2.5">The Difference You Can Feel</h2>
+            <h2 class="h-display lg:text-4xl md:text-3xl text-2xl mb-4">The Difference You Can Feel</h2>
 
             <p class="mb-5">Imagine telling a chatbot, "I'm feeling lost."</p>
 
@@ -58,7 +58,7 @@
 
             <p class="mb-12.5">You don't always need solutions. Sometimes, you just need someone to sit with your story, and not look away.</p>
 
-            <h2 class="text-[32px] mb-2.5">What Heartfelt Listening Actually Feels Like</h2>
+            <h2 class="h-display lg:text-4xl md:text-3xl text-2xl mb-4">What Heartfelt Listening Actually Feels Like</h2>
 
             <p class="mb-5">At The Feel Good Center, we don't offer advice. We offer presence.</p>
 
@@ -70,7 +70,7 @@
 
             <p class="mb-12.5">Because when someone truly listens, your body feels it. You soften. You exhale. You stop spiralling, and start feeling again.</p>
 
-            <h2 class="text-[32px] mb-2.5">The Science of Being Seen</h2>
+            <h2 class="h-display lg:text-4xl md:text-3xl text-2xl mb-4">The Science of Being Seen</h2>
 
             <p class="mb-5">Research shows that:</p>
 
@@ -82,7 +82,7 @@
 
             <p class="mb-12.5">Simply put: Presence regulates the nervous system. Algorithms can't.</p>
 
-            <h2 class="text-[32px] mb-2.5">This Isn't Against Tech. It's For Humans.</h2>
+            <h2 class="h-display lg:text-4xl md:text-3xl text-2xl mb-4">This Isn't Against Tech. It's For Humans.</h2>
 
             <p class="mb-5">We're not here to cancel chatbots or knock wellness apps. They're useful. We use them too.</p>
 
@@ -96,7 +96,7 @@
                 </em>
             </blockquote>
 
-            <h2 class="text-[32px] mb-2.5">💛 Final Thought: Some Things Can't Be Automated</h2>
+            <h2 class="h-display lg:text-4xl md:text-3xl text-2xl mb-4">💛 Final Thought: Some Things Can't Be Automated</h2>
 
             <p class="mb-5">If you're ready for something softer, slower, and deeply real, we're here to listen.</p>
 

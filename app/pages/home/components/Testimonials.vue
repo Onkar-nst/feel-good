@@ -1,5 +1,5 @@
 <template>
-    <section class="pt-10 pb-10 md:pt-14 md:pb-14 lg:pt-16 lg:pb-16 relative bg-body-bg overflow-hidden">
+    <section class="pt-6 md:pt-7 lg:pt-8 pb-6 md:pb-7 lg:pb-8 relative bg-body-bg overflow-hidden">
 
         <div class="absolute inset-0 -z-10" aria-hidden="true">
             <div class="aura animate-drift delay-1 size-[30rem] top-10 -end-40 bg-white"></div>
@@ -55,7 +55,7 @@
                     </div>
 
                     <div class="relative">
-                        <h3 class="mb-1.5 text-xl h-display text-default-950">
+                        <h3 class="mb-1.5 text-lg h-display leading-snug text-default-950">
                             {{ review.title }}
                         </h3>
                         <div class="text-sm text-default-500">

@@ -1,8 +1,8 @@
 <template>
-     <section class="relative size-full overflow-hidden md:py-14.5 py-10">
+     <section class="relative size-full overflow-hidden md:py-20 py-12">
         <div class="container">
             <div class="mb-12.5 text-center">
-                <h1 class="lg:text-[56px] md:text-5xl text-4xl mb-2.5">Discover Your Path to Wellbeing</h1>
+                <h1 class="h-display lg:text-[64px] md:text-5xl text-[38px] leading-[1.08] mb-5">Discover Your Path to Wellbeing</h1>
             </div>
 
             <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-7.5">
@@ -18,7 +18,7 @@
                         <div>
                             <div class="text-sm text-default-500 mb-3">{{ post.date }}</div>
 
-                            <h3 class="mb-2.5 text-xl">{{ post.title }}</h3>
+                            <h3 class="mb-1.5 text-lg h-display leading-snug">{{ post.title }}</h3>
 
                             <p class="text-sm">{{ post.excerpt }}</p>
                         </div>

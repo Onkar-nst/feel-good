@@ -4,7 +4,7 @@
             <div class="relative z-10 bg-white w-150 mx-auto border border-default-300 rounded overflow-hidden">
 
                 <div class="lg:p-15 p-10 text-center flex flex-col gap-4">
-                    <h3 class="lg:text-4xl">Protected Page</h3>
+                    <h3 class="h-display lg:text-4xl">Protected Page</h3>
 
                     <form action="/">
                         <div class="mb-4">

@@ -1,5 +1,5 @@
 <template>
-    <section class="pt-10 pb-10 md:pt-14 md:pb-14 lg:pt-16 lg:pb-16">
+    <section class="pt-6 pb-10 md:pt-7 md:pb-14 lg:pt-8 lg:pb-16">
         <div class="container">
 
             <div class="lg:mb-12 mb-9 text-center">
@@ -33,7 +33,7 @@
                     </div>
 
                     <div>
-                        <div class="mb-2 text-xs uppercase tracking-[0.16em] text-default-500">{{ channel.label }}</div>
+                        <div class="eyebrow mb-2">{{ channel.label }}</div>
                         <div class="h-display text-xl mb-2 break-words">{{ channel.value }}</div>
                         <p class="text-sm text-default-600">{{ channel.note }}</p>
                     </div>

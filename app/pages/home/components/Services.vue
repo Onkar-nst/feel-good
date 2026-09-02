@@ -1,5 +1,5 @@
 <template>
-    <section class="pt-6 pb-10 md:pt-8 md:pb-14 lg:pt-10 lg:pb-16 relative bg-body-bg overflow-hidden">
+    <section class="pt-6 md:pt-7 lg:pt-8 pb-6 md:pb-7 lg:pb-8 relative bg-body-bg overflow-hidden">
 
         <div class="absolute inset-0 -z-10" aria-hidden="true">
             <div class="aura animate-drift delay-3 size-[26rem] -top-32 end-1/4 bg-primary-soft/50"></div>

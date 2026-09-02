@@ -3,9 +3,9 @@
         <div class="container">
             <div class="relative z-10 bg-white w-150 mx-auto border border-default-300 rounded overflow-hidden">
                 <div class="lg:p-15 p-10 text-center flex flex-col gap-5">
-                    <h2 class="lg:text-6xl text-4xl">404</h2>
+                    <h2 class="h-display lg:text-6xl text-4xl">404</h2>
 
-                    <h3 class="lg:text-3xl text-2xl">Page not found</h3>
+                    <h3 class="h-display lg:text-3xl text-2xl">Page not found</h3>
 
                     <p class="text-default-600 mb-4">The page you are looking for doesn't exist or has been moved.</p>
 

@@ -1,8 +1,8 @@
 <template>
-    <section class="relative overflow-hidden border-y border-default-200 bg-body-bg lg:py-14 py-10">
+    <section class="pt-6 md:pt-7 lg:pt-8 pb-6 md:pb-7 lg:pb-8 relative overflow-hidden border-y border-default-200 bg-body-bg">
 
         <div class="container mb-7 text-center">
-            <p class="text-sm tracking-[0.14em] uppercase text-default-500" data-reveal="soft">
+            <p class="eyebrow" data-reveal="soft">
                 Things people bring here
             </p>
         </div>

@@ -1,5 +1,5 @@
 <template>
-    <section class="pt-10 pb-10 md:pt-14 md:pb-14 lg:pt-16 lg:pb-16">
+    <section class="pt-6 md:pt-7 lg:pt-8 pb-6 md:pb-7 lg:pb-8">
         <div class="container">
 
             <div class="lg:mb-14 mb-10 flex flex-wrap items-end justify-between gap-6">

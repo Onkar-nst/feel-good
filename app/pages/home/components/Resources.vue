@@ -1,5 +1,5 @@
 <template>
-    <section class="pt-10 pb-10 md:pt-14 md:pb-14 lg:pt-16 lg:pb-16 bg-cream">
+    <section class="pt-6 md:pt-7 lg:pt-8 pb-6 md:pb-7 lg:pb-8 bg-cream">
         <div class="container">
 
             <div class="lg:mb-14 mb-10 flex flex-wrap items-end justify-between gap-6">
@@ -37,7 +37,7 @@
                         <div>
                             <div class="eyebrow mb-3">{{ post.tag }}</div>
 
-                            <h3 class="mb-2 text-xl h-display leading-snug">{{ post.title }}</h3>
+                            <h3 class="mb-1.5 text-lg h-display leading-snug">{{ post.title }}</h3>
 
                             <p class="text-sm text-default-600">{{ post.excerpt }}</p>
                         </div>

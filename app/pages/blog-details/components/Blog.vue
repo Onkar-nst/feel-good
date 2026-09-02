@@ -1,9 +1,9 @@
 <template>
-     <section class="lg:py-27.5 md:py-25 py-15">
+     <section class="pt-10 pb-10 md:pt-14 md:pb-14 lg:pt-16 lg:pb-16">
         <div class="container">
 
             <div class="text-center gap-4 mb-5 md:mb-7.5 lg:mb-15">
-                <h2 class="lg:text-[44px] text-4xl">Related Posts</h2>
+                <h2 class="h-display lg:text-5xl md:text-4xl text-3xl">Related Posts</h2>
             </div>
 
             <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-7.5 mb-10">
@@ -18,7 +18,7 @@
                         <div>
                             <div class="text-sm text-default-500 mb-3">{{ blog.date }}</div>
 
-                            <h3 class="mb-2.5 text-xl">{{ blog.title }}</h3>
+                            <h3 class="mb-1.5 text-lg h-display leading-snug">{{ blog.title }}</h3>
 
                             <p class="text-sm">{{ blog.excerpt }}</p>
                         </div>

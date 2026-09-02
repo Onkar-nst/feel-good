@@ -1,5 +1,5 @@
 <template>
-    <section class="lg:py-27.5 md:py-25 py-15 bg-default-100">
+    <section class="pt-10 pb-10 md:pt-14 md:pb-14 lg:pt-16 lg:pb-16 bg-default-100">
         <div class="container">
             <div class="grid md:grid-cols-3 lg:gap-25 gap-7.5">
                 <div>
@@ -10,7 +10,7 @@
 
                 <div class="md:col-span-2">
                     <div class="mb-10">
-                        <h2 class="mb-5 lg:text-5xl md:text-4xl text-3xl">About the Service</h2>
+                        <h2 class="h-display lg:text-5xl md:text-4xl text-3xl mb-5">About the Service</h2>
 
                         <div class="space-y-4">
                             <p>At The Feel Good Center, we offer a safe, judgment free space for genuine human connection through one to one listening sessions and emotional wellness plans. Whether you're seeking personal support to feel lighter and more balanced, or you're a company looking to nurture employee wellbeing, our services are designed to make people feel heard, valued, and supported.</p>
@@ -20,7 +20,7 @@
                     </div>
 
                     <div class="mb-10">
-                        <h3 class="mb-5 text-xl text-default-950">What We Bring:</h3>
+                        <h3 class="h-display text-xl mb-5">What We Bring:</h3>
 
                         <ul role="list" class="space-y-2.5">
                             <li v-for="(point, idx) in pointData" :key="idx" class="flex items-start gap-3">

@@ -1,5 +1,5 @@
 <template>
-    <section class="pt-10 pb-10 md:pt-14 md:pb-14 lg:pt-16 lg:pb-16">
+    <section class="pt-6 md:pt-7 lg:pt-8 pb-6 md:pb-7 lg:pb-8">
         <div class="container max-w-315!">
             <div class="grid lg:grid-cols-2 lg:gap-16 gap-14 items-start">
 
@@ -171,7 +171,9 @@ const RATING_LABELS = ['', 'Not for me', 'It was okay', 'Good', 'Really good', '
 const ratingLabel = computed(() => RATING_LABELS[hoverRating.value || rating.value])
 
 // Every question starts closed. The list opens only on intent.
-const openIndex = ref<number | null>(null)
+// First question starts open, so the column reads as answers rather than
+// a list of closed headings.
+const openIndex = ref<number | null>(0)
 
 const toggle = (idx: number) => {
   openIndex.value = openIndex.value === idx ? null : idx

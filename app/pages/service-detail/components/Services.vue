@@ -1,7 +1,7 @@
 <template>
-     <section class="lg:py-27.5 md:py-25 py-15">
+     <section class="pt-10 pb-10 md:pt-14 md:pb-14 lg:pt-16 lg:pb-16">
         <div class="container">
-            <h2 class="mb-12.5 lg:text-5xl md:text-4xl text-3xl">Our plans</h2>
+            <h2 class="h-display lg:text-5xl md:text-4xl text-3xl mb-10">Our plans</h2>
 
             <div class="grid lg:grid-cols-2 gap-7.5">
                 <!-- Plan Loop -->
@@ -9,7 +9,7 @@
                     <div class="text-sm text-default-500">{{ plan.eyebrow }}</div>
 
                     <div>
-                        <h3 class="mb-4 lg:text-3xl text-2xl text-default-950">{{ plan.title }}</h3>
+                        <h3 class="h-display text-2xl mb-4">{{ plan.title }}</h3>
                         <p>{{ plan.description }}</p>
                     </div>
 

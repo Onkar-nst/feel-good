@@ -1,5 +1,5 @@
 <template>
-    <section class="relative size-full overflow-hidden md:py-20 py-12">
+    <section class="pt-12 md:pt-20 pb-6 md:pb-7 lg:pb-8 relative size-full overflow-hidden">
 
         <!-- Ambient colour fields. Slow, low-contrast, purely atmospheric. -->
         <div class="absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
@@ -54,12 +54,12 @@
                     <div class="mt-auto flex flex-wrap items-end justify-between gap-8 pt-8 border-t border-default-200"
                          data-reveal-group>
                         <div data-reveal="up">
-                            <h3 ref="yearsEl" class="mb-1 text-4xl h-display tabular-nums">{{ years }}+</h3>
+                            <div ref="yearsEl" class="mb-1 text-4xl h-display tabular-nums">{{ years }}+</div>
                             <div class="text-sm text-default-500">Years Of Experience</div>
                         </div>
 
                         <div data-reveal="up">
-                            <h3 ref="clientsEl" class="mb-1 text-4xl h-display tabular-nums">{{ clients }}+</h3>
+                            <div ref="clientsEl" class="mb-1 text-4xl h-display tabular-nums">{{ clients }}+</div>
                             <div class="text-sm text-default-500">Happy Clients</div>
                         </div>
 
