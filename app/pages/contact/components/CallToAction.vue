@@ -1,66 +1,101 @@
 <template>
-    <section class="lg:py-27.5 md:py-25 py-15">
+    <section class="pt-10 pb-10 md:pt-14 md:pb-14 lg:pt-16 lg:pb-16">
         <div class="container">
 
-            <div class="grid md:grid-cols-2 gap-5">
-                <div>
-                    <div class="relative rounded-xl overflow-hidden size-full">
-                        <img src="/images/other/contact-info.jpg" class="w-full h-full object-cover" alt="Image">
-                    </div>
-                </div>
+            <div class="lg:mb-12 mb-9 text-center">
+                <div class="eyebrow mb-5" data-reveal="soft">Reach Out to Us</div>
 
-                <div>
-                    <div class="border border-default-200 rounded-xl p-10 lg:py-16 h-full flex flex-col justify-center gap-10">
+                <h2 class="h-display lg:text-4xl md:text-3xl text-2xl mb-3" data-reveal="up">
+                    Three ways to start
+                </h2>
 
-                        <div>
-                            <h2 class="mb-2.5 lg:text-4xl md:text-3xl text-2xl">Reach Out to Us</h2>
-
-                            <p>We're eager to hear from you. Contact us for support and inquiries about our listening services.</p>
-                        </div>
-
-                        <div class="space-y-6">
-                            <div class="flex items-center gap-4">
-                                <div class="size-12.5 shrink-0 bg-default-100 rounded-full flex items-center justify-center">
-                                    <Icon icon="tabler:phone" width="24" height="24" />
-                                </div>
-
-                                <div>
-                                    <h4 class="mb-1 text-sm text-default-500">Phone</h4>
-                                    <a href="tel:+919004989199" class="text-default-950 transition duration-300 hover:text-default-500">+91 9004989199</a>
-                                </div>
-                            </div>
-
-                            <div class="flex items-center gap-4">
-                                <div class="size-12.5 shrink-0 bg-default-100 rounded-full flex items-center justify-center">
-                                    <Icon icon="tabler:mail" width="24" height="24" />
-                                </div>
-
-                                <div>
-                                    <h4 class="mb-1 text-sm text-default-500">Email</h4>
-                                    <a href="mailto:info@thefeelgoodcenter.in" class="text-default-950 transition duration-300 hover:text-default-500">info@thefeelgoodcenter.in</a>
-                                </div>
-                            </div>
-
-                            <div class="flex items-center gap-4">
-                                <div class="size-12.5 shrink-0 bg-default-100 rounded-full flex items-center justify-center">
-                                    <Icon icon="tabler:map-pin" width="24" height="24" />
-                                </div>
-
-                                <div>
-                                    <h4 class="mb-1 text-sm text-default-500">Address</h4>
-                                    <p class="text-default-950">Mumbai, India.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+                <p class="mx-auto lg:max-w-[54ch] text-default-600" data-reveal="up" style="--reveal-delay:120ms">
+                    Whichever one feels easiest today is the right one. There is no wrong way to reach us.
+                </p>
             </div>
 
+            <!-- One panel split by hairlines rather than three separate colour blocks:
+                 the channels are one offer, so they read better as one object. -->
+            <div class="mx-auto max-w-5xl grid md:grid-cols-3 gap-px overflow-hidden rounded-3xl border border-default-200 bg-default-200/80 shadow-[0_24px_60px_-44px_rgb(28_22_20/0.4)]"
+                 data-reveal-group>
+                <component
+                    :is="channel.href ? 'a' : 'div'"
+                    v-for="(channel, idx) in channelData"
+                    :key="idx"
+                    :href="channel.href"
+                    :target="channel.external ? '_blank' : undefined"
+                    :rel="channel.external ? 'noopener noreferrer' : undefined"
+                    data-reveal="up"
+                    class="group relative flex flex-col gap-5 bg-cream lg:p-9 p-7 transition-colors duration-500 ease-soft hover:bg-white"
+                >
+                    <div :class="['flex size-11 items-center justify-center rounded-2xl transition-transform duration-500 ease-soft group-hover:-rotate-6 group-hover:scale-105', channel.tint]">
+                        <Icon :icon="channel.icon" class="size-5.5" />
+                    </div>
+
+                    <div>
+                        <div class="mb-2 text-xs uppercase tracking-[0.16em] text-default-500">{{ channel.label }}</div>
+                        <div class="h-display text-xl mb-2 break-words">{{ channel.value }}</div>
+                        <p class="text-sm text-default-600">{{ channel.note }}</p>
+                    </div>
+
+                    <div v-if="channel.href" class="mt-auto inline-flex items-center gap-2 text-sm font-medium text-default-950">
+                        <span class="relative">
+                            {{ channel.action }}
+                            <span class="absolute -bottom-0.5 start-0 h-px w-full origin-right scale-x-0 bg-pink transition-transform duration-500 ease-soft group-hover:origin-left group-hover:scale-x-100"></span>
+                        </span>
+                        <Icon icon="tabler:arrow-narrow-right"
+                              class="size-5 transition-transform duration-500 ease-soft group-hover:translate-x-1.5" />
+                    </div>
+                </component>
+            </div>
         </div>
     </section>
 </template>
 
 <script lang="ts" setup>
 import { Icon } from '@iconify/vue'
+
+type ChannelType = {
+  label: string
+  value: string
+  note: string
+  icon: string
+  href?: string
+  action?: string
+  external?: boolean
+  /* Icon chip only. The card itself stays cream, so the accents read as brand
+     colour rather than three unrelated blocks of paint. */
+  tint: string
+}
+
+const channelData: ChannelType[] = [
+  {
+    label: 'Phone',
+    value: '+91 9004989199',
+    note: 'Between 9am and 9pm, any day of the week.',
+    icon: 'tabler:phone',
+    href: 'tel:+919004989199',
+    action: 'Call now',
+    tint: 'bg-primary-soft text-primary-ink'
+  },
+  {
+    label: 'Email',
+    value: 'info@thefeelgoodcenter.in',
+    note: 'Write as much or as little as you like. Kinjal reads every one.',
+    icon: 'tabler:mail',
+    href: 'mailto:info@thefeelgoodcenter.in',
+    action: 'Send an email',
+    tint: 'bg-pink-soft text-pink'
+  },
+  {
+    label: 'WhatsApp',
+    value: 'Message us',
+    note: 'The quickest way to ask a question before you book.',
+    icon: 'tabler:brand-whatsapp',
+    href: 'https://wa.me/919004989199',
+    action: 'Open WhatsApp',
+    external: true,
+    tint: 'bg-accent-soft text-accent'
+  }
+]
 </script>

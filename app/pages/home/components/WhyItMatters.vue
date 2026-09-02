@@ -1,9 +1,9 @@
 <template>
-    <section class="relative lg:py-28 md:py-24 py-16 bg-default-950 overflow-hidden grain">
+    <section class="pt-10 pb-6 md:pt-14 md:pb-8 lg:pt-16 lg:pb-10 relative overflow-hidden">
 
-        <div class="absolute inset-0" aria-hidden="true">
-            <div class="aura animate-drift size-[32rem] -top-40 -end-32 bg-primary/12"></div>
-            <div class="aura animate-drift delay-2 size-80 bottom-0 -start-24 bg-accent/20"></div>
+        <div class="absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
+            <div class="aura animate-drift size-[32rem] -top-40 -end-32 bg-pastel/55"></div>
+            <div class="aura animate-drift delay-2 size-80 bottom-0 -start-24 bg-white"></div>
         </div>
 
         <div class="container max-w-315! relative">
@@ -30,31 +30,31 @@
                 <div class="lg:col-span-4">
                     <div class="flex flex-col lg:gap-20 md:gap-12 gap-10 h-full">
                         <div>
-                            <div class="eyebrow mb-5 text-white/70!" data-reveal="soft">
+                            <div class="eyebrow mb-5" data-reveal="soft">
                                 Why It Matters
                             </div>
 
-                            <h2 class="h-display text-white lg:text-5xl md:text-4xl text-3xl mb-8" data-reveal="up">
+                            <h2 class="h-display lg:text-5xl md:text-4xl text-3xl mb-8" data-reveal="up">
                                 You don't have to hold it alone
                             </h2>
 
                             <ul role="list" class="space-y-4" data-reveal-group>
                                 <li v-for="(point, idx) in pointData" :key="idx"
                                     data-reveal="left"
-                                    class="group flex items-start gap-4 rounded-xl p-3 -m-3 transition-colors duration-500 hover:bg-white/5">
-                                    <span class="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-white/10 text-white transition-all duration-500 ease-soft group-hover:bg-primary group-hover:text-primary-ink group-hover:scale-110">
+                                    class="group flex items-start gap-4 rounded-xl p-3 -m-3 transition-colors duration-500 hover:bg-pastel/15">
+                                    <span class="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-pastel/35 text-pastel-ink transition-all duration-500 ease-soft group-hover:bg-primary group-hover:text-primary-ink group-hover:scale-110">
                                         <Icon icon="tabler:check" class="size-3.5" />
                                     </span>
-                                    <span class="text-lg text-white/70 transition-colors duration-500 group-hover:text-white">{{ point }}</span>
+                                    <span class="text-lg text-default-600 transition-colors duration-500 group-hover:text-default-950">{{ point }}</span>
                                 </li>
                             </ul>
                         </div>
 
                         <div class="mt-auto" data-reveal="up">
-                            <div class="flex flex-wrap items-center justify-between gap-5 p-2 md:ps-7 rounded-2xl bg-white/8 border border-white/10">
-                                <p class="text-white lg:max-w-1/2">Reach out to us today and book your session to release the feelings you've been holding onto!</p>
+                            <div class="flex flex-wrap items-center justify-between gap-5 p-2 md:ps-7 rounded-2xl bg-pastel-soft border border-pastel/45">
+                                <p class="text-default-950 lg:max-w-1/2">Reach out to us today and book your session to release the feelings you've been holding onto!</p>
 
-                                <NuxtLink to="/contact" class="btn-light btn-lg group text-nowrap">
+                                <NuxtLink to="/contact" class="btn-primary btn-fill btn-lg group text-nowrap">
                                     <span>Book a Session</span>
                                     <Icon icon="tabler:arrow-right"
                                           class="size-5 transition-transform duration-500 group-hover:translate-x-1" />

@@ -9,12 +9,15 @@ import { ref, onMounted, onBeforeUnmount, type Ref } from 'vue'
  */
 export function useCountUp(target: number, duration = 1800) {
   const el = ref<HTMLElement | null>(null)
-  const value: Ref<number> = ref(0)
+  // Starts at the final figure so server-rendered HTML and no-JS readers see the
+  // real number. It only drops to zero at the moment the animation starts.
+  const value: Ref<number> = ref(target)
 
   let observer: IntersectionObserver | null = null
   let frame = 0
 
   const run = () => {
+    value.value = 0
     const start = performance.now()
 
     const tick = (now: number) => {

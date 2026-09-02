@@ -4,7 +4,7 @@
         <!-- Ambient colour fields. Slow, low-contrast, purely atmospheric. -->
         <div class="absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
             <div class="aura animate-drift size-[38rem] -top-40 -start-52 bg-primary-soft/70"></div>
-            <div class="aura animate-drift delay-2 size-[30rem] top-1/3 -end-40 bg-accent-soft/70"></div>
+            <div class="aura animate-drift delay-2 size-[30rem] top-1/3 -end-40 bg-white"></div>
             <div class="aura animate-breathe delay-1 size-72 bottom-0 start-1/3 bg-cream-deep"></div>
         </div>
 

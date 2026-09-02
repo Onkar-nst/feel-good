@@ -1,12 +1,12 @@
 <template>
-    <section class="pt-8 pb-16 md:pt-12 md:pb-24 lg:pt-14 lg:pb-28">
+    <section class="pt-10 pb-10 md:pt-14 md:pb-14 lg:pt-16 lg:pb-16">
         <div class="container">
             <div class="grid lg:grid-cols-2 lg:gap-16 gap-10">
 
                 <div class="flex flex-col lg:gap-20 md:gap-12 gap-10 h-full">
                     <div>
                         <div class="eyebrow mb-5" data-reveal="soft">
-                            About Us
+                            Meet Kinjal
                         </div>
 
                         <h2 class="h-display lg:text-5xl md:text-4xl text-3xl mb-6" data-reveal="up">

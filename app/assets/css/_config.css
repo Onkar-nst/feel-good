@@ -21,6 +21,34 @@
     --color-accent: #6E8C84;
     --color-accent-soft: #E3EBE4;
 
+    /* Pastel — replaces the old near-black surfaces. Used the way the hero does it:
+       a light ground with blurred auras in --color-pastel, and --color-pastel-soft
+       as a flat tint for cards. Both are LIGHT; text on them stays the normal ink. */
+    --color-pastel: #DCB0F2;
+    --color-pastel-soft: #F3E8FB;
+    --color-pastel-ink: #3B2A4A;
+
+    /* Periwinkle — the calm, professional end of the client's pastel palette.
+       Used for the For Organisations band, which needs to feel distinct from the
+       warm consumer sections without going dark. Like the other pastels it is a
+       LIGHT colour: text on it uses --color-periwinkle-ink. */
+    --color-periwinkle: #9EB9F3;
+    --color-periwinkle-soft: #DCE5FB;
+    --color-periwinkle-ink: #24304D;
+
+    /* The rest of the client's pastel palette, used to replace the near-black
+       surfaces. Every one of these is a LIGHT colour, so each carries its own
+       ink for text — never white. */
+    --color-lagoon: #66C5CC;
+    --color-lagoon-soft: #D5EEF0;
+    --color-lagoon-ink: #0E3B3E;
+
+    --color-peach: #F89C74;
+    --color-peach-ink: #5A2412;
+
+    --color-mint: #8BE0A4;
+    --color-mint-ink: #14432A;
+
     /* Warm cream, used as the alternate section ground instead of cold grey. */
     --color-cream: #FAF6F1;
     --color-cream-deep: #F3ECE3;

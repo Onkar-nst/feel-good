@@ -6,7 +6,7 @@
       <slot />
     </main>
     <Footer />
-    <WhatsAppButton />
+    <SocialDock />
   </div>
 </template>
 
@@ -14,7 +14,7 @@
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import Navbar from '~/layouts/topbar/index.vue'
 import Footer from '~/layouts/footer/index.vue'
-import WhatsAppButton from '~/components/WhatsAppButton.vue'
+import SocialDock from '~/components/SocialDock.vue'
 
 const progressEl = ref<HTMLElement | null>(null)
 let frame = 0

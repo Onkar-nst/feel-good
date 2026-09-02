@@ -1,8 +1,8 @@
 <template>
-    <section class="relative pt-8 pb-10 md:pt-12 md:pb-14 lg:pt-14 lg:pb-16 bg-body-bg overflow-hidden">
+    <section class="pt-10 pb-10 md:pt-14 md:pb-14 lg:pt-16 lg:pb-16 relative bg-body-bg overflow-hidden">
 
         <div class="absolute inset-0 -z-10" aria-hidden="true">
-            <div class="aura animate-drift delay-1 size-[30rem] top-10 -end-40 bg-accent-soft/60"></div>
+            <div class="aura animate-drift delay-1 size-[30rem] top-10 -end-40 bg-white"></div>
         </div>
 
         <div class="container relative">
@@ -39,50 +39,50 @@
                     :class="[
                         'card-lift group relative overflow-hidden break-inside-avoid mb-5 rounded-2xl p-7 flex flex-col gap-5',
                         review.featured
-                            ? 'bg-default-950 grain'
+                            ? 'bg-linear-to-br from-cream via-pastel-soft to-pastel/70 border border-pastel/35'
                             : 'bg-cream border border-default-200'
                     ]"
                 >
                     <Icon icon="tabler:quote"
                           :class="[
                               'absolute -top-1 end-4 size-14 rotate-180 transition-transform duration-700 ease-soft group-hover:scale-110',
-                              review.featured ? 'text-white/10' : 'text-pink/10'
+                              review.featured ? 'text-pastel/50' : 'text-pink/10'
                           ]" />
 
                     <div class="relative flex gap-0.5">
                         <Icon v-for="n in 5" :key="n" icon="tabler:star-filled"
-                              :class="['size-4', review.featured ? 'text-white/80' : 'text-pink']" />
+                              :class="['size-4', review.featured ? 'text-pastel-ink/70' : 'text-pink']" />
                     </div>
 
                     <div class="relative">
-                        <h3 :class="['mb-1.5 text-xl h-display', review.featured ? 'text-white' : 'text-default-950']">
+                        <h3 class="mb-1.5 text-xl h-display text-default-950">
                             {{ review.title }}
                         </h3>
-                        <div :class="['text-sm', review.featured ? 'text-white/50' : 'text-default-500']">
+                        <div class="text-sm text-default-500">
                             {{ review.date }}
                         </div>
                     </div>
 
-                    <p :class="['relative', review.featured ? 'text-white/85' : 'text-default-600']">
+                    <p class="relative text-default-600">
                         {{ review.content }}
                     </p>
 
                     <div :class="[
                         'relative mt-auto flex items-center gap-3 pt-4 border-t',
-                        review.featured ? 'border-white/12' : 'border-default-200'
+                        review.featured ? 'border-pastel/45' : 'border-default-200'
                     ]">
                         <span :class="[
                             'flex size-10 shrink-0 items-center justify-center rounded-full font-heading text-base',
-                            review.featured ? 'bg-white/12 text-white' : 'bg-primary-soft text-pink'
+                            review.featured ? 'bg-pastel/40 text-pastel-ink' : 'bg-primary-soft text-pink'
                         ]">
                             {{ initials(review.author) }}
                         </span>
 
                         <div>
-                            <div :class="['font-medium', review.featured ? 'text-white' : 'text-default-950']">
+                            <div class="font-medium text-default-950">
                                 {{ review.author }}
                             </div>
-                            <div :class="['text-xs', review.featured ? 'text-white/45' : 'text-default-500']">
+                            <div class="text-xs text-default-500">
                                 Verified session
                             </div>
                         </div>

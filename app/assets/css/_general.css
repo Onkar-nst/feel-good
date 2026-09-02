@@ -175,6 +175,27 @@ textarea {
     }
 
 
+    /* Form fields — one treatment so every input, select and textarea in the
+       site matches, with a pink focus halo instead of the browser's default. */
+
+    .field-label {
+        @apply mb-2 block text-sm font-medium text-default-700;
+    }
+
+    .field {
+        @apply w-full rounded-xl border border-default-200 bg-white/70 px-4 py-3 text-default-950;
+        @apply placeholder:text-default-400 transition-all duration-300;
+        transition-timing-function: var(--ease-soft);
+    }
+
+    .field:hover { @apply border-default-300; }
+
+    .field:focus {
+        @apply border-pink bg-white;
+        box-shadow: 0 0 0 4px rgb(247 136 163 / 0.15);
+    }
+
+
     /* Grain — a faint paper tooth over flat colour fields, so large warm
        areas don't read as plastic. */
 

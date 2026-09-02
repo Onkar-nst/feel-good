@@ -1,58 +1,102 @@
 <template>
-    <section class="pt-8 pb-10 md:pt-12 md:pb-14 lg:pt-14 lg:pb-16">
+    <section class="pt-10 pb-10 md:pt-14 md:pb-14 lg:pt-16 lg:pb-16">
         <div class="container max-w-315!">
             <div class="grid lg:grid-cols-2 lg:gap-16 gap-14 items-start">
 
                 <!-- ── Review form ──────────────────────────────────── -->
-                <div class="border border-default-200 rounded-2xl lg:p-10 p-6 lg:sticky lg:top-28 lg:self-start" data-reveal="up">
-                    <h2 class="h-display mb-8 lg:text-4xl md:text-3xl text-2xl">Your review</h2>
+                <div class="relative overflow-hidden rounded-3xl border border-default-200/70 bg-linear-to-br from-cream via-white to-pastel-soft/70 lg:p-10 p-6 lg:sticky lg:top-28 lg:self-start shadow-[0_24px_60px_-40px_rgb(28_22_20/0.35)]" data-reveal="up">
 
-                    <form @submit.prevent>
-                        <div class="grid md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-6 mb-6">
-                            <div>
-                                <label for="review-rating" class="mb-1.5 text-sm block">Your overall rating</label>
-                                <select id="review-rating" name="review-rating" class="rounded-lg bg-default-100 h-11.25 py-2 px-5 w-full flex items-center border-transparent focus:border-default-200">
-                                    <option value="">Select a Rating</option>
-                                    <option value="5">5 Stars</option>
-                                    <option value="4">4 Stars</option>
-                                    <option value="3">3 Stars</option>
-                                    <option value="2">2 Stars</option>
-                                    <option value="1">1 Star</option>
-                                </select>
+                    <div class="aura animate-breathe size-64 -top-28 -end-20 bg-pastel/35" aria-hidden="true"></div>
+
+                    <div class="relative">
+                        <div class="eyebrow mb-4">Share Your Experience</div>
+
+                        <h2 class="h-display mb-2.5 lg:text-4xl md:text-3xl text-2xl">Your review</h2>
+
+                        <p class="text-default-600 mb-8">
+                            If a session helped, saying so helps the next person decide to book.
+                        </p>
+
+                        <form @submit.prevent>
+                            <!-- Rating — stars you actually click, not a dropdown -->
+                            <div class="mb-6">
+                                <span class="field-label">Your overall rating</span>
+
+                                <div class="flex flex-wrap items-center gap-x-4 gap-y-2" @mouseleave="hoverRating = 0">
+                                    <div class="flex items-center gap-1.5">
+                                        <button
+                                            v-for="n in 5" :key="n"
+                                            type="button"
+                                            :aria-label="`${n} star${n > 1 ? 's' : ''}`"
+                                            :aria-pressed="rating === n"
+                                            class="rounded-full transition-transform duration-300 ease-soft hover:scale-115 focus-visible:ring-4 focus-visible:ring-pink/25"
+                                            @click="rating = n"
+                                            @mouseenter="hoverRating = n"
+                                        >
+                                            <Icon
+                                                icon="tabler:star-filled"
+                                                :class="[
+                                                    'size-7 transition-colors duration-300',
+                                                    (hoverRating || rating) >= n ? 'text-pink' : 'text-default-200'
+                                                ]"
+                                            />
+                                        </button>
+                                    </div>
+
+                                    <span class="text-sm text-default-500 transition-opacity duration-300"
+                                          :class="ratingLabel ? 'opacity-100' : 'opacity-0'">
+                                        {{ ratingLabel || '\u00a0' }}
+                                    </span>
+                                </div>
+
+                                <input type="hidden" name="rating" :value="rating">
                             </div>
 
-                            <div>
-                                <label for="review-title" class="mb-1.5 text-sm block">Title of your review</label>
-                                <input type="text" id="review-title" class="rounded-lg bg-default-100 h-11.25 py-2 px-5 w-full flex items-center border-transparent focus:border-default-200">
-                            </div>
-                        </div>
-
-                        <div class="mb-6">
-                            <label for="review-body" class="mb-1.5 text-sm block">Your review</label>
-                            <textarea id="review-body" rows="6" class="rounded-lg bg-default-100 py-2 px-5 w-full flex items-center border-transparent focus:border-default-200"></textarea>
-                        </div>
-
-                        <div class="grid md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-6 mb-6">
-                            <div>
-                                <label for="review-name" class="mb-1.5 text-sm block">Your name</label>
-                                <input type="text" id="review-name" class="rounded-lg bg-default-100 h-11.25 py-2 px-5 w-full flex items-center border-transparent focus:border-default-200">
+                            <div class="mb-6">
+                                <label for="review-title" class="field-label">Title of your review</label>
+                                <input type="text" id="review-title" class="field"
+                                       placeholder="Sum it up in a few words">
                             </div>
 
-                            <div>
-                                <label for="review-email" class="mb-1.5 text-sm block">Your email</label>
-                                <input type="email" id="review-email" class="rounded-lg bg-default-100 h-11.25 py-2 px-5 w-full flex items-center border-transparent focus:border-default-200">
+                            <div class="mb-6">
+                                <label for="review-body" class="field-label">Your review</label>
+                                <textarea id="review-body" rows="6" class="field resize-y"
+                                          placeholder="What was the session like? Take your time."></textarea>
                             </div>
-                        </div>
 
-                        <div class="mb-8 flex items-start gap-3">
-                            <input type="checkbox" id="review-consent" class="mt-1 size-4.5 rounded border-default-300 text-pink focus:ring-0">
-                            <label for="review-consent" class="text-sm text-default-600">This review is based on my own experience and is my genuine opinion.</label>
-                        </div>
+                            <div class="grid md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-5 mb-6">
+                                <div>
+                                    <label for="review-name" class="field-label">Your name</label>
+                                    <input type="text" id="review-name" class="field"
+                                           placeholder="First name is enough">
+                                </div>
 
-                        <button type="submit" class="btn-primary btn-fill btn-lg group">
-                            <span>Submit Review</span>
-                        </button>
-                    </form>
+                                <div>
+                                    <label for="review-email" class="field-label">Your email</label>
+                                    <input type="email" id="review-email" class="field"
+                                           placeholder="you@example.com">
+                                </div>
+                            </div>
+
+                            <label for="review-consent" class="mb-8 flex items-start gap-3 cursor-pointer">
+                                <input type="checkbox" id="review-consent" class="peer sr-only">
+                                <span class="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-md border border-default-300 bg-white transition-all duration-300 ease-soft peer-checked:border-pink peer-checked:bg-pink peer-checked:[&>svg]:opacity-100 peer-focus-visible:ring-4 peer-focus-visible:ring-pink/25">
+                                    <Icon icon="tabler:check" class="size-3.5 text-white opacity-0 transition-opacity duration-200" />
+                                </span>
+                                <span class="text-sm text-default-600">
+                                    This review is based on my own experience and is my genuine opinion.
+                                </span>
+                            </label>
+
+                            <div class="flex justify-center">
+                                <button type="submit" class="btn-primary btn-fill btn-lg group w-full sm:w-auto">
+                                    <span>Submit Review</span>
+                                    <Icon icon="tabler:arrow-right"
+                                          class="size-5 transition-transform duration-500 ease-soft group-hover:translate-x-1" />
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
 
                 <!-- ── FAQ ──────────────────────────────────────────── -->
@@ -114,9 +158,17 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
+import { Icon } from '@iconify/vue'
 
 type FaqType = { q: string, a: string }
+
+// Star rating. hoverRating previews on the way past; rating is what sticks.
+const rating = ref(0)
+const hoverRating = ref(0)
+
+const RATING_LABELS = ['', 'Not for me', 'It was okay', 'Good', 'Really good', 'Loved it']
+const ratingLabel = computed(() => RATING_LABELS[hoverRating.value || rating.value])
 
 // Every question starts closed. The list opens only on intent.
 const openIndex = ref<number | null>(null)

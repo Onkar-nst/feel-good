@@ -27,9 +27,9 @@
                 <Icon icon="tabler:chevron-down" class="ms-3"></Icon>
               </button>
 
-              <div class="hs-dropdown-menu hs-dropdown-open:opacity-100 mt-2 top-2.5! hidden w-60 rounded-xl border border-default-100 bg-linear-to-b from-default-100/90 to-default-100 p-1 opacity-0 transition-[opacity,margin] duration-300 before:absolute before:inset-s-0 before:-top-6 before:h-6 before:w-full after:absolute after:inset-s-0 after:-bottom-6 after:h-6 after:w-full" role="menu" aria-orientation="vertical">
+              <div class="hs-dropdown-menu hs-dropdown-open:opacity-100 mt-2 top-2.5! hidden w-80 rounded-xl border border-default-100 bg-linear-to-b from-default-100/90 to-default-100 p-1 opacity-0 transition-[opacity,margin] duration-300 before:absolute before:inset-s-0 before:-top-6 before:h-6 before:w-full after:absolute after:inset-s-0 after:-bottom-6 after:h-6 after:w-full" role="menu" aria-orientation="vertical">
                 <div class="p-2.5 rounded-lg border border-default-200 bg-white">
-                  <div class="space-y-1">
+                  <div class="space-y-1 max-h-[70vh] overflow-y-auto">
                     <NuxtLink
                       v-for="(subItem, subIdx) in item.children"
                       :key="subIdx"
@@ -92,7 +92,7 @@
                 </button>
 
                 <div class="hs-accordion-content hidden w-full overflow-hidden ps-5 pb-4 transition-[height]">
-                  <div class="space-y-1">
+                  <div class="space-y-1 max-h-[70vh] overflow-y-auto">
                     <NuxtLink
                       v-for="(subItem, subIdx) in item.children"
                       :key="subIdx"
@@ -131,9 +131,15 @@ const menuItemData: MenuItemType[] = [
   {
     name: 'Services',
     children: [
-      { name: 'All Services', to: '/service-detail' },
-      { name: 'Personal Listening Service', to: '/service-detail/personal' },
-      { name: 'Corporate Services', to: '/service-detail/corporate' }
+      { name: 'Feeling Overwhelmed & Mentally Drained', to: '/service-detail/feeling-overwhelmed' },
+      { name: 'Work Stress & Burnout', to: '/service-detail/work-stress-burnout' },
+      { name: 'Breakup & Relationship Support', to: '/service-detail/breakup-relationship-support' },
+      { name: 'Feeling Lonely / Having No One to Talk To', to: '/service-detail/feeling-lonely' },
+      { name: 'Family Pressure & Expectations', to: '/service-detail/family-pressure' },
+      { name: 'Career & Life Confusion', to: '/service-detail/career-life-confusion' },
+      { name: 'Living Away from Home', to: '/service-detail/living-away-from-home' },
+      { name: 'I Just Need Someone to Talk To', to: '/service-detail/someone-to-talk-to' },
+      { name: 'The Strong One', to: '/service-detail/the-strong-one' }
     ]
   },
   { name: 'Blog', to: '/blog' },
