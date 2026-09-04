@@ -5,55 +5,44 @@
     --font-body: "Inter", sans-serif;
     --font-heading: "Fraunces", "Iowan Old Style", Georgia, serif;
 
-    /* Brand — lifted from thefeelgoodcenter.in's own palette.
-       Yellow is a LIGHT colour, so unlike the clay it replaced it can only carry
-       fills, never text. Anything sitting on it uses --color-primary-ink; anything
-       that used to be clay *text* moves to --color-pink. */
-    --color-primary: #FFE170;
-    --color-primary-soft: #FBE8A6;
+    /* ────────────────────────────────────────────────────────────────
+       THE PALETTE — three colours only.
+
+       Taken exactly from the client's pastel template. Everything on the
+       site is one of these three plus warm neutrals. Do not introduce a
+       fourth: if a surface needs to feel different, reach for a -soft tint
+       or a neutral, never a new hue.
+
+         1. Butter  #F6CF71  primary   warmth, CTAs, highlights
+         2. Blush   #FE88B1  accent    emphasis, numerals, emotional beats
+         3. Teal    #66C5CC  calm      safe-space surfaces, icon chips
+
+       All three are LIGHT colours, so text never sits on them in white —
+       each carries its own -ink. Every ink pairing clears 5.6:1.
+       ──────────────────────────────────────────────────────────────── */
+
+    /* 1 — Butter yellow. The brand's primary. */
+    --color-primary: #F6CF71;
+    --color-primary-soft: #FDEEC4;
     --color-primary-ink: #2E2E2E;
 
-    /* Secondary — the brand pink, for numerals, accents and emphasis text. */
-    --color-pink: #F788A3;
-    --color-pink-soft: #FDE1E8;
+    /* 2 — Blush pink. Emphasis and the warmer emotional surfaces. */
+    --color-pink: #FE88B1;
+    --color-pink-soft: #FFD9E4;
+    --color-pink-ink: #5A1F33;
 
-    /* Tertiary — their sage, for quiet accents and "safe space" moments. */
-    --color-accent: #6E8C84;
-    --color-accent-soft: #E3EBE4;
-
-    /* Pastel — replaces the old near-black surfaces. Used the way the hero does it:
-       a light ground with blurred auras in --color-pastel, and --color-pastel-soft
-       as a flat tint for cards. Both are LIGHT; text on them stays the normal ink. */
-    --color-pastel: #DCB0F2;
-    --color-pastel-soft: #F3E8FB;
-    --color-pastel-ink: #3B2A4A;
-
-    /* Periwinkle — the calm, professional end of the client's pastel palette.
-       Used for the For Organisations band, which needs to feel distinct from the
-       warm consumer sections without going dark. Like the other pastels it is a
-       LIGHT colour: text on it uses --color-periwinkle-ink. */
-    --color-periwinkle: #9EB9F3;
-    --color-periwinkle-soft: #DCE5FB;
-    --color-periwinkle-ink: #24304D;
-
-    /* The rest of the client's pastel palette, used to replace the near-black
-       surfaces. Every one of these is a LIGHT colour, so each carries its own
-       ink for text — never white. */
+    /* 3 — Teal. The calm counterweight to the two warm tones. */
     --color-lagoon: #66C5CC;
     --color-lagoon-soft: #D5EEF0;
     --color-lagoon-ink: #0E3B3E;
 
-    --color-peach: #F89C74;
-    --color-peach-ink: #5A2412;
-
-    --color-mint: #8BE0A4;
-    --color-mint-ink: #14432A;
-
-    /* Warm cream, used as the alternate section ground instead of cold grey. */
+    /* Warm neutrals — grounds, not colours. */
     --color-cream: #FAF6F1;
     --color-cream-deep: #F3ECE3;
 
-    --color-body-bg: #FFFDFB;
+    /* Site ground. Warm beige rather than white, so the cream cards and white
+       chips still lift off it. */
+    --color-body-bg: #F4EBDF;
     --color-body-color: var(--color-stone-600);
 
     /* Neutrals moved from cold zinc to warm stone — this alone warms every surface. */

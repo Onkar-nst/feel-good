@@ -26,7 +26,7 @@ const offerData: string[] = [
 
 const introData: string[] = [
   'Support your team with meaningful emotional care.',
-  "At The Feel Good Center, we offer confidential, one to one emotional listening sessions for companies that want to support their employees' mental wellness, without the formality of therapy or coaching.",
+  "At The Feel Good Centre, we offer confidential, one to one emotional listening sessions for companies that want to support their employees' mental wellness, without the formality of therapy or coaching.",
   "In today's high pressure work environment, your people need a safe, human space to pause, express, and feel heard. When employees feel emotionally supported, they're more focused, collaborative, and resilient at work."
 ]
 

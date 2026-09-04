@@ -17,7 +17,7 @@
                 </h2>
 
                 <div class="mx-auto lg:max-w-[62ch] space-y-2.5" data-reveal="up" style="--reveal-delay:120ms">
-                    <p>The Feel Good Center offers one to one listening sessions led with warmth, compassion, and zero judgment.</p>
+                    <p>The Feel Good Centre offers one to one listening sessions led with warmth, compassion, and zero judgment.</p>
                     <p class="text-default-950 font-medium">No therapy. No fixing. Just listening, with heart.</p>
                 </div>
             </div>
@@ -36,7 +36,7 @@
                     </span>
 
                     <div class="relative">
-                        <span class="mb-4 flex size-11 items-center justify-center rounded-full bg-accent-soft text-accent">
+                        <span class="mb-4 flex size-11 items-center justify-center rounded-full bg-lagoon-soft text-lagoon">
                             <Icon :icon="step.icon" class="size-5.5" />
                         </span>
 
@@ -74,24 +74,24 @@
                     </NuxtLink>
                 </div>
 
-                <div class="lg:col-span-2 card-lift group relative overflow-hidden rounded-2xl p-7 lg:p-9 bg-pastel text-pastel-ink" data-reveal="up" style="--reveal-delay:120ms">
+                <div class="lg:col-span-2 card-lift group relative overflow-hidden rounded-2xl p-7 lg:p-9 bg-lagoon text-lagoon-ink" data-reveal="up" style="--reveal-delay:120ms">
                     <div class="aura animate-breathe size-52 -bottom-16 -end-10 bg-white/40"></div>
 
                     <div class="relative">
-                        <h3 class="h-display text-2xl text-pastel-ink mb-2">And what this isn't</h3>
+                        <h3 class="h-display text-2xl text-lagoon-ink mb-2">And what this isn't</h3>
 
-                        <p class="text-pastel-ink/75 mb-6">
+                        <p class="text-lagoon-ink/75 mb-6">
                             Being clear about this matters as much as anything we do offer.
                         </p>
 
                         <ul role="list" class="space-y-3">
                             <li v-for="(item, idx) in notData" :key="idx" class="flex items-start gap-3">
-                                <Icon icon="tabler:x" class="mt-1 size-4 shrink-0 text-pastel-ink/50" />
-                                <span class="text-pastel-ink/80">{{ item }}</span>
+                                <Icon icon="tabler:x" class="mt-1 size-4 shrink-0 text-lagoon-ink/50" />
+                                <span class="text-lagoon-ink/80">{{ item }}</span>
                             </li>
                         </ul>
 
-                        <p class="mt-6 pt-5 border-t border-pastel-ink/15 text-sm text-pastel-ink/75">
+                        <p class="mt-6 pt-5 border-t border-lagoon-ink/15 text-sm text-lagoon-ink/75">
                             Listening helps, but it isn't treatment. If you're in immediate distress, please call
                             Tele MANAS on 14416. It's free and open 24 hours a day.
                         </p>

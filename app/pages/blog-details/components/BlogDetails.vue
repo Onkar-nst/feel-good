@@ -60,7 +60,7 @@
 
             <h2 class="h-display lg:text-4xl md:text-3xl text-2xl mb-4">What Heartfelt Listening Actually Feels Like</h2>
 
-            <p class="mb-5">At The Feel Good Center, we don't offer advice. We offer presence.</p>
+            <p class="mb-5">At The Feel Good Centre, we don't offer advice. We offer presence.</p>
 
             <p class="mb-5">Our sessions are simple: One human. One hour. One space where you can show up exactly as you are.</p>
 
@@ -75,7 +75,7 @@
             <p class="mb-5">Research shows that:</p>
 
             <ul class="list-disc list-inside space-y-2.5 mb-5" role="list">
-                <li>Real human connection calms the stress centers in your brain</li>
+                <li>Real human connection calms the stress centres in your brain</li>
                 <li>Feeling heard increases oxytocin (the "trust" hormone)</li>
                 <li>Compassionate listening builds resilience and emotional clarity</li>
             </ul>
@@ -90,7 +90,7 @@
 
             <p class="mb-12.5">That's what we do. And that's why people keep coming back.</p>
 
-            <blockquote class="bg-periwinkle-soft text-periwinkle-ink rounded-lg p-12.5 mb-10 lg:-mx-15">
+            <blockquote class="bg-lagoon-soft text-lagoon-ink rounded-lg p-12.5 mb-10 lg:-mx-15">
                 <em class="italic text-lg">
                     "Your feelings aren't a prompt. Your pain isn't a glitch. And your story deserves more than a script."
                 </em>

@@ -24,7 +24,7 @@ useHead({
   meta: [
     {
       name: 'description',
-      content: 'Welcome to The Feel Good Center. Meet Kinjal Shah, and read the mission, values, journey and training behind a dedicated space to put down what you have been carrying.'
+      content: 'Welcome to The Feel Good Centre. Meet Kinjal Shah, and read the mission, values, journey and training behind a dedicated space to put down what you have been carrying.'
     }
   ]
 })

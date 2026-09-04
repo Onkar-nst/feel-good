@@ -2,7 +2,7 @@
     <section class="pt-6 md:pt-7 lg:pt-8 pb-6 md:pb-7 lg:pb-8 relative overflow-hidden">
 
         <div class="absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
-            <div class="aura animate-drift size-[32rem] -top-40 -end-32 bg-pastel/55"></div>
+            <div class="aura animate-drift size-[32rem] -top-40 -end-32 bg-lagoon/55"></div>
             <div class="aura animate-drift delay-2 size-80 bottom-0 -start-24 bg-white"></div>
         </div>
 
@@ -41,8 +41,8 @@
                             <ul role="list" class="space-y-4" data-reveal-group>
                                 <li v-for="(point, idx) in pointData" :key="idx"
                                     data-reveal="left"
-                                    class="group flex items-start gap-4 rounded-xl p-3 -m-3 transition-colors duration-500 hover:bg-pastel/15">
-                                    <span class="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-pastel/35 text-pastel-ink transition-all duration-500 ease-soft group-hover:bg-primary group-hover:text-primary-ink group-hover:scale-110">
+                                    class="group flex items-start gap-4 rounded-xl p-3 -m-3 transition-colors duration-500 hover:bg-lagoon/15">
+                                    <span class="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-lagoon/35 text-lagoon-ink transition-all duration-500 ease-soft group-hover:bg-primary group-hover:text-primary-ink group-hover:scale-110">
                                         <Icon icon="tabler:check" class="size-3.5" />
                                     </span>
                                     <span class="text-lg text-default-600 transition-colors duration-500 group-hover:text-default-950">{{ point }}</span>
@@ -51,7 +51,7 @@
                         </div>
 
                         <div class="mt-auto" data-reveal="up">
-                            <div class="flex flex-wrap items-center justify-between gap-5 p-2 md:ps-7 rounded-2xl bg-pastel-soft border border-pastel/45">
+                            <div class="flex flex-wrap items-center justify-between gap-5 p-2 md:ps-7 rounded-2xl bg-lagoon-soft border border-lagoon/45">
                                 <p class="text-default-950 lg:max-w-1/2">Reach out to us today and book your session to release the feelings you've been holding onto!</p>
 
                                 <NuxtLink to="/contact" class="btn-primary btn-fill btn-lg group text-nowrap">

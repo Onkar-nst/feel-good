@@ -6,7 +6,7 @@
                 <div class="eyebrow mb-5" data-reveal="soft">Reach Out to Us</div>
 
                 <h2 class="h-display lg:text-4xl md:text-3xl text-2xl mb-3" data-reveal="up">
-                    Three ways to start
+                    Two ways to start
                 </h2>
 
                 <p class="mx-auto lg:max-w-[54ch] text-default-600" data-reveal="up" style="--reveal-delay:120ms">
@@ -16,7 +16,7 @@
 
             <!-- One panel split by hairlines rather than three separate colour blocks:
                  the channels are one offer, so they read better as one object. -->
-            <div class="mx-auto max-w-5xl grid md:grid-cols-3 gap-px overflow-hidden rounded-3xl border border-default-200 bg-default-200/80 shadow-[0_24px_60px_-44px_rgb(28_22_20/0.4)]"
+            <div class="mx-auto max-w-3xl grid md:grid-cols-2 gap-px overflow-hidden rounded-3xl border border-default-200 bg-default-200/80 shadow-[0_24px_60px_-44px_rgb(28_22_20/0.4)]"
                  data-reveal-group>
                 <component
                     :is="channel.href ? 'a' : 'div'"
@@ -70,15 +70,6 @@ type ChannelType = {
 
 const channelData: ChannelType[] = [
   {
-    label: 'Phone',
-    value: '+91 9004989199',
-    note: 'Between 9am and 9pm, any day of the week.',
-    icon: 'tabler:phone',
-    href: 'tel:+919004989199',
-    action: 'Call now',
-    tint: 'bg-primary-soft text-primary-ink'
-  },
-  {
     label: 'Email',
     value: 'info@thefeelgoodcenter.in',
     note: 'Write as much or as little as you like. Kinjal reads every one.',
@@ -95,7 +86,7 @@ const channelData: ChannelType[] = [
     href: 'https://wa.me/919004989199',
     action: 'Open WhatsApp',
     external: true,
-    tint: 'bg-accent-soft text-accent'
+    tint: 'bg-lagoon-soft text-lagoon'
   }
 ]
 </script>

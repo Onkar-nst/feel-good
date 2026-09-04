@@ -22,7 +22,7 @@ const offerData: string[] = [
 ]
 
 const introData: string[] = [
-  'At The Feel Good Center, we provide one to one listening sessions and emotional check ins designed to give you a safe, confidential space to simply be heard.',
+  'At The Feel Good Centre, we provide one to one listening sessions and emotional check ins designed to give you a safe, confidential space to simply be heard.',
   "Whether you're navigating stress, burnout, or just need someone to talk to, our personal services help you find clarity, lighten emotional load, and reconnect with yourself."
 ]
 

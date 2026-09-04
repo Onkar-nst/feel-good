@@ -3,7 +3,7 @@
     <section class="pt-10 md:pt-14 lg:pt-16 pb-6 md:pb-7 lg:pb-8 relative overflow-hidden">
         <div class="absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
             <div class="aura animate-drift size-[34rem] -top-44 -start-40 bg-primary-soft/60"></div>
-            <div class="aura animate-drift delay-2 size-[26rem] top-1/4 -end-32 bg-pastel-soft/70"></div>
+            <div class="aura animate-drift delay-2 size-[26rem] top-1/4 -end-32 bg-lagoon-soft/70"></div>
         </div>
 
         <div class="container relative">
@@ -26,11 +26,7 @@
                     </p>
 
                     <div class="flex flex-wrap items-center gap-4" data-reveal="up" style="--reveal-delay:280ms">
-                        <NuxtLink to="/contact" class="btn-primary btn-fill btn-lg group">
-                            <span>Book a Session</span>
-                            <Icon icon="tabler:arrow-right"
-                                  class="size-5 transition-transform duration-500 ease-soft group-hover:translate-x-1" />
-                        </NuxtLink>
+                        <CalendlyButton :url="EVENT_TYPES.listening50">Book a Session</CalendlyButton>
 
                         <a :href="whatsappLink" target="_blank" rel="noopener noreferrer" class="btn-outline btn-lg group">
                             <Icon icon="tabler:brand-whatsapp" class="size-5" />
@@ -57,96 +53,100 @@
     </section>
 
     <!-- ── Recognition ──────────────────────────────────────────── -->
-    <section class="pt-6 md:pt-7 lg:pt-8 pb-6 md:pb-7 lg:pb-8 relative overflow-hidden bg-cream">
+    <section class="pt-14 md:pt-20 lg:pt-24 pb-14 md:pb-20 lg:pb-24 relative overflow-hidden bg-cream">
+        <div class="absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
+            <div class="aura animate-drift size-[30rem] -bottom-52 -end-40 bg-primary-soft/45"></div>
+        </div>
+
         <div class="container">
-            <div class="lg:mb-12 mb-9 mx-auto lg:max-w-[54ch] text-center">
-                <div class="eyebrow mb-5" data-reveal="soft">Does this sound familiar</div>
-                <h2 class="h-display lg:text-4xl md:text-3xl text-2xl mb-4" data-reveal="up">
+            <div class="mx-auto lg:max-w-[52ch] text-center lg:mb-20 mb-14">
+                <div class="eyebrow mb-6" data-reveal="soft">Does this sound familiar</div>
+                <h2 class="h-display lg:text-4xl md:text-3xl text-2xl leading-[1.2] mb-5" data-reveal="up">
                     Overwhelmed rarely looks like falling apart
                 </h2>
-                <p class="text-default-600" data-reveal="up" style="--reveal-delay:120ms">
+                <p class="text-lg text-default-600" data-reveal="up" style="--reveal-delay:120ms">
                     Most people who book a session are functioning perfectly well on the outside.
                     That is exactly the problem.
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4" data-reveal-group>
-                <div v-for="(sign, idx) in signData" :key="idx"
-                     data-reveal="up"
-                     class="card-lift rounded-2xl border border-default-200 bg-white p-6 flex items-start gap-3.5">
-                    <span class="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-pink-soft text-pink">
-                        <Icon icon="tabler:check" class="size-3.5" />
-                    </span>
-                    <p class="text-default-700">{{ sign }}</p>
-                </div>
+            <!-- Unboxed on purpose: six bordered cards read as a checklist to get
+                 through. Hairlines and wide gutters let each line be read alone. -->
+            <div class="mx-auto lg:max-w-5xl grid md:grid-cols-2 lg:gap-x-16 md:gap-x-10" data-reveal-group>
+                <p v-for="(sign, idx) in signData" :key="idx"
+                   data-reveal="up"
+                   class="flex items-start gap-4 py-6 md:py-7 border-b border-default-200/70 text-lg leading-relaxed text-default-700">
+                    <span class="mt-2.5 size-1.5 shrink-0 rounded-full bg-pink" aria-hidden="true"></span>
+                    <span>{{ sign }}</span>
+                </p>
             </div>
 
-            <p class="mt-9 text-center text-lg text-default-950 font-medium" data-reveal="up">
+            <p class="mt-14 md:mt-16 text-center text-lg md:text-xl text-default-950 font-medium mx-auto lg:max-w-[40ch]" data-reveal="up">
                 If you recognised yourself more than once, that is reason enough to talk.
             </p>
         </div>
     </section>
 
     <!-- ── What this is, and what it is not ─────────────────────── -->
-    <section class="pt-6 md:pt-7 lg:pt-8 pb-6 md:pb-7 lg:pb-8 ">
+    <section class="pt-14 md:pt-20 lg:pt-24 pb-14 md:pb-20 lg:pb-24">
         <div class="container">
-            <!-- Side-by-side rather than a narrow centred column: the heading and the
-                 safety note hold the left rail so the section fills its width. -->
-            <div class="grid lg:grid-cols-12 lg:gap-12 gap-9 items-start">
+            <div class="mx-auto lg:max-w-[52ch] text-center lg:mb-20 mb-14">
+                <div class="eyebrow mb-6" data-reveal="soft">Before you book</div>
+                <h2 class="h-display lg:text-4xl md:text-3xl text-2xl leading-[1.2] mb-5" data-reveal="up">
+                    Being clear about what this is
+                </h2>
+                <p class="text-lg text-default-600" data-reveal="up" style="--reveal-delay:120ms">
+                    No surprises, no small print. Here is exactly what a session
+                    does and does not include.
+                </p>
+            </div>
 
-                <div class="lg:col-span-4 lg:sticky lg:top-28">
-                    <div class="eyebrow mb-5" data-reveal="soft">Before you book</div>
-
-                    <h2 class="h-display lg:text-4xl md:text-3xl text-2xl mb-4" data-reveal="up">
-                        Being clear about what this is
-                    </h2>
-
-                    <p class="text-default-600 lg:max-w-[38ch]" data-reveal="up" style="--reveal-delay:120ms">
-                        No surprises, no small print. Here is exactly what a session
-                        does and does not include.
-                    </p>
-
-                    <div class="mt-7 rounded-2xl border border-default-200 bg-cream p-5" data-reveal="up" style="--reveal-delay:220ms">
-                        <div class="mb-2 flex items-center gap-2 text-default-950">
-                            <Icon icon="tabler:lifebuoy" class="size-4.5 text-pink" />
-                            <span class="text-sm font-medium">If you need more than listening</span>
-                        </div>
-                        <p class="text-sm text-default-600">
-                            Listening helps, but it is not treatment. If you are in immediate distress,
-                            please call Tele MANAS on
-                            <a href="tel:14416" class="font-medium text-default-950 underline decoration-pink underline-offset-2">14416</a>.
-                            It is free and open 24 hours a day.
-                        </p>
-                    </div>
+            <div class="mx-auto lg:max-w-5xl grid md:grid-cols-2 lg:gap-14 gap-10 md:gap-12">
+                <div data-reveal="up">
+                    <h3 class="h-display text-xl flex items-center gap-3 pb-6 mb-2 border-b border-lagoon/30">
+                        <span class="flex size-9 items-center justify-center rounded-full bg-lagoon-soft">
+                            <Icon icon="tabler:check" class="size-4.5 text-lagoon-ink" />
+                        </span>
+                        What it is
+                    </h3>
+                    <ul role="list">
+                        <li v-for="(item, idx) in isData" :key="idx"
+                            class="py-6 border-b border-default-200/70 text-lg leading-relaxed text-default-700">
+                            {{ item }}
+                        </li>
+                    </ul>
                 </div>
 
-                <div class="lg:col-span-8 grid sm:grid-cols-2 gap-5">
-                    <div class="relative overflow-hidden rounded-3xl border border-accent/25 bg-accent-soft p-7 lg:p-8" data-reveal="up">
-                        <h3 class="h-display text-xl mb-5 flex items-center gap-2.5">
-                            <Icon icon="tabler:circle-check" class="size-5 text-accent" />
-                            What it is
-                        </h3>
-                        <ul role="list" class="space-y-3.5">
-                            <li v-for="(item, idx) in isData" :key="idx" class="flex items-start gap-3">
-                                <Icon icon="tabler:check" class="mt-1 size-4 shrink-0 text-accent" />
-                                <span class="text-default-700">{{ item }}</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="relative overflow-hidden rounded-3xl border border-default-200 bg-cream p-7 lg:p-8" data-reveal="up" style="--reveal-delay:120ms">
-                        <h3 class="h-display text-xl mb-5 flex items-center gap-2.5">
-                            <Icon icon="tabler:circle-x" class="size-5 text-default-400" />
-                            What it is not
-                        </h3>
-                        <ul role="list" class="space-y-3.5">
-                            <li v-for="(item, idx) in isNotData" :key="idx" class="flex items-start gap-3">
-                                <Icon icon="tabler:x" class="mt-1 size-4 shrink-0 text-default-400" />
-                                <span class="text-default-600">{{ item }}</span>
-                            </li>
-                        </ul>
-                    </div>
+                <div data-reveal="up" style="--reveal-delay:140ms">
+                    <h3 class="h-display text-xl flex items-center gap-3 pb-6 mb-2 border-b border-default-200">
+                        <span class="flex size-9 items-center justify-center rounded-full bg-cream-deep">
+                            <Icon icon="tabler:minus" class="size-4.5 text-default-500" />
+                        </span>
+                        What it is not
+                    </h3>
+                    <ul role="list">
+                        <li v-for="(item, idx) in isNotData" :key="idx"
+                            class="py-6 border-b border-default-200/70 text-lg leading-relaxed text-default-500">
+                            {{ item }}
+                        </li>
+                    </ul>
                 </div>
+            </div>
+
+            <!-- The safety note sits apart from the comparison so it reads as care,
+                 not as another bullet to weigh up. -->
+            <div class="mx-auto lg:max-w-3xl mt-14 md:mt-20 rounded-3xl bg-cream px-7 py-8 md:px-10 md:py-9 text-center"
+                 data-reveal="up">
+                <div class="mb-3 flex items-center justify-center gap-2 text-default-950">
+                    <Icon icon="tabler:lifebuoy" class="size-5 text-pink" />
+                    <span class="font-medium">If you need more than listening</span>
+                </div>
+                <p class="text-default-600 leading-relaxed mx-auto max-w-[52ch]">
+                    Listening helps, but it is not treatment. If you are in immediate distress,
+                    please call Tele MANAS on
+                    <a href="tel:14416" class="font-medium text-default-950 underline decoration-pink underline-offset-4">14416</a>.
+                    It is free and open 24 hours a day.
+                </p>
             </div>
         </div>
     </section>
@@ -154,27 +154,38 @@
     <!-- ── How a session goes ───────────────────────────────────── -->
     <section class="pt-6 md:pt-7 lg:pt-8 pb-6 md:pb-7 lg:pb-8 relative overflow-hidden">
         <div class="container max-w-315!">
-            <div class="relative overflow-hidden rounded-3xl bg-periwinkle grain lg:p-14 md:p-10 p-7" data-reveal="scale">
+            <div class="relative overflow-hidden rounded-3xl bg-lagoon grain lg:p-14 md:p-10 p-7" data-reveal="scale">
                 <div class="absolute inset-0" aria-hidden="true">
                     <div class="aura animate-drift size-96 -top-28 -start-20 bg-white/45"></div>
                     <div class="aura animate-drift delay-2 size-80 -bottom-24 start-1/3 bg-primary-soft/60"></div>
                 </div>
 
                 <div class="relative">
-                    <div class="eyebrow mb-5 text-periwinkle-ink/70!">How a session goes</div>
-                    <h2 class="h-display text-periwinkle-ink lg:text-4xl md:text-3xl text-2xl mb-9 lg:max-w-[22ch]">
+                    <div class="eyebrow mb-5 text-lagoon-ink/70!">How a session goes</div>
+                    <h2 class="h-display text-lagoon-ink lg:text-4xl md:text-3xl text-2xl mb-9 lg:max-w-[22ch]">
                         Fifty minutes that belong entirely to you
                     </h2>
 
-                    <ol class="grid md:grid-cols-3 gap-7" data-reveal-group>
+                    <ol class="grid md:grid-cols-2 lg:grid-cols-4 gap-7" data-reveal-group>
                         <li v-for="(step, idx) in stepData" :key="idx" data-reveal="up">
-                            <span class="mb-4 flex size-9 items-center justify-center rounded-full bg-white/75 font-heading text-periwinkle-ink">
+                            <span class="mb-4 flex size-9 items-center justify-center rounded-full bg-white/75 font-heading text-lagoon-ink">
                                 {{ idx + 1 }}
                             </span>
-                            <h3 class="h-display text-periwinkle-ink! text-lg mb-2">{{ step.title }}</h3>
-                            <p class="text-sm text-periwinkle-ink/80">{{ step.body }}</p>
+                            <h3 class="h-display text-lagoon-ink! text-lg mb-2">{{ step.title }}</h3>
+                            <p class="text-sm text-lagoon-ink/80">{{ step.body }}</p>
                         </li>
                     </ol>
+
+                    <!-- The calendar the second step promises, opened in place -->
+                    <div class="mt-10 flex flex-wrap items-center gap-x-5 gap-y-3" data-reveal="up">
+                        <CalendlyButton :url="EVENT_TYPES.listening50" button-class="btn-light btn-lg group">
+                            Book a slot on Calendly
+                        </CalendlyButton>
+
+                        <p class="text-sm text-lagoon-ink/75">
+                            Real availability, confirmed straight away.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -192,7 +203,8 @@
             </blockquote>
 
             <div class="flex items-center justify-center gap-3" data-reveal="up">
-                <span class="flex size-10 items-center justify-center rounded-full bg-primary-soft font-heading text-primary-ink">JS</span>
+                <img src="/images/reviews/jash-shah.jpg" alt="Jash Shah" loading="lazy"
+                     class="size-10 shrink-0 rounded-full object-cover object-top">
                 <div class="text-start">
                     <div class="font-medium text-default-950">Jash Shah</div>
                     <div class="text-sm text-default-500">Verified session</div>
@@ -204,7 +216,7 @@
     <!-- ── FAQ ──────────────────────────────────────────────────── -->
     <section class="pt-6 md:pt-7 lg:pt-8 pb-10 md:pb-14 lg:pb-16 ">
         <div class="container lg:max-w-3xl!">
-            <div class="lg:mb-10 mb-8 text-center">
+            <div class="lg:mb-10 mb-8 text-start md:text-center">
                 <div class="eyebrow mb-5" data-reveal="soft">Common questions</div>
                 <h2 class="h-display lg:text-4xl md:text-3xl text-2xl" data-reveal="up">
                     The things people ask first
@@ -248,6 +260,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { NuxtLink } from '#components'
+import CalendlyButton from '~/components/CalendlyButton.vue'
+import { EVENT_TYPES } from '~/utils/calendly'
 import { Icon } from '@iconify/vue'
 import { useHead } from '#unhead/composables'
 import { usePageTitle } from '~/composables/usePageTitle'
@@ -284,9 +298,10 @@ const isNotData: string[] = [
 ]
 
 const stepData = [
-  { title: 'You reach out', body: 'A sentence is enough. You do not have to explain everything up front.' },
-  { title: 'We find a time', body: 'Kinjal replies personally, usually within a few hours, and you pick a slot.' },
-  { title: 'You talk, we listen', body: 'Camera on or off. Say as much or as little as you want to.' }
+  { title: 'Choose what you need', body: 'Pick the kind of support that fits, whether it is a one off conversation or something ongoing.' },
+  { title: 'Book a slot on Calendly', body: 'Open the calendar, pick a time that suits you, and it is confirmed straight away.' },
+  { title: 'We meet and you talk', body: 'Fifty minutes, camera on or off. Say as much or as little as you want to.' },
+  { title: 'You leave lighter', body: 'Most people finish the call with a clearer head and the weight sitting a little easier.' }
 ]
 
 const faqData = [
@@ -304,7 +319,7 @@ const faqData = [
   },
   {
     q: 'What does it cost?',
-    a: 'Sessions start at ₹1,799 for 50 minutes. Weekly and monthly plans bring the cost per session down.'
+    a: 'You can start with a ₹799 session of 30 minutes, which is the easiest way to try this out and see how it feels. If you would like more room to talk, a full 50 minute session is ₹1,799. Weekly and monthly plans bring the cost per session down further.'
   }
 ]
 
@@ -323,7 +338,7 @@ useHead({
   meta: [
     {
       name: 'description',
-      content: 'Feeling overwhelmed and need someone to talk to? Book a private, confidential listening session with The Feel Good Center. No therapy, no advice, just fifty minutes of being properly heard.'
+      content: 'Feeling overwhelmed and need someone to talk to? Book a private, confidential listening session with The Feel Good Centre. No therapy, no advice, just fifty minutes of being properly heard.'
     }
   ]
 })

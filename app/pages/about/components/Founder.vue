@@ -8,32 +8,32 @@
                      scrolls past. Below lg the column stacks and scrolls normally. -->
                 <div class="relative lg:sticky lg:top-28 lg:self-start">
 
-                    <!-- Side by side. Each image keeps its own native ratio, so the tall
-                         portrait and the wide letterbox sit together with neither cropped.
+                    <!-- Overlapping stack rather than a tidy two-up grid: one large
+                         portrait anchors it, the second photo and the quote card sit over its
+                         right edge at different heights so the block has some depth. The ring
+                         is painted in the page colour, which reads as a clean cut-out gap.
+                         Below sm it all falls back to a simple stack.
                          data-reveal sits here, not on the sticky element: the reveal leaves a
                          permanent will-change/transform behind, which can disturb pinning. -->
-                    <div class="grid grid-cols-2 items-center gap-3.5" data-reveal="scale">
+                    <div class="relative" data-reveal="scale">
 
-                        <div class="group relative overflow-hidden rounded-2xl aspect-[3/4]">
-                            <img src="/images/other/kinjal-about-2.jpg" alt="Kinjal Shah"
+                        <div class="group relative w-full sm:w-[74%] aspect-[4/5] overflow-hidden rounded-3xl shadow-[0_30px_70px_-45px_rgb(28_22_20/0.5)]">
+                            <img src="/images/other/kinjal-studio-3.jpg" alt="Kinjal Shah, founder of The Feel Good Center"
                                  class="size-full object-cover transition-transform duration-[1.4s] ease-soft group-hover:scale-105">
                         </div>
 
-                        <div class="flex flex-col gap-3.5">
-                            <!-- Native 1024x428, ratio pinned so nothing is cut off -->
-                            <div class="group relative overflow-hidden rounded-2xl aspect-[1024/428]">
-                                <img src="/images/other/kinjal-about-1.jpg" alt="Kinjal Shah by the water"
-                                     class="size-full object-cover transition-transform duration-[1.4s] ease-soft group-hover:scale-105">
+                        <div class="animate-float mt-4 sm:mt-0 sm:absolute sm:end-0 sm:top-10 sm:w-[47%] rounded-2xl bg-white p-5 shadow-[0_20px_50px_-24px_rgb(28_22_20/0.45)]">
+                            <div class="mb-2.5 flex size-9 items-center justify-center rounded-full bg-lagoon-soft text-lagoon">
+                                <Icon icon="tabler:ear" class="size-5" />
                             </div>
+                            <p class="text-sm text-default-700">
+                                &ldquo;I'm not here to fix you. I'm here to hear you.&rdquo;
+                            </p>
+                        </div>
 
-                            <div class="animate-float rounded-2xl bg-white p-5 shadow-[0_20px_50px_-24px_rgb(28_22_20/0.45)]">
-                                <div class="mb-2.5 flex size-9 items-center justify-center rounded-full bg-accent-soft text-accent">
-                                    <Icon icon="tabler:ear" class="size-5" />
-                                </div>
-                                <p class="text-sm text-default-700">
-                                    &ldquo;I'm not here to fix you. I'm here to hear you.&rdquo;
-                                </p>
-                            </div>
+                        <div class="group mt-4 sm:mt-0 sm:absolute sm:end-0 sm:bottom-6 sm:w-[54%] aspect-[3/2] overflow-hidden rounded-2xl sm:ring-8 sm:ring-body-bg shadow-[0_24px_60px_-35px_rgb(28_22_20/0.55)]">
+                            <img src="/images/other/kinjal-studio-1.jpg" alt="Kinjal Shah during a listening session"
+                                 class="size-full object-cover transition-transform duration-[1.4s] ease-soft group-hover:scale-105">
                         </div>
                     </div>
                 </div>
@@ -45,12 +45,12 @@
                     </div>
 
                     <h2 class="h-display lg:text-5xl md:text-4xl text-3xl mb-6" data-reveal="up">
-                        Welcome to <br class="hidden md:block"> The Feel Good Center
+                        Welcome to <br class="hidden md:block"> The Feel Good Centre
                     </h2>
 
                     <div class="space-y-4 text-default-600" data-reveal-group>
                         <p class="text-lg text-default-800" data-reveal="up">
-                            Hi, I'm Kinjal Shah, a 31 year old woman who's spent her life observing
+                            Hi, I'm Kinjal Shah, a 33 year old woman who's spent her life observing
                             people, connecting with them, and understanding how deeply we all crave to
                             be heard. I come from a big, beautiful joint family where emotions run deep
                             and conversations are everything.
@@ -103,7 +103,7 @@
 
                             <div class="mt-3">
                                 <h3 class="text-lg h-display mb-1">Kinjal Shah</h3>
-                                <div class="text-default-600">Founder, The Feel Good Center</div>
+                                <div class="text-default-600">Founder, The Feel Good Centre</div>
                             </div>
                         </div>
 

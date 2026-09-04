@@ -43,8 +43,9 @@
                                       class="size-5 transition-transform duration-500 group-hover:translate-x-1" />
                             </NuxtLink>
 
-                            <a href="tel:+919004989199" class="btn-outline btn-lg group">
-                                <Icon icon="tabler:phone" class="size-5" />
+                            <a :href="whatsappLink" target="_blank" rel="noopener noreferrer"
+                               class="btn-outline btn-lg group">
+                                <Icon icon="tabler:brand-whatsapp" class="size-5" />
                                 <span>Talk to us now</span>
                             </a>
                         </div>
@@ -64,7 +65,7 @@
                         </div>
 
                         <div class="lg:w-2/5" data-reveal="up">
-                            <p class="text-pink font-medium">No therapy. No fixing. Just listening, with heart.</p>
+                            <p class="text-default-950 font-medium">No therapy. No fixing. Just listening, with heart.</p>
                         </div>
                     </div>
                 </div>
@@ -73,8 +74,8 @@
                 <div class="grid md:grid-cols-2 gap-3.5" data-reveal-group>
                     <div class="hero-image-one-wrap relative group overflow-hidden rounded-2xl" data-reveal="scale">
                         <img class="size-full object-cover rounded-2xl transition-transform duration-[1.2s] ease-soft group-hover:scale-[1.04]"
-                             src="/images/other/hero-image-1.jpg"
-                             alt="A quiet, unhurried listening session in progress">
+                             src="/images/other/hero-calm-1.jpg"
+                             alt="Two friends laughing together outdoors">
                         <div class="absolute inset-0 rounded-2xl bg-linear-to-t from-default-950/25 to-transparent"></div>
                     </div>
 
@@ -90,8 +91,8 @@
                             </p>
 
                             <div class="relative flex items-center gap-3.5">
-                                <img src="/images/users/5.jpg" loading="lazy" alt="Jinal"
-                                     class="size-11 rounded-full ring-2 ring-primary-ink/15">
+                                <img src="/images/reviews/jinal.jpg" loading="lazy" alt="Jinal"
+                                     class="size-11 rounded-full object-cover object-top ring-2 ring-primary-ink/15">
                                 <div>
                                     <div class="text-primary-ink font-medium">Jinal</div>
                                     <div class="text-sm text-primary-ink/65">December 5, 2025</div>
@@ -109,7 +110,8 @@
                                     You're not alone in how you feel
                                 </div>
 
-                                <img src="/images/other/hero-image-2.jpg" alt=""
+                                <img src="/images/other/hero-calm-2.jpg"
+                                     alt="Two friends laughing together over a conversation"
                                      class="mt-4 rounded-xl">
                             </div>
                         </div>
@@ -127,4 +129,8 @@ import { useCountUp } from '~/composables/useCountUp'
 
 const { el: yearsEl, value: years } = useCountUp(7, 1100)
 const { el: clientsEl, value: clients } = useCountUp(2200, 2000)
+
+const whatsappLink =
+  'https://wa.me/919004989199?text=' +
+  encodeURIComponent("Hi! I'd like to know more about booking a listening session.")
 </script>

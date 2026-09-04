@@ -2,7 +2,7 @@
     <section class="pt-6 md:pt-7 lg:pt-8 pb-6 md:pb-7 lg:pb-8">
         <div class="container max-w-315!">
 
-            <div class="relative overflow-hidden rounded-3xl bg-periwinkle grain" data-reveal="scale">
+            <div class="relative overflow-hidden rounded-3xl bg-lagoon grain" data-reveal="scale">
 
                 <div class="absolute inset-0" aria-hidden="true">
                     <div class="aura animate-drift size-96 -top-28 -start-20 bg-white/45"></div>
@@ -13,15 +13,15 @@
 
                     <!-- ── Copy ─────────────────────────────────────── -->
                     <div class="lg:p-14 md:p-10 p-7">
-                        <div class="eyebrow mb-5 text-periwinkle-ink/70!">
+                        <div class="eyebrow mb-5 text-lagoon-ink/70!">
                             For Organisations
                         </div>
 
-                        <h2 class="h-display text-periwinkle-ink lg:text-4xl md:text-3xl text-2xl mb-4">
+                        <h2 class="h-display text-lagoon-ink lg:text-4xl md:text-3xl text-2xl mb-4">
                             Corporate Emotional Wellbeing
                         </h2>
 
-                        <p class="text-periwinkle-ink/85 mb-8">
+                        <p class="text-lagoon-ink/85 mb-8">
                             Your people carry more than their workload. We bring the same confidential,
                             judgment free listening into teams, so nobody has to hold it together alone
                             just to get through the week.
@@ -31,10 +31,10 @@
                             <li v-for="(item, idx) in offeringData" :key="idx"
                                 data-reveal="left"
                                 class="group flex items-start gap-3.5">
-                                <span class="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-white/70 text-periwinkle-ink transition-all duration-500 ease-soft group-hover:bg-white group-hover:scale-110">
+                                <span class="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-white/70 text-lagoon-ink transition-all duration-500 ease-soft group-hover:bg-white group-hover:scale-110">
                                     <Icon icon="tabler:check" class="size-3.5" />
                                 </span>
-                                <span class="text-periwinkle-ink/85 transition-colors duration-500 group-hover:text-periwinkle-ink">{{ item }}</span>
+                                <span class="text-lagoon-ink/85 transition-colors duration-500 group-hover:text-lagoon-ink">{{ item }}</span>
                             </li>
                         </ul>
 
@@ -46,7 +46,7 @@
                             </NuxtLink>
                         </div>
 
-                        <p class="mt-7 text-sm text-periwinkle-ink/65">
+                        <p class="mt-7 text-sm text-lagoon-ink/65">
                             Sessions stay between us and your people. Organisations never hear what was said.
                         </p>
                     </div>
@@ -70,6 +70,6 @@ const offeringData: string[] = [
   'Confidential 1:1 listening sessions for employees',
   'Ongoing check in plans for high pressure teams',
   'A quiet outlet alongside whatever EAP you already run',
-  'Onboarding and rollout handled with your people team'
+  'Group workshops and wellbeing talks for the whole team'
 ]
 </script>

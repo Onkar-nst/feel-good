@@ -15,23 +15,23 @@
                     </div>
 
                     <h2 class="h-display lg:text-5xl md:text-4xl text-3xl mb-6" data-reveal="up">
-                        The Story Behind <br class="hidden md:block"> The Feel Good Center
+                        The Story Behind <br class="hidden md:block"> The Feel Good Centre
                     </h2>
 
                     <div class="space-y-4 text-default-600" data-reveal-group>
                         <p class="text-lg text-default-800" data-reveal="up">
-                            Founded with the vision of promoting mental health, The Feel Good Center
+                            Founded with the vision of promoting mental health, The Feel Good Centre
                             began as a digital platform catering to those who seek emotional support.
                         </p>
 
                         <p data-reveal="up">
                             Recognising the challenges people face in expressing their feelings, we
                             focused on creating a space where individuals could openly share, paving
-                            the way for future expansions into physical centers.
+                            the way for future expansions into physical centres.
                         </p>
 
                         <p data-reveal="up">
-                            As we grow, The Feel Good Center aims to introduce additional spaces for
+                            As we grow, The Feel Good Centre aims to introduce additional spaces for
                             creative expression. Our journey is rooted in our commitment to listen and
                             support, and we look forward to evolving in ways that further enhance our
                             community's mental health.
@@ -73,7 +73,7 @@ const milestoneData: MilestoneType[] = [
     description: 'We began online, so that distance would never be the reason someone stayed quiet.'
   },
   {
-    title: 'Physical centers, next',
+    title: 'Physical centres, next',
     description: 'Working toward real rooms you can walk into and be heard in.'
   },
   {

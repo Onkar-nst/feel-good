@@ -38,7 +38,7 @@
 
                 <div class="card-lift card-wash group relative overflow-hidden border border-default-200 rounded-2xl p-7 lg:p-9 bg-white hover:border-primary/30"
                      data-reveal="up" style="--reveal-delay:120ms">
-                    <span class="relative mb-6 flex size-11 items-center justify-center rounded-full bg-accent-soft text-accent">
+                    <span class="relative mb-6 flex size-11 items-center justify-center rounded-full bg-lagoon-soft text-lagoon">
                         <Icon icon="tabler:eye-heart" class="size-5.5" />
                     </span>
 
@@ -88,14 +88,14 @@
             </div>
 
             <!-- ── Values ───────────────────────────────────────────── -->
-            <div class="mt-5 relative overflow-hidden rounded-2xl bg-mint grain lg:p-10 p-7">
+            <div class="mt-5 relative overflow-hidden rounded-2xl bg-lagoon grain lg:p-10 p-7">
                 <div class="absolute inset-0" aria-hidden="true">
                     <div class="aura animate-drift delay-1 size-80 -top-24 end-1/4 bg-white/50"></div>
                 </div>
 
                 <div class="relative mb-7.5">
-                    <div class="eyebrow mb-2.5 text-mint-ink/70!">Core Principles</div>
-                    <h3 class="h-display text-2xl text-mint-ink">Values That Drive Us</h3>
+                    <div class="eyebrow mb-2.5 text-lagoon-ink/70!">Core Principles</div>
+                    <h3 class="h-display text-2xl text-lagoon-ink">Values That Drive Us</h3>
                 </div>
 
                 <ul role="list" class="relative grid md:grid-cols-2 lg:grid-cols-3 gap-x-7.5 gap-y-4" data-reveal-group>
@@ -103,8 +103,8 @@
                         data-reveal="up"
                         class="group flex items-start gap-3">
                         <Icon icon="tabler:square-rounded-check"
-                              class="mt-0.5 size-5 shrink-0 text-mint-ink/45 transition-colors duration-500 group-hover:text-mint-ink" />
-                        <span class="text-mint-ink/85 transition-colors duration-500 group-hover:text-mint-ink">{{ value }}</span>
+                              class="mt-0.5 size-5 shrink-0 text-lagoon-ink/45 transition-colors duration-500 group-hover:text-lagoon-ink" />
+                        <span class="text-lagoon-ink/85 transition-colors duration-500 group-hover:text-lagoon-ink">{{ value }}</span>
                     </li>
                 </ul>
             </div>
@@ -120,10 +120,10 @@ type MilestoneType = { title: string, description: string }
 const milestoneData: MilestoneType[] = [
   {
     title: 'A digital platform, first',
-    description: 'The Feel Good Center began online, catering to anyone who needed emotional support wherever they were.'
+    description: 'The Feel Good Centre began online, catering to anyone who needed emotional support wherever they were.'
   },
   {
-    title: 'Physical centers, next',
+    title: 'Physical centres, next',
     description: 'Recognizing how hard it is to open up, we are working toward real spaces you can walk into and be heard in.'
   },
   {

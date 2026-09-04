@@ -67,7 +67,7 @@
                     <div>
                         <h3 class="mb-1 text-lg h-display">A Registered Indian Business</h3>
                         <p class="text-default-600">
-                            The Feel Good Center is registered with the Ministry of Micro, Small and
+                            The Feel Good Centre is registered with the Ministry of Micro, Small and
                             Medium Enterprises, Government of India.
                         </p>
                     </div>

@@ -3,8 +3,8 @@
   <header class="sticky top-0 z-50 bg-body-bg transition-all duration-300">
     <div class="container">
       <div class="nav-sticky navbar md:py-6.5 py-5 flex items-center w-full justify-between">
-        <NuxtLink to="/" class="flex items-center">
-          <img src="/images/logo-fgc.png" class="h-11 md:h-12.5 w-auto flex" alt="The Feel Good Center" />
+        <NuxtLink to="/" class="relative flex h-11 md:h-12.5 items-center">
+          <img src="/images/logo-fgc.png" class="h-13 md:h-15 w-auto max-w-none flex" alt="The Feel Good Centre" />
         </NuxtLink>
 
         <div id="navbar" class="mx-auto hidden lg:flex items-center justify-center">

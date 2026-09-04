@@ -14,11 +14,11 @@
                         </h2>
 
                         <div class="space-y-4 text-default-600" data-reveal-group>
-                            <p data-reveal="up">Hi, I'm Kinjal Shah, the heart behind The Feel Good Center.</p>
+                            <p data-reveal="up">Hi, I'm Kinjal Shah, the heart behind The Feel Good Centre.</p>
 
                             <p data-reveal="up">After over a decade in hospitality and events, meeting thousands of people, I noticed something deeply human: most of us just want someone who'll truly listen. That quiet need is what inspired this space.</p>
 
-                            <p data-reveal="up">The Feel Good Center offers a soft landing for your thoughts: no filters, no fixing. Just real, human connection. I'm not a therapist or a coach. I'm a listener, here with care, compassion, and presence.</p>
+                            <p data-reveal="up">The Feel Good Centre offers a soft landing for your thoughts: no filters, no fixing. Just real, human connection. I'm not a therapist or a coach. I'm a listener, here with care, compassion, and presence.</p>
 
                             <p class="border-s-2 border-primary ps-5 text-lg text-default-950" data-reveal="up">
                                 You're not alone in how you feel. Let's talk. I'm here to listen.
@@ -39,7 +39,7 @@
 
                         <div class="mt-3">
                             <h3 class="text-lg h-display mb-1">Kinjal Shah</h3>
-                            <div class="text-default-600">Founder, The Feel Good Center</div>
+                            <div class="text-default-600">Founder, The Feel Good Centre</div>
                         </div>
                     </div>
                 </div>
@@ -53,11 +53,11 @@
 
                     <!-- Floating card, drifting gently over the portrait -->
                     <div class="animate-float absolute -bottom-5 -start-3 md:start-6 max-w-[17rem] rounded-2xl bg-white p-5 shadow-[0_20px_50px_-24px_rgb(28_22_20/0.45)]">
-                        <div class="mb-2.5 flex size-9 items-center justify-center rounded-full bg-accent-soft text-accent">
+                        <div class="mb-2.5 flex size-9 items-center justify-center rounded-full bg-lagoon-soft text-lagoon">
                             <Icon icon="tabler:ear" class="size-5" />
                         </div>
                         <p class="text-sm text-default-700">
-                            &ldquo;I'm not here to fix you. I'm here to hear you.&rdquo;
+                            &ldquo;Sometimes, being heard is enough to feel lighter.&rdquo;
                         </p>
                     </div>
                 </div>

@@ -216,8 +216,38 @@ certificates as images plus the Udyam registration. PDFs converted to web JPEGs 
 
 ---
 
+## 9. Palette locked to three colours
+
+The site had drifted to **nine** colours (sage, lilac, periwinkle, peach, mint, teal,
+yellow, pink, cream). Consolidated to **three**, taken exactly from the client's pastel
+template — no approximations:
+
+| Role | Colour | Hex | Used for |
+|---|---|---|---|
+| 1. Primary | **Butter yellow** | `#F6CF71` | CTAs, buttons, the closing CTA band, highlights |
+| 2. Accent | **Blush pink** | `#FE88B1` | Emphasis text, numerals, the warmer emotional beats |
+| 3. Calm | **Teal** | `#66C5CC` | Safe-space surfaces, icon chips, For Organisations, footer |
+
+Plus warm neutrals that don't count as colour: cream `#FAF6F1`, cream-deep `#F3ECE3`,
+white, and the warm stone ink scale.
+
+**Retired:** sage `#6E8C84`, lilac `#DCB0F2`, periwinkle `#9EB9F3`, peach `#F89C74`,
+mint `#8BE0A4`. Their tokens no longer exist, so they cannot creep back in by accident.
+
+**Rule going forward:** if a surface needs to feel different, reach for a `-soft` tint or a
+neutral — never a fourth hue. The three tokens each carry their own `-soft` and `-ink`
+variant, which is enough range for any section.
+
+Brand yellow and pink shifted very slightly (`#FFE170`→`#F6CF71`, `#F788A3`→`#FE88B1`) to
+match the template exactly. The change is imperceptible on screen but means every colour
+on the site is now literally from the client's palette.
+
+---
+
 ## Change log
 
+- **2 Sep 2026** — Palette consolidated from 9 colours to 3 (butter / blush / teal),
+  snapped to the client's pastel template. Certificates now open in a lightbox.
 - **2 Sep 2026** — Client shared 5 credential PDFs. Four certificates published to a new
   About → Credentials section; MSME shown as a registration number only (PII in the scan).
 - **2 Sep 2026** — Initial notes from the client's competitive review (Sunno / SunLo /

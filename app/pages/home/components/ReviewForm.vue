@@ -4,9 +4,9 @@
             <div class="grid lg:grid-cols-2 lg:gap-16 gap-14 items-start">
 
                 <!-- ── Review form ──────────────────────────────────── -->
-                <div class="relative overflow-hidden rounded-3xl border border-default-200/70 bg-linear-to-br from-cream via-white to-pastel-soft/70 lg:p-10 p-6 lg:sticky lg:top-28 lg:self-start shadow-[0_24px_60px_-40px_rgb(28_22_20/0.35)]" data-reveal="up">
+                <div class="relative overflow-hidden rounded-3xl border border-default-200/70 bg-linear-to-br from-cream via-white to-lagoon-soft/70 lg:p-10 p-6 lg:sticky lg:top-28 lg:self-start shadow-[0_24px_60px_-40px_rgb(28_22_20/0.35)]" data-reveal="up">
 
-                    <div class="aura animate-breathe size-64 -top-28 -end-20 bg-pastel/35" aria-hidden="true"></div>
+                    <div class="aura animate-breathe size-64 -top-28 -end-20 bg-lagoon/35" aria-hidden="true"></div>
 
                     <div class="relative">
                         <div class="eyebrow mb-4">Share Your Experience</div>
@@ -190,7 +190,7 @@ const faqData: FaqType[] = [
   },
   {
     q: 'Where does the session happen?',
-    a: "Wherever you're most comfortable. Most sessions are a video or voice call, and plenty of people choose voice only. You get the link once your session is confirmed."
+    a: "Online, over a Zoom or Google Meet video call. Sessions are held face to face on video, with your camera on, so the conversation feels real and present. You get the meeting link once your session is confirmed, and all you need is a quiet spot where you won't be interrupted."
   },
   {
     q: "You're not a therapist. So what is this?",

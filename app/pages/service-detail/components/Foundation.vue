@@ -13,7 +13,7 @@
                         <h2 class="h-display lg:text-5xl md:text-4xl text-3xl mb-5">About the Service</h2>
 
                         <div class="space-y-4">
-                            <p>At The Feel Good Center, we offer a safe, judgment free space for genuine human connection through one to one listening sessions and emotional wellness plans. Whether you're seeking personal support to feel lighter and more balanced, or you're a company looking to nurture employee wellbeing, our services are designed to make people feel heard, valued, and supported.</p>
+                            <p>At The Feel Good Centre, we offer a safe, judgment free space for genuine human connection through one to one listening sessions and emotional wellness plans. Whether you're seeking personal support to feel lighter and more balanced, or you're a company looking to nurture employee wellbeing, our services are designed to make people feel heard, valued, and supported.</p>
 
                             <p>With both individual and corporate solutions, we focus on creating emotional clarity, reducing stress, and building healthier, more connected lives and workplaces.</p>
                         </div>
@@ -51,7 +51,7 @@
 
                     <div class="text-default-950">
                         <div>Let's talk. Let's feel good.</div>
-                        <div class="mt-1.5 text-sm text-default-500">The Feel Good Center</div>
+                        <div class="mt-1.5 text-sm text-default-500">The Feel Good Centre</div>
                     </div>
                 </div>
             </div>

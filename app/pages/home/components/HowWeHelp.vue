@@ -1,5 +1,5 @@
 <template>
-    <section class="pt-6 md:pt-7 lg:pt-8 pb-6 md:pb-7 lg:pb-8 relative bg-white overflow-hidden">
+    <section class="pt-6 md:pt-7 lg:pt-8 pb-6 md:pb-7 lg:pb-8 relative bg-body-bg overflow-hidden">
 
         <div class="absolute inset-0 -z-10" aria-hidden="true">
             <div class="aura animate-drift size-[30rem] -top-36 -start-32 bg-primary-soft/60"></div>
@@ -10,7 +10,7 @@
 
             <div class="text-center lg:mb-14 mb-10">
                 <div class="eyebrow mb-5" data-reveal="soft">
-                    How The Feel Good Center Helps
+                    How The Feel Good Centre Helps
                 </div>
 
                 <h2 class="h-display lg:text-5xl md:text-4xl text-3xl mb-4" data-reveal="up">

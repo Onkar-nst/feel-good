@@ -44,7 +44,7 @@ const FACEBOOK_URL = 'https://www.facebook.com/'
 
 // Digits only, wa.me rejects '+' and spaces.
 const WHATSAPP_PHONE = '919004989199'
-const WHATSAPP_MESSAGE = "Hi! I found The Feel Good Center online and I'd like to know more about booking a listening session."
+const WHATSAPP_MESSAGE = "Hi! I found The Feel Good Centre online and I'd like to know more about booking a listening session."
 
 type LinkType = {
   label: string
@@ -58,7 +58,7 @@ type LinkType = {
 const links: LinkType[] = [
   {
     label: 'Instagram',
-    aria: 'The Feel Good Center on Instagram',
+    aria: 'The Feel Good Centre on Instagram',
     href: INSTAGRAM_URL,
     icon: 'tabler:brand-instagram',
     // Instagram has no single brand colour, so its usual corner gradient
@@ -67,7 +67,7 @@ const links: LinkType[] = [
   },
   {
     label: 'Facebook',
-    aria: 'The Feel Good Center on Facebook',
+    aria: 'The Feel Good Centre on Facebook',
     href: FACEBOOK_URL,
     icon: 'tabler:brand-facebook',
     classes:
@@ -75,7 +75,7 @@ const links: LinkType[] = [
   },
   {
     label: 'Chat on WhatsApp',
-    aria: 'Chat with The Feel Good Center on WhatsApp',
+    aria: 'Chat with The Feel Good Centre on WhatsApp',
     href: `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`,
     icon: 'tabler:brand-whatsapp',
     classes:
