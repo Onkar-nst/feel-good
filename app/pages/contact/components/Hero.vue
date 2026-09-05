@@ -180,7 +180,7 @@ const stepData = [
     body: 'Pick the kind of support that fits, whether it is a one off conversation or something ongoing.'
   },
   {
-    title: 'Book a slot on Calendly',
+    title: 'Book your slot',
     body: 'Open the calendar, pick a time that suits you, and it is confirmed straight away.'
   },
   {

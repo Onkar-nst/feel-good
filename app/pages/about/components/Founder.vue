@@ -18,7 +18,7 @@
                     <div class="relative" data-reveal="scale">
 
                         <div class="group relative w-full sm:w-[74%] aspect-[4/5] overflow-hidden rounded-3xl shadow-[0_30px_70px_-45px_rgb(28_22_20/0.5)]">
-                            <img src="/images/other/kinjal-studio-3.jpg" alt="Kinjal Shah, founder of The Feel Good Center"
+                            <img src="/images/other/kinjal-paris.png" alt="Kinjal Shah, founder of The Feel Good Centre"
                                  class="size-full object-cover transition-transform duration-[1.4s] ease-soft group-hover:scale-105">
                         </div>
 

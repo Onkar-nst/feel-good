@@ -29,7 +29,7 @@
                     </div>
 
                     <!-- Booking form -->
-                    <form v-if="!sent" class="p-6" @submit.prevent="submit">
+                    <form class="p-6" @submit.prevent="submit">
                         <div class="grid sm:grid-cols-2 gap-x-4 gap-y-4">
                             <div class="sm:col-span-2">
                                 <label for="bk-name" :class="labelClass">Name *</label>
@@ -44,23 +44,9 @@
                             </div>
 
                             <div>
-                                <label for="bk-email" :class="labelClass">Email</label>
-                                <input id="bk-email" v-model="form.email" type="email"
+                                <label for="bk-email" :class="labelClass">Email *</label>
+                                <input id="bk-email" v-model="form.email" type="email" required
                                        placeholder="you@example.com" :class="fieldClass" />
-                            </div>
-
-                            <div>
-                                <label for="bk-date" :class="labelClass">Preferred date *</label>
-                                <input id="bk-date" v-model="form.date" type="date" required
-                                       :min="today" :class="fieldClass" />
-                            </div>
-
-                            <div>
-                                <label for="bk-slot" :class="labelClass">Preferred time *</label>
-                                <select id="bk-slot" v-model="form.slot" required :class="fieldClass">
-                                    <option value="">Select one...</option>
-                                    <option v-for="slot in slots" :key="slot" :value="slot">{{ slot }}</option>
-                                </select>
                             </div>
 
                             <div class="sm:col-span-2">
@@ -72,7 +58,7 @@
                         </div>
 
                         <button type="submit" class="btn-primary btn-fill btn-lg group mt-6 w-full">
-                            <span>Request this session</span>
+                            <span>Continue to pick a time</span>
                             <Icon icon="tabler:arrow-right"
                                   class="size-5 transition-transform duration-500 ease-soft group-hover:translate-x-1" />
                         </button>
@@ -90,23 +76,9 @@
                         </a>
 
                         <p class="mt-5 text-center text-xs text-default-500">
-                            Confidential &middot; Nothing is charged until your slot is confirmed
+                            Confidential &middot; You will choose your slot on the next step
                         </p>
                     </form>
-
-                    <!-- Confirmation -->
-                    <div v-else class="p-8 text-center">
-                        <div class="mx-auto mb-5 flex size-14 items-center justify-center rounded-full bg-lagoon-soft text-lagoon">
-                            <Icon icon="tabler:check" class="size-7" />
-                        </div>
-                        <h4 class="h-display text-2xl mb-2">Request received</h4>
-                        <p class="text-default-600">
-                            Kinjal will confirm your slot personally, usually within a few hours.
-                        </p>
-                        <button type="button" class="btn-primary btn-fill btn-lg mt-6 w-full" @click="close">
-                            Close
-                        </button>
-                    </div>
                 </div>
             </div>
         </Transition>
@@ -116,6 +88,7 @@
 <script setup lang="ts">
 import { computed, reactive, ref, watch } from 'vue'
 import { Icon } from '@iconify/vue'
+import { CALENDLY_URL, openCalendly } from '~/utils/calendly'
 
 import type { BookableService } from '~/types/booking'
 
@@ -129,17 +102,7 @@ const fieldClass =
   'placeholder:text-default-400 transition-all duration-200 ' +
   'focus:border-pink focus:ring-2 focus:ring-pink/20'
 
-const slots = [
-  'Morning (9am – 12pm)',
-  'Afternoon (12pm – 4pm)',
-  'Evening (4pm – 8pm)',
-  'Late evening (8pm – 10pm)'
-]
-
-const today = new Date().toISOString().slice(0, 10)
-
-const sent = ref(false)
-const form = reactive({ name: '', phone: '', email: '', date: '', slot: '', note: '' })
+const form = reactive({ name: '', phone: '', email: '', note: '' })
 
 const whatsappLink = computed(() =>
   'https://wa.me/919004989199?text=' +
@@ -151,27 +114,32 @@ function close() {
 }
 
 function submit() {
-  // No backend yet — hand the request to WhatsApp so nothing is lost,
-  // and show the confirmation state in place.
-  const lines = [
-    `Booking request: ${props.service?.title ?? 'Listening session'}`,
-    props.service?.price ? `Price: ${props.service.price}` : '',
-    `Name: ${form.name}`,
-    `Mobile: ${form.phone}`,
-    form.email ? `Email: ${form.email}` : '',
-    `Preferred: ${form.date}, ${form.slot}`,
-    form.note ? `Note: ${form.note}` : ''
-  ].filter(Boolean).join('\n')
+  // The form collects who they are; Calendly collects when. Hand the details
+  // straight over as prefill so nobody types their name twice.
+  const url = new URL(props.service?.calendlyUrl || CALENDLY_URL)
+  url.searchParams.set('name', form.name)
+  url.searchParams.set('email', form.email)
 
-  window.open('https://wa.me/919004989199?text=' + encodeURIComponent(lines), '_blank', 'noopener')
-  sent.value = true
+  // Calendly only keeps these if the event has a custom question / SMS
+  // reminders switched on. Harmless when it does not.
+  if (form.phone) url.searchParams.set('text_reminder_number', form.phone)
+
+  const context = [
+    props.service?.title ? `Session: ${props.service.title}` : '',
+    form.phone ? `Mobile: ${form.phone}` : '',
+    form.note
+  ].filter(Boolean).join(' — ')
+  if (context) url.searchParams.set('a1', context)
+
+  // Close ours first so the calendar is not stacked on top of a dead modal.
+  close()
+  openCalendly(url.toString())
 }
 
 // Reset between openings, and stop the page scrolling behind the panel.
 watch(() => props.open, (isOpen) => {
   if (isOpen) {
-    sent.value = false
-    Object.assign(form, { name: '', phone: '', email: '', date: '', slot: '', note: '' })
+    Object.assign(form, { name: '', phone: '', email: '', note: '' })
   }
   if (typeof document !== 'undefined') {
     document.body.style.overflow = isOpen ? 'hidden' : ''

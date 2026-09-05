@@ -59,7 +59,7 @@
         </div>
 
         <div class="container">
-            <div class="mx-auto lg:max-w-[52ch] text-center lg:mb-20 mb-14">
+            <div class="mx-auto lg:max-w-[52ch] text-center lg:mb-16 mb-12">
                 <div class="eyebrow mb-6" data-reveal="soft">Does this sound familiar</div>
                 <h2 class="h-display lg:text-4xl md:text-3xl text-2xl leading-[1.2] mb-5" data-reveal="up">
                     Overwhelmed rarely looks like falling apart
@@ -70,27 +70,28 @@
                 </p>
             </div>
 
-            <!-- Unboxed on purpose: six bordered cards read as a checklist to get
-                 through. Hairlines and wide gutters let each line be read alone. -->
-            <div class="mx-auto lg:max-w-5xl grid md:grid-cols-2 lg:gap-x-16 md:gap-x-10" data-reveal-group>
-                <p v-for="(sign, idx) in signData" :key="idx"
-                   data-reveal="up"
-                   class="flex items-start gap-4 py-6 md:py-7 border-b border-default-200/70 text-lg leading-relaxed text-default-700">
-                    <span class="mt-2.5 size-1.5 shrink-0 rounded-full bg-pink" aria-hidden="true"></span>
-                    <span>{{ sign }}</span>
-                </p>
+            <!-- Quiet white cards on a hairline grid: one neutral surface, a single
+                 muted icon each, and the rules doing the separating instead of colour. -->
+            <div class="mx-auto lg:max-w-5xl overflow-hidden rounded-2xl border border-default-200 bg-white"
+                 data-reveal-group>
+                <div class="grid md:grid-cols-2 gap-px bg-default-200/70">
+                    <div v-for="(sign, idx) in signData" :key="idx"
+                         data-reveal="up"
+                         class="group flex items-start gap-4 bg-white p-7 md:p-8 transition-colors duration-500 ease-soft hover:bg-cream">
+                        <span class="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-full border border-default-200 text-default-500 transition-colors duration-500 ease-soft group-hover:border-default-300 group-hover:text-default-800">
+                            <Icon :icon="sign.icon" class="size-4.5" />
+                        </span>
+                        <p class="text-lg leading-relaxed text-default-700">{{ sign.text }}</p>
+                    </div>
+                </div>
             </div>
-
-            <p class="mt-14 md:mt-16 text-center text-lg md:text-xl text-default-950 font-medium mx-auto lg:max-w-[40ch]" data-reveal="up">
-                If you recognised yourself more than once, that is reason enough to talk.
-            </p>
         </div>
     </section>
 
     <!-- ── What this is, and what it is not ─────────────────────── -->
-    <section class="pt-14 md:pt-20 lg:pt-24 pb-14 md:pb-20 lg:pb-24">
-        <div class="container">
-            <div class="mx-auto lg:max-w-[52ch] text-center lg:mb-20 mb-14">
+    <section class="pt-14 md:pt-20 lg:pt-24 pb-14 md:pb-20 lg:pb-24 relative overflow-hidden">
+        <div class="container relative">
+            <div class="mx-auto lg:max-w-[52ch] text-center lg:mb-16 mb-12">
                 <div class="eyebrow mb-6" data-reveal="soft">Before you book</div>
                 <h2 class="h-display lg:text-4xl md:text-3xl text-2xl leading-[1.2] mb-5" data-reveal="up">
                     Being clear about what this is
@@ -101,38 +102,50 @@
                 </p>
             </div>
 
-            <div class="mx-auto lg:max-w-5xl grid md:grid-cols-2 lg:gap-14 gap-10 md:gap-12">
-                <div data-reveal="up">
-                    <h3 class="h-display text-xl flex items-center gap-3 pb-6 mb-2 border-b border-lagoon/30">
-                        <span class="flex size-9 items-center justify-center rounded-full bg-lagoon-soft">
-                            <Icon icon="tabler:check" class="size-4.5 text-lagoon-ink" />
-                        </span>
-                        What it is
-                    </h3>
-                    <ul role="list">
-                        <li v-for="(item, idx) in isData" :key="idx"
-                            class="py-6 border-b border-default-200/70 text-lg leading-relaxed text-default-700">
-                            {{ item }}
-                        </li>
-                    </ul>
+            <!-- Two solid, opposed panels: the colour does the contrasting so the
+                 reader sees the difference before reading a word of either column. -->
+            <div class="mx-auto lg:max-w-5xl grid md:grid-cols-2 gap-6">
+
+                <div class="relative overflow-hidden rounded-3xl bg-white border border-default-200 lg:p-9 p-7"
+                     data-reveal="up">
+                    <div class="relative">
+                        <h3 class="h-display text-xl flex items-center gap-3 mb-6 text-default-950">
+                            <span class="flex size-10 items-center justify-center rounded-full bg-cream-deep">
+                                <Icon icon="tabler:check" class="size-5 text-default-700" />
+                            </span>
+                            What it is
+                        </h3>
+
+                        <ul role="list" class="space-y-3">
+                            <li v-for="(item, idx) in isData" :key="idx"
+                                class="flex items-start gap-3 border-b border-default-200/70 pb-3.5 text-base leading-relaxed text-default-700 last:border-0 last:pb-0">
+                                <Icon icon="tabler:circle-check-filled" class="mt-0.5 size-5 shrink-0 text-default-700" />
+                                <span>{{ item }}</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div data-reveal="up" style="--reveal-delay:140ms">
-                    <h3 class="h-display text-xl flex items-center gap-3 pb-6 mb-2 border-b border-default-200">
-                        <span class="flex size-9 items-center justify-center rounded-full bg-cream-deep">
-                            <Icon icon="tabler:minus" class="size-4.5 text-default-500" />
-                        </span>
-                        What it is not
-                    </h3>
-                    <ul role="list">
-                        <li v-for="(item, idx) in isNotData" :key="idx"
-                            class="py-6 border-b border-default-200/70 text-lg leading-relaxed text-default-500">
-                            {{ item }}
-                        </li>
-                    </ul>
+                <div class="relative overflow-hidden rounded-3xl bg-cream border border-default-200 lg:p-9 p-7"
+                     data-reveal="up" style="--reveal-delay:140ms">
+                    <div class="relative">
+                        <h3 class="h-display text-xl flex items-center gap-3 mb-6 text-default-800">
+                            <span class="flex size-10 items-center justify-center rounded-full bg-cream-deep">
+                                <Icon icon="tabler:minus" class="size-5 text-default-500" />
+                            </span>
+                            What it is not
+                        </h3>
+
+                        <ul role="list" class="space-y-3">
+                            <li v-for="(item, idx) in isNotData" :key="idx"
+                                class="flex items-start gap-3 border-b border-default-200/70 pb-3.5 text-base leading-relaxed text-default-500 last:border-0 last:pb-0">
+                                <Icon icon="tabler:circle-minus" class="mt-0.5 size-5 shrink-0 text-default-400" />
+                                <span>{{ item }}</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -163,9 +176,12 @@
 
                     <!-- The calendar the second step promises, opened in place -->
                     <div class="mt-10 flex flex-wrap items-center gap-x-5 gap-y-3" data-reveal="up">
-                        <CalendlyButton :url="EVENT_TYPES.listening50" button-class="btn-light btn-lg group">
-                            Book a slot on Calendly
-                        </CalendlyButton>
+                        <button type="button" @click="bookingOpen = true" class="btn-light btn-lg group">
+                            <Icon icon="tabler:calendar-heart" class="size-5 shrink-0" />
+                            <span>Book your slot</span>
+                            <Icon icon="tabler:arrow-right"
+                                  class="size-4 shrink-0 transition-transform duration-500 ease-soft group-hover:translate-x-1" />
+                        </button>
 
                         <p class="text-sm text-lagoon-ink/75">
                             Real availability, confirmed straight away.
@@ -240,6 +256,8 @@
     </section>
 
     <CtaSection />
+
+    <BookingModal :open="bookingOpen" :service="bookingService" @close="bookingOpen = false" />
 </template>
 
 <script setup lang="ts">
@@ -251,6 +269,19 @@ import { Icon } from '@iconify/vue'
 import { useHead } from '#unhead/composables'
 import { usePageTitle } from '~/composables/usePageTitle'
 import CtaSection from '~/components/CtaSection.vue'
+import BookingModal from '~/components/BookingModal.vue'
+import type { BookableService } from '~/types/booking'
+
+/* The session this page sells: the modal collects a few details, then hands
+   over to the Calendly event type for that session. */
+const bookingOpen = ref(false)
+const bookingService: BookableService = {
+  title: 'Feel-Good Listening Session',
+  calendlyUrl: EVENT_TYPES.listening50,
+  duration: '50 min',
+  price: '₹1,799',
+  image: '/images/service/session-core.jpg'
+}
 
 /*
  * Prototype for the per problem landing pages in CLIENT-NOTES section 5.
@@ -259,14 +290,15 @@ import CtaSection from '~/components/CtaSection.vue'
  * route, rather than eight hand built pages.
  */
 
-const signData: string[] = [
-  'Your to do list grows faster than you can clear it.',
-  'You are tired in a way that sleeping does not fix.',
-  'Small things set you off more than they used to.',
-  'You keep saying you are fine because it is quicker.',
-  'Your mind is loudest at night, when nobody is awake.',
-  'You have been meaning to deal with it for months.'
+const signData = [
+  { icon: 'tabler:list-check', text: 'Your to do list grows faster than you can clear it.' },
+  { icon: 'tabler:zzz', text: 'You are tired in a way that sleeping does not fix.' },
+  { icon: 'tabler:mood-sad', text: 'Small things set you off more than they used to.' },
+  { icon: 'tabler:message-2', text: 'You keep saying you are fine because it is quicker.' },
+  { icon: 'tabler:moon-stars', text: 'Your mind is loudest at night, when nobody is awake.' },
+  { icon: 'tabler:calendar-repeat', text: 'You have been meaning to deal with it for months.' }
 ]
+
 
 const isData: string[] = [
   'Fifty minutes of undivided attention, on video or voice.',
@@ -284,7 +316,7 @@ const isNotData: string[] = [
 
 const stepData = [
   { title: 'Choose what you need', body: 'Pick the kind of support that fits, whether it is a one off conversation or something ongoing.' },
-  { title: 'Book a slot on Calendly', body: 'Open the calendar, pick a time that suits you, and it is confirmed straight away.' },
+  { title: 'Book your slot', body: 'Open the calendar, pick a time that suits you, and it is confirmed straight away.' },
   { title: 'We meet and you talk', body: 'Fifty minutes, camera on or off. Say as much or as little as you want to.' },
   { title: 'You leave lighter', body: 'Most people finish the call with a clearer head and the weight sitting a little easier.' }
 ]

@@ -78,10 +78,12 @@
                                 </NuxtLink>
                             </div>
 
-                            <CalendlyButton :url="service.calendlyUrl" icon=""
-                                            button-class="btn-primary btn-fill btn-md group mt-4 w-full">
-                                Book this session
-                            </CalendlyButton>
+                            <button type="button" @click="openBooking(service)"
+                                    class="btn-primary btn-fill btn-md group/btn mt-4 w-full">
+                                <span>Book this session</span>
+                                <Icon icon="tabler:arrow-right"
+                                      class="size-4 transition-transform duration-500 ease-soft group-hover/btn:translate-x-1" />
+                            </button>
                         </div>
                     </div>
                 </article>
@@ -107,14 +109,17 @@
                 </NuxtLink>
             </div>
 
+            <BookingModal :open="bookingOpen" :service="activeService" @close="bookingOpen = false" />
+
         </div>
     </section>
 </template>
 
 <script setup lang="ts">
 import { NuxtLink } from '#components'
+import { ref } from 'vue'
 import { Icon } from '@iconify/vue'
-import CalendlyButton from '~/components/CalendlyButton.vue'
+import BookingModal from '~/components/BookingModal.vue'
 import { CALENDLY_URL, EVENT_TYPES } from '~/utils/calendly'
 import type { BookableService } from '~/types/booking'
 
@@ -183,4 +188,12 @@ const serviceData: ServiceType[] = [
     link: '/service-detail/personal'
   }
 ]
+
+const bookingOpen = ref(false)
+const activeService = ref<ServiceType | null>(null)
+
+function openBooking(service: ServiceType) {
+  activeService.value = service
+  bookingOpen.value = true
+}
 </script>

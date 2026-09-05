@@ -210,7 +210,7 @@ const faqData: FaqType[] = [
   },
   {
     q: 'What does a session cost?',
-    a: "Sessions start at ₹1,799 for 50 minutes. Weekly and monthly plans bring the cost per session down, and there's a shorter catch up session for returning clients."
+    a: "You can start with a ₹799 session of 30 minutes, which is the easiest way to try this out and see how it feels. If you would like more room to talk, a full 50 minute session is ₹1,799. Weekly and monthly plans bring the cost per session down further."
   },
   {
     q: 'What if I need more support than this?',

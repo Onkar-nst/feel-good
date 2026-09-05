@@ -82,23 +82,23 @@ type ReasonType = {
 const reasonData: ReasonType[] = [
   {
     number: '01.',
-    title: 'A space that\'s <em class="italic text-pink">yours</em>.',
-    body: 'Come exactly as you are, with whatever is on your mind.'
+    title: 'A space that\'s <em class="italic text-pink">yours</em>',
+    body: 'Come exactly as you are, with whatever is on your mind'
   },
   {
     number: '02.',
-    title: 'Talk without having to hold it all together.',
-    body: 'Say the things you may not know how to say anywhere else.'
+    title: 'Talk without having to hold it all together',
+    body: 'Say the things you may not know how to say anywhere else'
   },
   {
     number: '03.',
-    title: 'No agenda. No expectations. Just your space to be heard.',
-    body: 'This conversation is about you, at your pace, in your own words.'
+    title: 'No agenda. No expectations. Just your space to be heard',
+    body: 'This conversation is about you, at your pace, in your own words'
   },
   {
     number: '04.',
-    title: 'Because sometimes, putting it down is enough.',
-    body: 'You don\'t need to solve everything today. Sometimes, you just need somewhere to put it.'
+    title: 'Because sometimes, putting it down is enough',
+    body: 'You don\'t need to solve everything today. Sometimes, you just need somewhere to put it'
   }
 ]
 </script>
