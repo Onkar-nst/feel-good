@@ -176,16 +176,20 @@ const fieldClass =
 
 const stepData = [
   {
-    title: 'You send a note',
-    body: "However much you want to say. A single line is completely fine."
+    title: 'Choose what you need',
+    body: 'Pick the kind of support that fits, whether it is a one off conversation or something ongoing.'
   },
   {
-    title: 'Kinjal reads it herself',
-    body: 'Not a team, not a bot. She replies personally, usually within a few hours.'
+    title: 'Book a slot on Calendly',
+    body: 'Open the calendar, pick a time that suits you, and it is confirmed straight away.'
   },
   {
-    title: 'You pick a time',
-    body: 'Choose a slot that suits you. Come as you are, camera on or off.'
+    title: 'We meet and you talk',
+    body: 'Fifty minutes, camera on or off. Say as much or as little as you want to.'
+  },
+  {
+    title: 'You leave lighter',
+    body: 'Most people finish the call with a clearer head and the weight sitting a little easier.'
   }
 ]
 

@@ -19,16 +19,6 @@
                 <p class="text-default-600 lg:max-w-[58ch] mx-auto" data-reveal="up" style="--reveal-delay:120ms">
                     Discover how our listening services have impacted the lives of others seeking support and understanding.
                 </p>
-
-                <div class="mt-6 inline-flex items-center gap-2.5 rounded-full border border-default-200 bg-cream px-4 py-2"
-                     data-reveal="up" style="--reveal-delay:200ms">
-                    <span class="flex gap-0.5">
-                        <Icon v-for="n in 5" :key="n" icon="tabler:star-filled" class="size-4 text-pink" />
-                    </span>
-                    <span class="text-sm text-default-700">
-                        <strong class="text-default-950 font-medium">5.0</strong> from {{ reviewData.length }} client reviews
-                    </span>
-                </div>
             </div>
 
             <div class="columns-1 md:columns-2 lg:columns-3 gap-5" data-reveal-group>

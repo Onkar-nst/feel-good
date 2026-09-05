@@ -17,34 +17,14 @@
             <a href="mailto:info@thefeelgoodcenter.in" class="block text-lagoon-ink transition duration-300 hover:text-lagoon-ink/60">
               info@thefeelgoodcenter.in
             </a>
-            <a href="tel:+919004989199" class="block text-lagoon-ink transition duration-300 hover:text-lagoon-ink/60">
-              +91 9004989199
-            </a>
             <p class="text-lagoon-ink/70 text-sm pt-1.5">Mumbai, India.</p>
           </div>
 
-          <!-- Government registration, shown as proof rather than a claim.
-               This is the client's own cropped scan: it carries the registration
-               details only, none of the personal address / mobile on the full
-               certificate. Do not swap in an uncropped version.
-               It lives in this column because the brand block is the short one:
-               parked under Pages it left a hole here and a long tail there. -->
-          <a href="/images/credentials/udyam-registration.png" target="_blank" rel="noopener noreferrer"
-             class="group mt-7 inline-flex items-center gap-3 rounded-xl border border-lagoon-ink/15 bg-white/70 p-2 pe-4 transition-all duration-500 ease-soft hover:border-lagoon-ink/30 hover:-translate-y-0.5"
-             aria-label="View the Udyam registration certificate for The Feel Good Centre">
-            <img src="/images/credentials/udyam-registration.png"
-                 alt="Udyam Registration Certificate, Ministry of Micro, Small and Medium Enterprises, Government of India."
-                 loading="lazy" width="601" height="411"
-                 class="h-11 w-auto rounded-lg" />
-
-            <span class="leading-tight">
-              <span class="block text-xs text-lagoon-ink/65">Registered with MSME, Government of India</span>
-              <span class="mt-1 flex items-center gap-1.5 text-xs font-medium text-lagoon-ink">
-                <Icon icon="tabler:rosette-discount-check" class="size-3.5 shrink-0" />
-                UDYAM-MH-18-0458945
-              </span>
-            </span>
-          </a>
+          <!-- Client-supplied registration badge. Display only, not a link. -->
+          <img src="/images/credentials/government-registered-badge.png"
+               alt="Government registered — The Feel Good Centre, UDYAM-MH-18-0458945"
+               loading="lazy" width="500" height="500"
+               class="mt-7 h-24 md:h-28 w-auto" />
         </div>
 
         <!-- ── Services ─────────────────────────────────────── -->

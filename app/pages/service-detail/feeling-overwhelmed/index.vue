@@ -133,21 +133,6 @@
                 </div>
             </div>
 
-            <!-- The safety note sits apart from the comparison so it reads as care,
-                 not as another bullet to weigh up. -->
-            <div class="mx-auto lg:max-w-3xl mt-14 md:mt-20 rounded-3xl bg-cream px-7 py-8 md:px-10 md:py-9 text-center"
-                 data-reveal="up">
-                <div class="mb-3 flex items-center justify-center gap-2 text-default-950">
-                    <Icon icon="tabler:lifebuoy" class="size-5 text-pink" />
-                    <span class="font-medium">If you need more than listening</span>
-                </div>
-                <p class="text-default-600 leading-relaxed mx-auto max-w-[52ch]">
-                    Listening helps, but it is not treatment. If you are in immediate distress,
-                    please call Tele MANAS on
-                    <a href="tel:14416" class="font-medium text-default-950 underline decoration-pink underline-offset-4">14416</a>.
-                    It is free and open 24 hours a day.
-                </p>
-            </div>
         </div>
     </section>
 
