@@ -61,7 +61,7 @@ const planData: PlanType[] = [
       '50 x 50 min 1:1 sessions (one per employee)',
       '2 x monthly group workshops',
       'Priority scheduling',
-      'Quarterly usage & trend reports (anonymous)'
+      'Quarterly umint & trend reports (anonymous)'
     ],
     actions: [{ label: 'Click Here', link: '/contact' }]
   },

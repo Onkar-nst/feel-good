@@ -3,26 +3,24 @@
     <section class="pt-10 md:pt-14 lg:pt-16 pb-6 md:pb-7 lg:pb-8 relative overflow-hidden">
         <div class="absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
             <div class="aura animate-drift size-[34rem] -top-44 -start-40 bg-primary-soft/60"></div>
-            <div class="aura animate-drift delay-2 size-[26rem] top-1/4 -end-32 bg-lagoon-soft/70"></div>
+            <div class="aura animate-drift delay-2 size-[26rem] top-1/4 -end-32 bg-mint-soft/70"></div>
         </div>
 
         <div class="container relative">
             <div class="grid lg:grid-cols-2 lg:gap-16 gap-10 items-center">
                 <div>
-                    <div class="eyebrow mb-5" data-reveal="soft">If you are carrying too much</div>
+                    <div class="eyebrow mb-5" data-reveal="soft">{{ topic.hero.eyebrow }}</div>
 
                     <h1 class="h-display lg:text-[52px] md:text-5xl text-[34px] leading-[1.1] mb-5" data-reveal="up">
-                        Feeling overwhelmed and need someone to talk to?
+{{ topic.hero.heading }}
                     </h1>
 
                     <p class="text-lg text-default-600 mb-4" data-reveal="up" style="--reveal-delay:120ms">
-                        Everything at once, and no room to put any of it down. You are not being
-                        dramatic, and you do not need a reason big enough to justify it.
+{{ topic.hero.intro }}
                     </p>
 
                     <p class="text-lg text-default-800 mb-9" data-reveal="up" style="--reveal-delay:200ms">
-                        Book a private listening session and say it out loud to someone whose only
-                        job is to hear you.
+{{ topic.hero.invitation }}
                     </p>
 
                     <div class="flex flex-wrap items-center gap-4" data-reveal="up" style="--reveal-delay:280ms">
@@ -43,8 +41,8 @@
                     <!-- Native 5:4, so the room and the light survive rather than being
                          cropped away by a portrait frame. -->
                     <div class="group relative mx-auto w-full max-w-xl overflow-hidden rounded-3xl aspect-[5/4]">
-                        <img src="/images/other/about-image.jpg"
-                             alt="Someone sitting quietly at home during an online listening session"
+                        <img :src="topic.hero.image"
+                             :alt="topic.hero.imageAlt"
                              class="size-full object-cover transition-transform duration-[1.4s] ease-soft group-hover:scale-105">
                     </div>
                 </div>
@@ -60,13 +58,12 @@
 
         <div class="container">
             <div class="mx-auto lg:max-w-[52ch] text-center lg:mb-16 mb-12">
-                <div class="eyebrow mb-6" data-reveal="soft">Does this sound familiar</div>
+                <div class="eyebrow mb-6" data-reveal="soft">{{ topic.recognition.eyebrow }}</div>
                 <h2 class="h-display lg:text-4xl md:text-3xl text-2xl leading-[1.2] mb-5" data-reveal="up">
-                    Overwhelmed rarely looks like falling apart
+{{ topic.recognition.heading }}
                 </h2>
                 <p class="text-lg text-default-600" data-reveal="up" style="--reveal-delay:120ms">
-                    Most people who book a session are functioning perfectly well on the outside.
-                    That is exactly the problem.
+{{ topic.recognition.intro }}
                 </p>
             </div>
 
@@ -75,7 +72,7 @@
             <div class="mx-auto lg:max-w-5xl overflow-hidden rounded-2xl border border-default-200 bg-white"
                  data-reveal-group>
                 <div class="grid md:grid-cols-2 gap-px bg-default-200/70">
-                    <div v-for="(sign, idx) in signData" :key="idx"
+                    <div v-for="(sign, idx) in topic.recognition.signs" :key="idx"
                          data-reveal="up"
                          class="group flex items-start gap-4 bg-white p-7 md:p-8 transition-colors duration-500 ease-soft hover:bg-cream">
                         <span class="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-full border border-default-200 text-default-500 transition-colors duration-500 ease-soft group-hover:border-default-300 group-hover:text-default-800">
@@ -117,7 +114,7 @@
                         </h3>
 
                         <ul role="list" class="space-y-3">
-                            <li v-for="(item, idx) in isData" :key="idx"
+                            <li v-for="(item, idx) in IS_LIST" :key="idx"
                                 class="flex items-start gap-3 border-b border-default-200/70 pb-3.5 text-base leading-relaxed text-default-700 last:border-0 last:pb-0">
                                 <Icon icon="tabler:circle-check-filled" class="mt-0.5 size-5 shrink-0 text-default-700" />
                                 <span>{{ item }}</span>
@@ -137,7 +134,7 @@
                         </h3>
 
                         <ul role="list" class="space-y-3">
-                            <li v-for="(item, idx) in isNotData" :key="idx"
+                            <li v-for="(item, idx) in IS_NOT_LIST" :key="idx"
                                 class="flex items-start gap-3 border-b border-default-200/70 pb-3.5 text-base leading-relaxed text-default-500 last:border-0 last:pb-0">
                                 <Icon icon="tabler:circle-minus" class="mt-0.5 size-5 shrink-0 text-default-400" />
                                 <span>{{ item }}</span>
@@ -152,25 +149,25 @@
     <!-- ── How a session goes ───────────────────────────────────── -->
     <section class="pt-6 md:pt-7 lg:pt-8 pb-6 md:pb-7 lg:pb-8 relative overflow-hidden">
         <div class="container max-w-315!">
-            <div class="relative overflow-hidden rounded-3xl bg-lagoon grain lg:p-14 md:p-10 p-7" data-reveal="scale">
+            <div class="relative overflow-hidden rounded-3xl bg-mint grain lg:p-14 md:p-10 p-7" data-reveal="scale">
                 <div class="absolute inset-0" aria-hidden="true">
                     <div class="aura animate-drift size-96 -top-28 -start-20 bg-white/45"></div>
                     <div class="aura animate-drift delay-2 size-80 -bottom-24 start-1/3 bg-primary-soft/60"></div>
                 </div>
 
                 <div class="relative">
-                    <div class="eyebrow mb-5 text-lagoon-ink/70!">How a session goes</div>
-                    <h2 class="h-display text-lagoon-ink lg:text-4xl md:text-3xl text-2xl mb-9 lg:max-w-[22ch]">
+                    <div class="eyebrow mb-5 text-mint-ink/70!">How a session goes</div>
+                    <h2 class="h-display text-mint-ink lg:text-4xl md:text-3xl text-2xl mb-9 lg:max-w-[22ch]">
                         Fifty minutes that belong entirely to you
                     </h2>
 
                     <ol class="grid md:grid-cols-2 lg:grid-cols-4 gap-7" data-reveal-group>
-                        <li v-for="(step, idx) in stepData" :key="idx" data-reveal="up">
-                            <span class="mb-4 flex size-9 items-center justify-center rounded-full bg-white/75 font-heading text-lagoon-ink">
+                        <li v-for="(step, idx) in STEPS" :key="idx" data-reveal="up">
+                            <span class="mb-4 flex size-9 items-center justify-center rounded-full bg-white/75 font-heading text-mint-ink">
                                 {{ idx + 1 }}
                             </span>
-                            <h3 class="h-display text-lagoon-ink! text-lg mb-2">{{ step.title }}</h3>
-                            <p class="text-sm text-lagoon-ink/80">{{ step.body }}</p>
+                            <h3 class="h-display text-mint-ink! text-lg mb-2">{{ step.title }}</h3>
+                            <p class="text-sm text-mint-ink/80">{{ step.body }}</p>
                         </li>
                     </ol>
 
@@ -183,7 +180,7 @@
                                   class="size-4 shrink-0 transition-transform duration-500 ease-soft group-hover:translate-x-1" />
                         </button>
 
-                        <p class="text-sm text-lagoon-ink/75">
+                        <p class="text-sm text-mint-ink/75">
                             Real availability, confirmed straight away.
                         </p>
                     </div>
@@ -198,19 +195,28 @@
             <div class="eyebrow mb-6" data-reveal="soft">From someone who booked</div>
 
             <blockquote class="h-display lg:text-3xl md:text-2xl text-xl leading-snug text-default-950 mb-7" data-reveal="up">
-                &ldquo;Whenever I am stressed or anxious, a single conversation with Kinjal works like
-                magic. She has this natural ability to calm someone down, clear their head, and make
-                everything feel lighter.&rdquo;
+&ldquo;{{ topic.quote.text }}&rdquo;
             </blockquote>
 
             <div class="flex items-center justify-center gap-3" data-reveal="up">
-                <img src="/images/reviews/jash-shah.jpg" alt="Jash Shah" loading="lazy"
+                <img :src="topic.quote.avatar" :alt="topic.quote.author" loading="lazy"
                      class="size-10 shrink-0 rounded-full object-cover object-top">
                 <div class="text-start">
-                    <div class="font-medium text-default-950">Jash Shah</div>
+                    <div class="font-medium text-default-950">{{ topic.quote.author }}</div>
                     <div class="text-sm text-default-500">Verified session</div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- ── Sessions ─────────────────────────────────────────────── -->
+    <section class="pt-6 md:pt-7 lg:pt-8 pb-6 md:pb-7 lg:pb-8 relative overflow-hidden">
+        <div class="absolute inset-0 -z-10" aria-hidden="true">
+            <div class="aura animate-drift delay-3 size-[26rem] -top-32 end-1/4 bg-primary-soft/50"></div>
+        </div>
+
+        <div class="container relative">
+            <SessionGrid />
         </div>
     </section>
 
@@ -225,7 +231,7 @@
             </div>
 
             <div class="border-t border-default-200" data-reveal="up">
-                <div v-for="(item, idx) in faqData" :key="idx" class="border-b border-default-200">
+                <div v-for="(item, idx) in topic.faqs" :key="idx" class="border-b border-default-200">
                     <h3>
                         <button type="button"
                                 :aria-expanded="openIndex === idx"
@@ -261,16 +267,33 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import { NuxtLink } from '#components'
-import CalendlyButton from '~/components/CalendlyButton.vue'
-import { EVENT_TYPES } from '~/utils/calendly'
+import { computed, ref, watch } from 'vue'
 import { Icon } from '@iconify/vue'
+import { useRoute } from 'vue-router'
+import { createError } from '#app'
 import { useHead } from '#unhead/composables'
-import { usePageTitle } from '~/composables/usePageTitle'
+import CalendlyButton from '~/components/CalendlyButton.vue'
 import CtaSection from '~/components/CtaSection.vue'
 import BookingModal from '~/components/BookingModal.vue'
+import SessionGrid from '~/components/SessionGrid.vue'
+import { EVENT_TYPES } from '~/utils/calendly'
 import type { BookableService } from '~/types/booking'
+import { findTopic, IS_LIST, IS_NOT_LIST, STEPS } from '~/data/serviceTopics'
+
+/*
+ * One route renders every per problem landing page from `~/data/serviceTopics`
+ * (CLIENT-NOTES section 5). The layout is the design signed off on the
+ * "Feeling Overwhelmed" page; only the copy, imagery and search intent change,
+ * so a new topic is a data entry rather than another hand built page.
+ */
+
+const route = useRoute()
+
+const topic = computed(() => {
+  const found = findTopic(String(route.params.slug))
+  if (!found) throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
+  return found
+})
 
 /* The session this page sells: the modal collects a few details, then hands
    over to the Calendly event type for that session. */
@@ -283,80 +306,17 @@ const bookingService: BookableService = {
   image: '/images/service/session-core.jpg'
 }
 
-/*
- * Prototype for the per problem landing pages in CLIENT-NOTES section 5.
- * Content is kept in these flat arrays deliberately: once the design is signed
- * off, this file becomes the first entry in a content model behind one dynamic
- * route, rather than eight hand built pages.
- */
-
-const signData = [
-  { icon: 'tabler:list-check', text: 'Your to do list grows faster than you can clear it.' },
-  { icon: 'tabler:zzz', text: 'You are tired in a way that sleeping does not fix.' },
-  { icon: 'tabler:mood-sad', text: 'Small things set you off more than they used to.' },
-  { icon: 'tabler:message-2', text: 'You keep saying you are fine because it is quicker.' },
-  { icon: 'tabler:moon-stars', text: 'Your mind is loudest at night, when nobody is awake.' },
-  { icon: 'tabler:calendar-repeat', text: 'You have been meaning to deal with it for months.' }
-]
-
-
-const isData: string[] = [
-  'Fifty minutes of undivided attention, on video or voice.',
-  'A space to think out loud without being interrupted.',
-  'Complete confidentiality. Nothing recorded, nothing shared.',
-  'Somewhere to start, with no commitment to continue.'
-]
-
-const isNotData: string[] = [
-  'Therapy, counselling or a clinical diagnosis.',
-  'Coaching, or a plan you have to follow afterwards.',
-  'Advice you did not ask for.',
-  'Emergency or crisis care.'
-]
-
-const stepData = [
-  { title: 'Choose what you need', body: 'Pick the kind of support that fits, whether it is a one off conversation or something ongoing.' },
-  { title: 'Book your slot', body: 'Open the calendar, pick a time that suits you, and it is confirmed straight away.' },
-  { title: 'We meet and you talk', body: 'Fifty minutes, camera on or off. Say as much or as little as you want to.' },
-  { title: 'You leave lighter', body: 'Most people finish the call with a clearer head and the weight sitting a little easier.' }
-]
-
-const faqData = [
-  {
-    q: 'I am not in crisis. Is it still alright to book?',
-    a: 'Yes, and most people who book are not. You do not have to be in crisis to deserve to be heard. Everyday weight counts.'
-  },
-  {
-    q: 'What if I cannot explain what is wrong?',
-    a: 'That is a completely normal place to start. Plenty of people begin by saying they do not know where to begin.'
-  },
-  {
-    q: 'Is this confidential?',
-    a: 'Completely. Nothing you share leaves the session. Nothing is recorded, nothing is written down, and nothing is repeated to anyone.'
-  },
-  {
-    q: 'What does it cost?',
-    a: 'You can start with a ₹799 session of 30 minutes, which is the easiest way to try this out and see how it feels. If you would like more room to talk, a full 50 minute session is ₹1,799. Weekly and monthly plans bring the cost per session down further.'
-  }
-]
-
 // First question starts open, so the column reads as answers rather than
-// a list of closed headings.
+// a list of closed headings. Reset when navigating between topics.
 const openIndex = ref<number | null>(0)
 const toggle = (idx: number) => { openIndex.value = openIndex.value === idx ? null : idx }
+watch(() => topic.value.slug, () => { openIndex.value = 0 })
 
-const whatsappLink =
-  'https://wa.me/919004989199?text=' +
-  encodeURIComponent("Hi! I've been feeling overwhelmed and would like to know more about a listening session.")
-
-usePageTitle('Feeling Overwhelmed')
+const whatsappLink = computed(() =>
+  'https://wa.me/919004989199?text=' + encodeURIComponent(topic.value.whatsappText))
 
 useHead({
-  meta: [
-    {
-      name: 'description',
-      content: 'Feeling overwhelmed and need someone to talk to? Book a private, confidential listening session with The Feel Good Centre. No therapy, no advice, just fifty minutes of being properly heard.'
-    }
-  ]
+  title: computed(() => `${topic.value.navTitle} | The Feel Good Centre`),
+  meta: [{ name: 'description', content: computed(() => topic.value.metaDescription) }]
 })
 </script>

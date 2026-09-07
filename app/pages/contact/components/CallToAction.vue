@@ -86,7 +86,7 @@ const channelData: ChannelType[] = [
     href: 'https://wa.me/919004989199',
     action: 'Open WhatsApp',
     external: true,
-    tint: 'bg-lagoon-soft text-lagoon'
+    tint: 'bg-mint-soft text-mint'
   }
 ]
 </script>

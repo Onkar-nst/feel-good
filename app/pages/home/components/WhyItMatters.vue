@@ -1,5 +1,5 @@
 <template>
-    <section class="pt-14 md:pt-16 lg:pt-20 pb-14 md:pb-16 lg:pb-20 relative bg-lagoon-soft overflow-hidden">
+    <section class="pt-14 md:pt-16 lg:pt-20 pb-14 md:pb-16 lg:pb-20 relative bg-mint-soft overflow-hidden">
 
         <div class="absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
             <div class="aura animate-drift size-[32rem] -top-40 -end-32 bg-white/70"></div>
@@ -42,7 +42,7 @@
                                 <li v-for="(point, idx) in pointData" :key="idx"
                                     data-reveal="left"
                                     class="group flex items-start gap-4 rounded-xl p-3 -m-3 transition-colors duration-500 hover:bg-white/50">
-                                    <span class="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-white/80 text-lagoon-ink transition-all duration-500 ease-soft group-hover:bg-primary group-hover:text-primary-ink group-hover:scale-110">
+                                    <span class="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-white/80 text-mint-ink transition-all duration-500 ease-soft group-hover:bg-primary group-hover:text-primary-ink group-hover:scale-110">
                                         <Icon icon="tabler:check" class="size-3.5" />
                                     </span>
                                     <span class="text-lg text-default-600 transition-colors duration-500 group-hover:text-default-950">{{ point }}</span>
@@ -51,7 +51,7 @@
                         </div>
 
                         <div class="mt-auto" data-reveal="up">
-                            <div class="flex flex-wrap items-center justify-between gap-5 p-2 md:ps-7 rounded-2xl bg-white border border-lagoon/35 shadow-[0_18px_40px_-28px_rgb(14_59_62/0.45)]">
+                            <div class="flex flex-wrap items-center justify-between gap-5 p-2 md:ps-7 rounded-2xl bg-white border border-mint/35 shadow-[0_18px_40px_-28px_rgb(14_59_62/0.45)]">
                                 <p class="text-default-950 lg:max-w-1/2">Reach out to us today and book your session to release the feelings you've been holding onto!</p>
 
                                 <NuxtLink to="/contact" class="btn-primary btn-fill btn-lg group text-nowrap">

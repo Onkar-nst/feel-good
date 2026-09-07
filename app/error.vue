@@ -4,7 +4,7 @@
 
       <div class="absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
         <div class="aura animate-drift size-[34rem] -top-40 -start-40 bg-primary-soft/70"></div>
-        <div class="aura animate-breathe delay-2 size-80 bottom-0 -end-24 bg-lagoon-soft/60"></div>
+        <div class="aura animate-breathe delay-2 size-80 bottom-0 -end-24 bg-mint-soft/60"></div>
       </div>
 
       <div class="container relative">

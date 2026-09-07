@@ -1,3 +1,5 @@
+import { serviceTopics } from '~/data/serviceTopics'
+
 /**
  * Pages that are linked everywhere but not open yet.
  *
@@ -21,7 +23,9 @@ export const HIDDEN_PAGES: string[] = [
  * without opening its whole section.
  */
 export const VISIBLE_EXCEPTIONS: string[] = [
-  '/service-detail/feeling-overwhelmed'   // design prototype, out for client sign off
+  // The per problem landing pages: design signed off, so all nine are open
+  // while /service-detail itself, /personal and /corporate stay gated.
+  ...serviceTopics.map(topic => `/service-detail/${topic.slug}`)
 ]
 
 /** True when `path` is a gated page, or lives underneath one. */

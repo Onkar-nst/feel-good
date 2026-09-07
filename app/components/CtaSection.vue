@@ -6,7 +6,7 @@
 
                 <div class="absolute inset-0" aria-hidden="true">
                     <div class="aura animate-drift size-96 -top-24 -start-16 bg-white/45"></div>
-                    <div class="aura animate-drift delay-2 size-80 -bottom-20 -end-10 bg-lagoon-soft/70"></div>
+                    <div class="aura animate-drift delay-2 size-80 -bottom-20 -end-10 bg-mint-soft/70"></div>
                 </div>
 
                 <div class="relative">

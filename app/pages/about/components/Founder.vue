@@ -18,12 +18,12 @@
                     <div class="relative" data-reveal="scale">
 
                         <div class="group relative w-full sm:w-[74%] aspect-[4/5] overflow-hidden rounded-3xl shadow-[0_30px_70px_-45px_rgb(28_22_20/0.5)]">
-                            <img src="/images/other/kinjal-paris.png" alt="Kinjal Shah, founder of The Feel Good Centre"
+                            <img src="/images/other/kinjal-portrait-linen.jpg" alt="Kinjal Shah, founder of The Feel Good Centre"
                                  class="size-full object-cover transition-transform duration-[1.4s] ease-soft group-hover:scale-105">
                         </div>
 
                         <div class="animate-float mt-4 sm:mt-0 sm:absolute sm:end-0 sm:top-10 sm:w-[47%] rounded-2xl bg-white p-5 shadow-[0_20px_50px_-24px_rgb(28_22_20/0.45)]">
-                            <div class="mb-2.5 flex size-9 items-center justify-center rounded-full bg-lagoon-soft text-lagoon">
+                            <div class="mb-2.5 flex size-9 items-center justify-center rounded-full bg-mint-soft text-mint">
                                 <Icon icon="tabler:ear" class="size-5" />
                             </div>
                             <p class="text-sm text-default-700">
@@ -99,7 +99,7 @@
                     <!-- Signature -->
                     <div class="mt-9 flex flex-wrap items-end justify-between gap-6" data-reveal="up">
                         <div>
-                            <img src="/images/other/sign.svg" alt="Kinjal Shah's signature" class="h-14">
+                            <img src="/images/other/sign-kinjal.png" alt="Kinjal Shah's signature" class="h-14">
 
                             <div class="mt-3">
                                 <h3 class="text-lg h-display mb-1">Kinjal Shah</h3>

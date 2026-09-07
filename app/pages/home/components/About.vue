@@ -35,7 +35,7 @@
                     </div>
 
                     <div class="mt-auto" data-reveal="up">
-                        <img src="/images/other/sign.svg" alt="Kinjal Shah's signature" class="signature">
+                        <img src="/images/other/sign-kinjal.png" alt="Kinjal Shah's signature" class="signature h-14 w-auto">
 
                         <div class="mt-3">
                             <h3 class="text-lg h-display mb-1">Kinjal Shah</h3>
@@ -53,7 +53,7 @@
 
                     <!-- Floating card, drifting gently over the portrait -->
                     <div class="animate-float absolute -bottom-5 -start-3 md:start-6 max-w-[17rem] rounded-2xl bg-white p-5 shadow-[0_20px_50px_-24px_rgb(28_22_20/0.45)]">
-                        <div class="mb-2.5 flex size-9 items-center justify-center rounded-full bg-lagoon-soft text-lagoon">
+                        <div class="mb-2.5 flex size-9 items-center justify-center rounded-full bg-mint-soft text-mint">
                             <Icon icon="tabler:ear" class="size-5" />
                         </div>
                         <p class="text-sm text-default-700">

@@ -4,7 +4,7 @@
         <!-- Ambient colour fields, same slow atmosphere as the home hero. -->
         <div class="absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
             <div class="aura animate-drift size-[38rem] -top-44 -start-48 bg-primary-soft/70"></div>
-            <div class="aura animate-drift delay-2 size-[28rem] top-1/4 -end-36 bg-lagoon-soft/80"></div>
+            <div class="aura animate-drift delay-2 size-[28rem] top-1/4 -end-36 bg-mint-soft/80"></div>
             <div class="aura animate-breathe delay-1 size-72 -bottom-16 start-1/3 bg-cream-deep"></div>
         </div>
 

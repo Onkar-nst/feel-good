@@ -73,6 +73,12 @@
                     </div>
                 </div>
 
+                <!-- Client-supplied registration badge. Display only, not a link. -->
+                <img src="/images/credentials/government-registered-badge.png"
+                     alt="Government registered — The Feel Good Centre"
+                     loading="lazy" width="500" height="500"
+                     class="h-28 md:h-32 w-auto shrink-0" />
+
                 <div class="rounded-xl bg-cream px-5 py-3">
                     <div class="text-xs text-default-500 mb-0.5">Udyam Registration Number</div>
                     <div class="font-medium text-default-950 tabular-nums">UDYAM-MH-18-0458945</div>

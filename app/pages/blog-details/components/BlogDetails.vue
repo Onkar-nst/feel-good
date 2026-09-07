@@ -90,7 +90,7 @@
 
             <p class="mb-12.5">That's what we do. And that's why people keep coming back.</p>
 
-            <blockquote class="bg-lagoon-soft text-lagoon-ink rounded-lg p-12.5 mb-10 lg:-mx-15">
+            <blockquote class="bg-mint-soft text-mint-ink rounded-lg p-12.5 mb-10 lg:-mx-15">
                 <em class="italic text-lg">
                     "Your feelings aren't a prompt. Your pain isn't a glitch. And your story deserves more than a script."
                 </em>

@@ -4,8 +4,8 @@
         <!-- Ambient colour fields, same treatment as the home hero -->
         <div class="absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
             <div class="aura animate-drift size-[34rem] -top-44 -start-40 bg-primary-soft/60"></div>
-            <div class="aura animate-drift delay-2 size-[26rem] top-1/4 -end-32 bg-lagoon-soft/70"></div>
-            <div class="aura animate-breathe delay-1 size-72 bottom-0 start-1/4 bg-lagoon-soft/60"></div>
+            <div class="aura animate-drift delay-2 size-[26rem] top-1/4 -end-32 bg-mint-soft/70"></div>
+            <div class="aura animate-breathe delay-1 size-72 bottom-0 start-1/4 bg-mint-soft/60"></div>
         </div>
 
         <div class="container relative">
@@ -103,7 +103,7 @@
                 </div>
 
                 <!-- ── Reassurance panel ────────────────────────────── -->
-                <div class="lg:col-span-2 relative overflow-hidden rounded-3xl bg-lagoon grain lg:p-9 p-7"
+                <div class="lg:col-span-2 relative overflow-hidden rounded-3xl bg-mint grain lg:p-9 p-7"
                      data-reveal="up" style="--reveal-delay:140ms">
 
                     <div class="absolute inset-0" aria-hidden="true">
@@ -112,26 +112,26 @@
                     </div>
 
                     <div class="relative flex h-full flex-col">
-                        <div class="eyebrow mb-5 text-lagoon-ink/70!">What happens next</div>
+                        <div class="eyebrow mb-5 text-mint-ink/70!">What happens next</div>
 
                         <ol class="space-y-6 mb-9" data-reveal-group>
                             <li v-for="(step, idx) in stepData" :key="idx" class="flex items-start gap-4" data-reveal="left">
-                                <span class="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full bg-white/75 font-heading text-sm text-lagoon-ink">
+                                <span class="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full bg-white/75 font-heading text-sm text-mint-ink">
                                     {{ idx + 1 }}
                                 </span>
                                 <div>
-                                    <h3 class="h-display text-lagoon-ink! text-lg mb-1">{{ step.title }}</h3>
-                                    <p class="text-sm text-lagoon-ink/80">{{ step.body }}</p>
+                                    <h3 class="h-display text-mint-ink! text-lg mb-1">{{ step.title }}</h3>
+                                    <p class="text-sm text-mint-ink/80">{{ step.body }}</p>
                                 </div>
                             </li>
                         </ol>
 
-                        <div class="mt-auto border-t border-lagoon-ink/15 pt-7">
-                            <p class="text-sm text-lagoon-ink/80 mb-4">Would you rather just talk now?</p>
+                        <div class="mt-auto border-t border-mint-ink/15 pt-7">
+                            <p class="text-sm text-mint-ink/80 mb-4">Would you rather just talk now?</p>
 
                             <div class="flex flex-wrap gap-3">
                                 <a :href="whatsappLink" target="_blank" rel="noopener noreferrer"
-                                   class="btn btn-md bg-white text-lagoon-ink hover:-translate-y-0.5">
+                                   class="btn btn-md bg-white text-mint-ink hover:-translate-y-0.5">
                                     <Icon icon="tabler:brand-whatsapp" class="size-4.5" />
                                     <span>WhatsApp</span>
                                 </a>
