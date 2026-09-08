@@ -119,8 +119,8 @@ const stepData: StepType[] = [
   {
     number: '02.',
     icon: 'tabler:device-mobile-message',
-    title: 'We meet, your way',
-    description: 'A video or voice call, wherever you feel most comfortable. Plenty of people choose voice only, camera off.'
+    title: 'We meet, face to face',
+    description: 'A private video call on Zoom or Google Meet, from wherever you feel most comfortable.'
   },
   {
     number: '03.',

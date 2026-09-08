@@ -184,7 +184,7 @@ const faqData: FaqType[] = [
   },
   {
     q: 'Can I stay anonymous?',
-    a: "Yes. A first name is enough, and it doesn't have to be your real one. You're welcome to keep your camera off for the whole session."
+    a: "Yes. A first name is enough, and it doesn't have to be your real one. Nothing you say is recorded, written down or repeated to anyone."
   },
   {
     q: 'Where does the session happen?',

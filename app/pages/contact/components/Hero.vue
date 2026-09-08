@@ -185,7 +185,7 @@ const stepData = [
   },
   {
     title: 'We meet and you talk',
-    body: 'Fifty minutes, camera on or off. Say as much or as little as you want to.'
+    body: 'A video call on Zoom or Google Meet. Say as much or as little as you want to.'
   },
   {
     title: 'You leave lighter',

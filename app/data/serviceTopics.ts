@@ -42,7 +42,7 @@ export type ServiceTopic = {
 /* Shared across every topic: the offer itself does not change with the reason
    someone books, so these live once rather than nine times. */
 export const IS_LIST: string[] = [
-  'Fifty minutes of undivided attention, on video or voice.',
+  'Undivided attention on a private video call, for as long as your session runs.',
   'A space to think out loud without being interrupted.',
   'Complete confidentiality. Nothing recorded, nothing shared.',
   'Somewhere to start, with no commitment to continue.'
@@ -58,7 +58,7 @@ export const IS_NOT_LIST: string[] = [
 export const STEPS = [
   { title: 'Choose what you need', body: 'Pick the kind of support that fits, whether it is a one off conversation or something ongoing.' },
   { title: 'Book your slot', body: 'Open the calendar, pick a time that suits you, and it is confirmed straight away.' },
-  { title: 'We meet and you talk', body: 'Fifty minutes, camera on or off. Say as much or as little as you want to.' },
+  { title: 'We meet and you talk', body: 'A video call on Zoom or Google Meet. Say as much or as little as you want to.' },
   { title: 'You leave lighter', body: 'Most people finish the call with a clearer head and the weight sitting a little easier.' }
 ]
 
@@ -93,12 +93,12 @@ const topics: ServiceTopic[] = [
       heading: 'Overwhelmed rarely looks like falling apart',
       intro: 'Most people who book a session are functioning perfectly well on the outside. That is exactly the problem.',
       signs: [
-        { icon: 'tabler:list-check', text: 'Your to do list grows faster than you can clear it.' },
-        { icon: 'tabler:zzz', text: 'You are tired in a way that sleeping does not fix.' },
-        { icon: 'tabler:mood-sad', text: 'Small things set you off more than they used to.' },
-        { icon: 'tabler:message-2', text: 'You keep saying you are fine because it is quicker.' },
-        { icon: 'tabler:moon-stars', text: 'Your mind is loudest at night, when nobody is awake.' },
-        { icon: 'tabler:calendar-repeat', text: 'You have been meaning to deal with it for months.' }
+        { icon: 'tabler:list-check', text: "My list grows faster than I can clear it." },
+        { icon: 'tabler:zzz', text: "I am tired in a way that sleeping does not fix." },
+        { icon: 'tabler:mood-sad', text: "Small things set me off more than they used to." },
+        { icon: 'tabler:message-2', text: "I keep saying I am fine because it is quicker." },
+        { icon: 'tabler:moon-stars', text: "My mind is loudest at night, when nobody is awake." },
+        { icon: 'tabler:calendar-repeat', text: "I have been meaning to deal with this for months." }
       ]
     },
     quote: {
@@ -117,7 +117,7 @@ const topics: ServiceTopic[] = [
       },
       ...COMMON_FAQS
     ],
-    metaDescription: 'Feeling overwhelmed and need someone to talk to? Book a private, confidential listening session with The Feel Good Centre. No therapy, no advice, just fifty minutes of being properly heard.'
+    metaDescription: 'Feeling overwhelmed and need someone to talk to? Book a private, confidential listening session with The Feel Good Centre. No therapy, no advice, just the space to be properly heard.'
   },
 
   {
@@ -137,12 +137,12 @@ const topics: ServiceTopic[] = [
       heading: 'Burnout does not always look like quitting',
       intro: 'Most people who book are still showing up, still delivering, and quietly running out of road.',
       signs: [
-        { icon: 'tabler:clock-hour-9', text: 'The day ends and you have nothing left for anyone else.' },
-        { icon: 'tabler:device-laptop', text: 'You keep checking messages long after you have logged off.' },
-        { icon: 'tabler:mood-neutral', text: 'Work you used to enjoy now feels like something to survive.' },
-        { icon: 'tabler:zzz', text: 'Sunday evening starts feeling heavy by Sunday afternoon.' },
-        { icon: 'tabler:users', text: 'There is nobody at work you can say any of this to safely.' },
-        { icon: 'tabler:battery-1', text: 'You are managing, but only just, and you know it.' }
+        { icon: 'tabler:battery-1', text: "I am exhausted before the day has even started." },
+        { icon: 'tabler:device-laptop', text: "I check my messages the moment I wake up." },
+        { icon: 'tabler:clock-hour-9', text: "Sunday evening already feels heavy by the afternoon." },
+        { icon: 'tabler:mood-neutral', text: "Work I used to enjoy is now something to get through." },
+        { icon: 'tabler:users', text: "There is nobody at work I can safely say this to." },
+        { icon: 'tabler:home', text: "By the time I get home there is nothing left of me." }
       ]
     },
     quote: {
@@ -161,7 +161,7 @@ const topics: ServiceTopic[] = [
       },
       ...COMMON_FAQS
     ],
-    metaDescription: 'Need someone to talk to about work stress or burnout? Book a private, confidential listening session with The Feel Good Centre. No advice, no reporting, just fifty minutes of being heard.'
+    metaDescription: 'Need someone to talk to about work stress or burnout? Book a private, confidential listening session with The Feel Good Centre. No advice, no reporting, just the space to be heard.'
   },
 
   {
@@ -181,12 +181,12 @@ const topics: ServiceTopic[] = [
       heading: 'You are allowed to still be sad about it',
       intro: 'There is no timeline for this, and no version of it you are supposed to be over by now.',
       signs: [
-        { icon: 'tabler:message-circle', text: 'Your friends have heard the story enough times already.' },
-        { icon: 'tabler:refresh', text: 'You keep replaying the same conversations at night.' },
-        { icon: 'tabler:mood-neutral', text: 'You say you are fine because the alternative takes too long.' },
-        { icon: 'tabler:phone', text: 'You still reach for your phone before remembering.' },
-        { icon: 'tabler:users', text: 'Everyone keeps telling you what you should do next.' },
-        { icon: 'tabler:heart-broken', text: 'You are grieving something other people think was small.' }
+        { icon: 'tabler:message-circle', text: "My friends have heard this story too many times already." },
+        { icon: 'tabler:phone', text: "I still reach for my phone before I remember." },
+        { icon: 'tabler:refresh', text: "I keep replaying the last conversation at night." },
+        { icon: 'tabler:users', text: "Everyone keeps telling me what I should do next." },
+        { icon: 'tabler:mood-neutral', text: "I say I am fine because explaining takes too long." },
+        { icon: 'tabler:heart-broken', text: "People think I should be over this by now." }
       ]
     },
     quote: {
@@ -197,7 +197,7 @@ const topics: ServiceTopic[] = [
     faqs: [
       {
         q: 'Will you tell me whether to get back together?',
-        a: 'No. That decision is yours, and it is not one anyone can make for you in fifty minutes. What you get here is room to hear yourself think about it.'
+        a: 'No. That decision is yours, and it is not one anyone can make for you in a single conversation. What you get here is room to hear yourself think about it.'
       },
       {
         q: 'It has been months. Is it too late to book?',
@@ -225,12 +225,12 @@ const topics: ServiceTopic[] = [
       heading: 'Being surrounded is not the same as being known',
       intro: 'Most people who book have plenty of people around them. That is what makes it hard to explain.',
       signs: [
-        { icon: 'tabler:message-2', text: 'Every conversation stays on the surface and stops there.' },
-        { icon: 'tabler:phone', text: 'You scroll through your contacts and close the app again.' },
-        { icon: 'tabler:users', text: 'You are the one who always reaches out first.' },
-        { icon: 'tabler:mood-neutral', text: 'You feel most alone in a room full of people.' },
-        { icon: 'tabler:clock-hour-9', text: 'Evenings and weekends stretch out longer than they should.' },
-        { icon: 'tabler:heart', text: 'You would like to be asked how you are and actually answer.' }
+        { icon: 'tabler:message-2', text: "I have not had a real conversation in weeks." },
+        { icon: 'tabler:phone', text: "I scroll through my contacts and put the phone down again." },
+        { icon: 'tabler:users', text: "I am always the one who reaches out first." },
+        { icon: 'tabler:mood-neutral', text: "I feel most alone in a room full of people." },
+        { icon: 'tabler:clock-hour-9', text: "Weekends are the hardest part of the week." },
+        { icon: 'tabler:heart', text: "I want someone to ask how I am and actually mean it." }
       ]
     },
     quote: {
@@ -249,7 +249,7 @@ const topics: ServiceTopic[] = [
       },
       ...COMMON_FAQS
     ],
-    metaDescription: 'Feeling lonely and have no one to talk to? Book a private, confidential listening session with The Feel Good Centre. Fifty minutes of real attention, with no judgment.'
+    metaDescription: 'Feeling lonely and have no one to talk to? Book a private, confidential listening session with The Feel Good Centre. Real attention, with no judgment.'
   },
 
   {
@@ -269,12 +269,12 @@ const topics: ServiceTopic[] = [
       heading: 'Keeping the peace has a cost',
       intro: 'You can be close to your family and still have nowhere in the house to be honest.',
       signs: [
-        { icon: 'tabler:masks-theater', text: 'You edit yourself before you speak at home.' },
-        { icon: 'tabler:scale', text: 'Their expectations and your own pull in opposite directions.' },
-        { icon: 'tabler:message-2', text: 'Every honest conversation turns into an argument.' },
-        { icon: 'tabler:mood-neutral', text: 'You agree to things just to end the discussion.' },
-        { icon: 'tabler:heart', text: 'You feel guilty for wanting something different.' },
-        { icon: 'tabler:door', text: 'There is nowhere at home where you can put it down.' }
+        { icon: 'tabler:masks-theater', text: "I edit myself before I speak at home." },
+        { icon: 'tabler:message-2', text: "Every honest conversation turns into an argument." },
+        { icon: 'tabler:scale', text: "They want one life for me and I want another." },
+        { icon: 'tabler:mood-neutral', text: "I agree to things just to end the discussion." },
+        { icon: 'tabler:heart', text: "I feel guilty for wanting something different." },
+        { icon: 'tabler:door', text: "There is nowhere in this house to be honest." }
       ]
     },
     quote: {
@@ -313,16 +313,16 @@ const topics: ServiceTopic[] = [
       heading: 'You do not need a plan to be allowed to talk about it',
       intro: 'Most people who book are not stuck in a crisis. They are stuck in a question nobody around them takes seriously.',
       signs: [
-        { icon: 'tabler:arrows-shuffle', text: 'You keep changing your mind and getting nowhere.' },
-        { icon: 'tabler:mood-neutral', text: 'On paper everything is fine, and it still does not fit.' },
-        { icon: 'tabler:clock-hour-9', text: 'You are waiting for certainty that never quite arrives.' },
-        { icon: 'tabler:users', text: 'Everyone you ask gives you their answer, not yours.' },
-        { icon: 'tabler:compass', text: 'You are comparing your timeline to everyone else’s.' },
-        { icon: 'tabler:message-2', text: 'You have not said the honest version of this to anyone.' }
+        { icon: 'tabler:compass', text: "Everyone else seems to have it figured out." },
+        { icon: 'tabler:mood-neutral', text: "On paper it is all fine. It still does not fit." },
+        { icon: 'tabler:arrows-shuffle', text: "I keep changing my mind and getting nowhere." },
+        { icon: 'tabler:clock-hour-9', text: "I am waiting to feel sure, and it never comes." },
+        { icon: 'tabler:users', text: "Everyone I ask gives me their answer, not mine." },
+        { icon: 'tabler:message-2', text: "I have not said any of this out loud to anyone." }
       ]
     },
     quote: {
-      text: 'I went in not really knowing what I wanted to say, and that turned out to be completely fine. Kinjal never rushed me or tried to hand me a solution. She just stayed with me while I worked it out loud.',
+      text: 'In today\'s chaotic and busy times, Kinjal is someone who can calm you down in a few minutes. With her by my side I have learnt how to become patient in my most difficult times. She has helped me keep my hopes alive in the most positive manner.',
       author: 'Kinnari Kamdar',
       avatar: '/images/reviews/kinnari-kamdar.jpg'
     },
@@ -357,12 +357,12 @@ const topics: ServiceTopic[] = [
       heading: 'Homesick is not the same as regretting it',
       intro: 'You can be glad you moved and still find it lonelier than you expected.',
       signs: [
-        { icon: 'tabler:world', text: 'The time difference makes every real conversation a scheduling problem.' },
-        { icon: 'tabler:phone', text: 'You keep calls home cheerful so nobody worries.' },
-        { icon: 'tabler:users', text: 'You have people to go out with, but nobody who really knows you.' },
-        { icon: 'tabler:home', text: 'Small everyday things suddenly remind you of home.' },
-        { icon: 'tabler:mood-neutral', text: 'You feel guilty for finding it hard when you chose this.' },
-        { icon: 'tabler:message-2', text: 'You have stopped mentioning it because there is no one to tell.' }
+        { icon: 'tabler:phone', text: "I tell them it is going great." },
+        { icon: 'tabler:world', text: "The time difference eats every real conversation." },
+        { icon: 'tabler:users', text: "I know people here, but nobody really knows me." },
+        { icon: 'tabler:mood-neutral', text: "I thought I would feel settled by now." },
+        { icon: 'tabler:home', text: "Small everyday things suddenly remind me of home." },
+        { icon: 'tabler:message-2', text: "I do not want to worry anyone back home." }
       ]
     },
     quote: {
@@ -391,7 +391,7 @@ const topics: ServiceTopic[] = [
       eyebrow: 'If today has just been one of those days',
       heading: 'Having one of those days where you just need someone?',
       intro: 'Nothing dramatic has happened. You would simply like to talk to someone who is not busy, not distracted, and not waiting for their turn.',
-      invitation: 'Book a private listening session and take fifty minutes that belong entirely to you.',
+      invitation: 'Book a private listening session and take some time that belongs entirely to you.',
       image: '/images/service-detail/someone-to-talk-to.jpg',
       imageAlt: 'A woman sitting cross-legged on her bed, mid conversation'
     },
@@ -401,12 +401,12 @@ const topics: ServiceTopic[] = [
       heading: 'You do not need a reason big enough to justify it',
       intro: 'Most people who book are not in crisis. They are simply carrying an ordinary week and would like to set it down.',
       signs: [
-        { icon: 'tabler:message-2', text: 'You start typing a message to a friend, then delete it.' },
-        { icon: 'tabler:clock-hour-9', text: 'Everyone around you is busy, and it never seems like the moment.' },
-        { icon: 'tabler:mood-neutral', text: 'Nothing is wrong exactly, and something is still off.' },
-        { icon: 'tabler:ear', text: 'You want to be listened to, not fixed.' },
-        { icon: 'tabler:moon-stars', text: 'It all gets louder once the day goes quiet.' },
-        { icon: 'tabler:heart', text: 'You would like one conversation that is about you.' }
+        { icon: 'tabler:message-2', text: "I start typing a message to a friend, then delete it." },
+        { icon: 'tabler:clock-hour-9', text: "Everyone is busy and it never seems like the moment." },
+        { icon: 'tabler:mood-neutral', text: "Nothing is wrong exactly, and something is still off." },
+        { icon: 'tabler:ear', text: "I want to be listened to, not fixed." },
+        { icon: 'tabler:moon-stars', text: "It all gets louder once the day goes quiet." },
+        { icon: 'tabler:heart', text: "I would like one conversation that is about me." }
       ]
     },
     quote: {
@@ -417,7 +417,7 @@ const topics: ServiceTopic[] = [
     faqs: [
       {
         q: 'My problem feels too small for this.',
-        a: 'It is not. There is no minimum. If it is on your mind often enough to have read this far, it is worth fifty minutes.'
+        a: 'It is not. There is no minimum. If it is on your mind often enough to have read this far, it is worth talking about.'
       },
       {
         q: 'What if I go quiet, or do not know what to say?',
@@ -425,7 +425,7 @@ const topics: ServiceTopic[] = [
       },
       ...COMMON_FAQS
     ],
-    metaDescription: 'Just need someone to talk to? Book a private, confidential listening session with The Feel Good Centre. Fifty minutes of undivided attention, with no judgment and no advice.'
+    metaDescription: 'Just need someone to talk to? Book a private, confidential listening session with The Feel Good Centre. Undivided attention, with no judgment and no advice.'
   },
 
   {
@@ -445,16 +445,16 @@ const topics: ServiceTopic[] = [
       heading: 'Being dependable is not the same as being fine',
       intro: 'The people who hold everything together are usually the last ones anyone checks on.',
       signs: [
-        { icon: 'tabler:phone', text: 'You are the first person everyone calls when something goes wrong.' },
-        { icon: 'tabler:mood-neutral', text: 'Nobody asks how you are, because they assume you are fine.' },
-        { icon: 'tabler:shield', text: 'You downplay your own week so it does not add to anyone’s load.' },
-        { icon: 'tabler:message-2', text: 'Saying you are struggling feels like letting people down.' },
-        { icon: 'tabler:battery-1', text: 'You give advice all day and have nowhere to take your own.' },
-        { icon: 'tabler:heart', text: 'You would like, just once, to be on the other side of the conversation.' }
+        { icon: 'tabler:phone', text: "I am the first person everyone calls when something goes wrong." },
+        { icon: 'tabler:mood-neutral', text: "Nobody asks how I am, because they assume I am fine." },
+        { icon: 'tabler:shield', text: "I play down my own week so it does not add to anyone's load." },
+        { icon: 'tabler:message-2', text: "Saying I am struggling feels like letting people down." },
+        { icon: 'tabler:battery-1', text: "I give advice all day and have nowhere to take my own." },
+        { icon: 'tabler:heart', text: "Just once, I would like to be on the other side of it." }
       ]
     },
     quote: {
-      text: 'As someone who is used to being the person others lean on, it is strange to be on the other side of the conversation. Kinjal made that easy. No judgement and no advice I had not asked for, just genuine attention.',
+      text: 'Kinjal is very sweet, genuine and most importantly she is there to listen. No judgements, no unnecessary advices. Her calmness helped me stay calm and it is indeed feel good center.',
       author: 'Harshit Shah',
       avatar: '/images/reviews/harshit-shah.jpg'
     },
@@ -469,7 +469,7 @@ const topics: ServiceTopic[] = [
       },
       ...COMMON_FAQS
     ],
-    metaDescription: 'Always the strong one with nowhere to put it down? Book a private, confidential listening session with The Feel Good Centre. Fifty minutes where you are the one being heard.'
+    metaDescription: 'Always the strong one with nowhere to put it down? Book a private, confidential listening session with The Feel Good Centre. A conversation where you are the one being heard.'
   }
 ]
 

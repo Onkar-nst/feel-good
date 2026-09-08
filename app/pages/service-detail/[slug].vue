@@ -158,7 +158,7 @@
                 <div class="relative">
                     <div class="eyebrow mb-5 text-peach-ink/70!">How a session goes</div>
                     <h2 class="h-display text-peach-ink lg:text-4xl md:text-3xl text-2xl mb-9 lg:max-w-[22ch]">
-                        Fifty minutes that belong entirely to you
+                        Time that belongs entirely to you
                     </h2>
 
                     <ol class="grid md:grid-cols-2 lg:grid-cols-4 gap-7" data-reveal-group>

@@ -138,18 +138,17 @@ const reviewData: ReviewType[] = [
     author: 'Jinal',
     avatar: '/images/reviews/jinal.jpg'
   },
-  // NOTE: placeholder copy pending the clients approved wording for these two.
   {
-    title: 'I left the call lighter than I joined it',
+    title: 'A healer you want on your speed dial 😎',
     date: 'November 24, 2025',
-    content: 'I went in not really knowing what I wanted to say, and that turned out to be completely fine. Kinjal never rushed me or tried to hand me a solution. She just stayed with me while I worked it out loud. By the end of the call the same things were still on my plate, but they felt far less heavy.',
+    content: 'In today\'s chaotic & busy times, Kinjal is someone who can calm you down in few minutes. One of the most purest & generous soul I have met in my life. With her by my side I have learnt how to become patient in my most difficult times. She has helped me keep my hopes alive in the most positive manner. If you haven\'t spoken to her yet, now is the time 🙌🤩',
     author: 'Kinnari Kamdar',
     avatar: '/images/reviews/kinnari-kamdar.jpg'
   },
   {
-    title: 'No judgement, just space to say it out loud',
+    title: 'One stop solution to all my problems',
     date: 'November 11, 2025',
-    content: 'As someone who is used to being the person others lean on, it is strange to be on the other side of the conversation. Kinjal made that easy. There was no judgement and no advice I had not asked for, just genuine attention. It is honestly a relief to have somewhere to put things down for a while.',
+    content: 'Kinjal is very sweet, genuine and most importantly she is there to listen. No judgements, no unnecessary advices. Her calmness helped me stay calm and it is indeed feel good center.',
     author: 'Harshit Shah',
     avatar: '/images/reviews/harshit-shah.jpg'
   }
