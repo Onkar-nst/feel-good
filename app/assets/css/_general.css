@@ -196,6 +196,22 @@ textarea {
     }
 
 
+    /* Signature — the source PNG is a hairline script that all but disappears
+       at the size we render it. Stacked zero-blur drop shadows fatten the
+       stroke by a fraction of a pixel in each direction, and the contrast
+       bump deepens the ink, without needing a redrawn asset. */
+
+    .signature {
+        filter:
+            contrast(1.45)
+            drop-shadow(0.4px 0 0 currentColor)
+            drop-shadow(-0.4px 0 0 currentColor)
+            drop-shadow(0 0.4px 0 currentColor)
+            drop-shadow(0 -0.4px 0 currentColor);
+        color: var(--color-peach-ink, #4a4038);
+    }
+
+
     /* Grain — a faint paper tooth over flat colour fields, so large warm
        areas don't read as plastic. */
 

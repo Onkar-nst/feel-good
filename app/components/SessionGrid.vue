@@ -62,9 +62,9 @@
         <NuxtLink
             to="/contact"
             data-reveal="up"
-            class="card-lift group relative overflow-hidden rounded-2xl p-7 flex flex-col justify-center gap-4 bg-linear-to-br from-cream via-mint-soft to-mint/70 border border-mint/35"
+            class="card-lift group relative overflow-hidden rounded-2xl p-7 flex flex-col justify-center gap-4 bg-peach-soft border border-peach/35"
         >
-            <div class="aura animate-breathe size-52 -bottom-16 -end-10 bg-mint/60"></div>
+            <div class="aura animate-breathe size-44 -bottom-14 -end-8 bg-peach/20"></div>
 
             <div class="relative">
                 <h3 class="mb-2 text-2xl h-display">Not sure which one?</h3>

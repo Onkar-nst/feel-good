@@ -4,9 +4,11 @@
             <div class="relative overflow-hidden rounded-3xl bg-primary text-center grain lg:py-20 lg:px-24 py-12 px-5"
                  data-reveal="scale">
 
+                <!-- Kept faint deliberately: the band should read as one solid butter
+                     panel, with the auras only softening the corners. -->
                 <div class="absolute inset-0" aria-hidden="true">
-                    <div class="aura animate-drift size-96 -top-24 -start-16 bg-white/45"></div>
-                    <div class="aura animate-drift delay-2 size-80 -bottom-20 -end-10 bg-mint-soft/70"></div>
+                    <div class="aura animate-drift size-72 -top-20 -start-14 bg-white/15"></div>
+                    <div class="aura animate-drift delay-2 size-64 -bottom-16 -end-8 bg-peach-soft/20"></div>
                 </div>
 
                 <div class="relative">

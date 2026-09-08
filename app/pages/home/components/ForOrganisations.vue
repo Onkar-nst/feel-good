@@ -2,26 +2,26 @@
     <section class="pt-6 md:pt-7 lg:pt-8 pb-6 md:pb-7 lg:pb-8">
         <div class="container max-w-315!">
 
-            <div class="relative overflow-hidden rounded-3xl bg-mint grain" data-reveal="scale">
+            <div class="relative overflow-hidden rounded-3xl bg-peach grain" data-reveal="scale">
 
                 <div class="absolute inset-0" aria-hidden="true">
-                    <div class="aura animate-drift size-96 -top-28 -start-20 bg-white/45"></div>
-                    <div class="aura animate-drift delay-2 size-80 -bottom-24 start-1/3 bg-primary-soft/60"></div>
+                    <div class="aura animate-drift size-72 -top-24 -start-16 bg-white/15"></div>
+                    <div class="aura animate-drift delay-2 size-64 -bottom-20 start-1/3 bg-primary-soft/20"></div>
                 </div>
 
                 <div class="relative grid lg:grid-cols-2 items-stretch">
 
                     <!-- ── Copy ─────────────────────────────────────── -->
                     <div class="lg:p-14 md:p-10 p-7">
-                        <div class="eyebrow mb-5 text-mint-ink/70!">
+                        <div class="eyebrow mb-5 text-peach-ink/70!">
                             For Organisations
                         </div>
 
-                        <h2 class="h-display text-mint-ink lg:text-4xl md:text-3xl text-2xl mb-4">
+                        <h2 class="h-display text-peach-ink lg:text-4xl md:text-3xl text-2xl mb-4">
                             Corporate Emotional Wellbeing
                         </h2>
 
-                        <p class="text-mint-ink/85 mb-8">
+                        <p class="text-peach-ink/85 mb-8">
                             Your people carry more than their workload. We bring the same confidential,
                             judgment free listening into teams, so nobody has to hold it together alone
                             just to get through the week.
@@ -31,10 +31,10 @@
                             <li v-for="(item, idx) in offeringData" :key="idx"
                                 data-reveal="left"
                                 class="group flex items-start gap-3.5">
-                                <span class="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-white/70 text-mint-ink transition-all duration-500 ease-soft group-hover:bg-white group-hover:scale-110">
+                                <span class="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-white/70 text-peach-ink transition-all duration-500 ease-soft group-hover:bg-white group-hover:scale-110">
                                     <Icon icon="tabler:check" class="size-3.5" />
                                 </span>
-                                <span class="text-mint-ink/85 transition-colors duration-500 group-hover:text-mint-ink">{{ item }}</span>
+                                <span class="text-peach-ink/85 transition-colors duration-500 group-hover:text-peach-ink">{{ item }}</span>
                             </li>
                         </ul>
 
@@ -46,7 +46,7 @@
                             </NuxtLink>
                         </div>
 
-                        <p class="mt-7 text-sm text-mint-ink/65">
+                        <p class="mt-7 text-sm text-peach-ink/65">
                             Sessions stay between us and your people. Organisations never hear what was said.
                         </p>
                     </div>

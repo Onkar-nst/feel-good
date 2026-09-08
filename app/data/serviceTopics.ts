@@ -85,7 +85,7 @@ const topics: ServiceTopic[] = [
       intro: 'Everything at once, and no room to put any of it down. You are not being dramatic, and you do not need a reason big enough to justify it.',
       invitation: 'Book a private listening session and say it out loud to someone whose only job is to hear you.',
       image: '/images/service-detail/feeling-overwhelmed.jpg',
-      imageAlt: 'A woman resting her head against the sofa in a bright, quiet room'
+      imageAlt: 'A woman sunk back into her sofa by the window, eyes closed'
     },
     whatsappText: "Hi! I've been feeling overwhelmed and would like to know more about a listening session.",
     recognition: {
@@ -173,7 +173,7 @@ const topics: ServiceTopic[] = [
       intro: 'Everyone has an opinion about what you should do next. Sometimes you just need to say how it actually feels, without anyone taking sides.',
       invitation: 'Book a private listening session and talk it through with someone who will not tell you what to do.',
       image: '/images/service-detail/breakup-relationship-support.jpg',
-      imageAlt: 'A woman sitting on the floor beside her sofa, taking a quiet moment'
+      imageAlt: 'A woman sitting on the floor against her sofa, arms folded in'
     },
     whatsappText: "Hi! I'm going through a breakup and would like to know more about a listening session.",
     recognition: {
@@ -349,7 +349,7 @@ const topics: ServiceTopic[] = [
       intro: 'New city, new time zone, and nobody who knew you before. You do not want to worry the people back home, so you tell them it is going well.',
       invitation: 'Book a private listening session and talk to someone who has time for the whole story.',
       image: '/images/service-detail/living-away-from-home.jpg',
-      imageAlt: 'A woman alone in a large, unfamiliar apartment'
+      imageAlt: 'A woman on a video call to people back home from a bright, unfamiliar flat'
     },
     whatsappText: "Hi! I'm living away from home and would like to know more about a listening session.",
     recognition: {

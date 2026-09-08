@@ -226,12 +226,12 @@ template — no approximations:
 |---|---|---|---|
 | 1. Primary | **Butter yellow** | `#F6CF71` | CTAs, buttons, the closing CTA band, highlights |
 | 2. Accent | **Blush pink** | `#FE88B1` | Emphasis text, numerals, the warmer emotional beats |
-| 3. Calm | **Mint green** | `#8BE0A4` | Safe-space surfaces, icon chips, For Organisations, footer |
+| 3. Calm | **Peach** | `#F89C74` | Safe-space surfaces, icon chips, For Organisations, footer |
 
 Plus warm neutrals that don't count as colour: cream `#FAF6F1`, cream-deep `#F3ECE3`,
 white, and the warm stone ink scale.
 
-**Retired:** sage `#6E8C84`, lilac `#DCB0F2`, periwinkle `#9EB9F3`, peach `#F89C74`,
+**Retired:** sage `#6E8C84`, lilac `#DCB0F2`, periwinkle `#9EB9F3`, mint `#8BE0A4`,
 teal `#66C5CC`. Their tokens no longer exist, so they cannot creep back in by accident.
 
 **Rule going forward:** if a surface needs to feel different, reach for a `-soft` tint or a
@@ -246,6 +246,8 @@ on the site is now literally from the client's palette.
 
 ## Change log
 
+- **8 Sep 2026** — Third colour changed again, mint `#8BE0A4` to peach `#F89C74`, at the
+  client's request. Token is now `--color-peach` with its `-soft` and `-ink` pair.
 - **6 Sep 2026** — Third colour changed from teal `#66C5CC` to mint green `#8BE0A4` at the
   client's request: calmer and more wellness-oriented alongside the cream, butter and
   blush. Same token shape (`--color-mint`, `-soft`, `-ink`), so the swap was one edit.

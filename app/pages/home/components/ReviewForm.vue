@@ -4,9 +4,7 @@
             <div class="grid lg:grid-cols-2 lg:gap-16 gap-14 items-start">
 
                 <!-- ── Review form ──────────────────────────────────── -->
-                <div class="relative overflow-hidden rounded-3xl border border-default-200/70 bg-linear-to-br from-cream via-white to-mint-soft/70 lg:p-10 p-6 lg:sticky lg:top-28 lg:self-start shadow-[0_24px_60px_-40px_rgb(28_22_20/0.35)]" data-reveal="up">
-
-                    <div class="aura animate-breathe size-64 -top-28 -end-20 bg-mint/35" aria-hidden="true"></div>
+                <div class="relative overflow-hidden rounded-3xl border border-default-200/70 bg-cream lg:p-10 p-6 lg:sticky lg:top-28 lg:self-start shadow-[0_24px_60px_-40px_rgb(28_22_20/0.35)]" data-reveal="up">
 
                     <div class="relative">
                         <div class="eyebrow mb-4">Share Your Experience</div>

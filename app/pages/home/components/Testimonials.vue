@@ -29,19 +29,19 @@
                     :class="[
                         'card-lift group relative overflow-hidden break-inside-avoid mb-5 rounded-2xl p-7 flex flex-col gap-5',
                         review.featured
-                            ? 'bg-linear-to-br from-cream via-mint-soft to-mint/70 border border-mint/35'
+                            ? 'bg-peach-soft border border-peach/35'
                             : 'bg-cream border border-default-200'
                     ]"
                 >
                     <Icon icon="tabler:quote"
                           :class="[
                               'absolute -top-1 end-4 size-14 rotate-180 transition-transform duration-700 ease-soft group-hover:scale-110',
-                              review.featured ? 'text-mint/50' : 'text-pink/10'
+                              review.featured ? 'text-peach/50' : 'text-pink/10'
                           ]" />
 
                     <div class="relative flex gap-0.5">
                         <Icon v-for="n in 5" :key="n" icon="tabler:star-filled"
-                              :class="['size-4', review.featured ? 'text-mint-ink/70' : 'text-pink']" />
+                              :class="['size-4', review.featured ? 'text-peach-ink/70' : 'text-pink']" />
                     </div>
 
                     <div class="relative">
@@ -59,14 +59,14 @@
 
                     <div :class="[
                         'relative mt-auto flex items-center gap-3 pt-4 border-t',
-                        review.featured ? 'border-mint/45' : 'border-default-200'
+                        review.featured ? 'border-peach/45' : 'border-default-200'
                     ]">
                         <img v-if="review.avatar" :src="review.avatar" :alt="review.author"
                              class="size-10 shrink-0 rounded-full object-cover object-top" loading="lazy" />
 
                         <span v-else :class="[
                             'flex size-10 shrink-0 items-center justify-center rounded-full font-heading text-base',
-                            review.featured ? 'bg-mint/40 text-mint-ink' : 'bg-primary-soft text-pink'
+                            review.featured ? 'bg-peach/40 text-peach-ink' : 'bg-primary-soft text-pink'
                         ]">
                             {{ initials(review.author) }}
                         </span>

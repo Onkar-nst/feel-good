@@ -3,7 +3,7 @@
 
         <div class="absolute inset-0 -z-10" aria-hidden="true">
             <div class="aura animate-drift size-[30rem] -top-36 -start-32 bg-primary-soft/60"></div>
-            <div class="aura animate-drift delay-2 size-80 -bottom-24 -end-16 bg-mint-soft/70"></div>
+            <div class="aura animate-drift delay-2 size-80 -bottom-24 -end-16 bg-peach-soft/70"></div>
         </div>
 
         <div class="container relative">
@@ -42,7 +42,7 @@
             </div>
 
             <!-- The point of the whole section, said plainly. -->
-            <div class="mt-10 mx-auto lg:max-w-[62ch] rounded-2xl bg-white border border-mint/45 p-7 text-center"
+            <div class="mt-10 mx-auto lg:max-w-[62ch] rounded-2xl bg-white border border-peach/45 p-7 text-center"
                  data-reveal="up">
                 <p class="text-lg text-default-950">
                     None of this is an emergency. That is exactly the point &mdash;

@@ -2,7 +2,7 @@
     <section class="pt-10 pb-10 md:pt-14 md:pb-14 lg:pt-16 lg:pb-16 relative overflow-hidden">
 
         <div class="absolute inset-0 -z-10" aria-hidden="true">
-            <div class="aura animate-drift delay-1 size-[28rem] -top-32 -end-28 bg-mint-soft/70"></div>
+            <div class="aura animate-drift delay-1 size-[28rem] -top-32 -end-28 bg-peach-soft/70"></div>
             <div class="aura animate-breathe delay-3 size-72 -bottom-20 -start-20 bg-primary-soft/50"></div>
         </div>
 
@@ -33,7 +33,7 @@
                     data-reveal="up"
                     class="card-lift card-wash group relative overflow-hidden bg-white rounded-2xl p-6 border border-default-200/70 hover:border-primary/30"
                 >
-                    <span class="relative mb-5 flex size-11 items-center justify-center rounded-full bg-mint-soft text-mint transition-transform duration-500 ease-soft group-hover:scale-110">
+                    <span class="relative mb-5 flex size-11 items-center justify-center rounded-full bg-peach-soft text-peach transition-transform duration-500 ease-soft group-hover:scale-110">
                         <Icon :icon="value.icon" class="size-5.5" />
                     </span>
 
@@ -44,12 +44,12 @@
                 </div>
 
                 <!-- Sixth cell keeps the grid whole and carries the confidentiality promise -->
-                <div class="relative overflow-hidden rounded-2xl bg-mint-soft border border-mint/35 p-6 flex flex-col justify-center"
+                <div class="relative overflow-hidden rounded-2xl bg-peach-soft border border-peach/35 p-6 flex flex-col justify-center"
                      data-reveal="up">
-                    <div class="aura animate-breathe size-44 -bottom-14 -end-8 bg-mint/50"></div>
+                    <div class="aura animate-breathe size-44 -bottom-14 -end-8 bg-peach/50"></div>
 
                     <div class="relative">
-                        <Icon icon="tabler:lock" class="mb-4 size-6 text-mint-ink" />
+                        <Icon icon="tabler:lock" class="mb-4 size-6 text-peach-ink" />
                         <h3 class="mb-1.5 text-lg h-display leading-snug">Nothing leaves the room</h3>
                         <p class="text-sm text-default-600">
                             Nothing is recorded, written down, or repeated. What you say here stays here.
@@ -79,7 +79,7 @@
 
                 <div class="card-lift card-wash group relative overflow-hidden border border-default-200 rounded-2xl p-7 lg:p-9 bg-cream hover:border-primary/30"
                      data-reveal="up" style="--reveal-delay:120ms">
-                    <span class="relative mb-6 flex size-11 items-center justify-center rounded-full bg-mint-soft text-mint">
+                    <span class="relative mb-6 flex size-11 items-center justify-center rounded-full bg-peach-soft text-peach">
                         <Icon icon="tabler:eye-heart" class="size-5.5" />
                     </span>
 

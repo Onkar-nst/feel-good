@@ -3,7 +3,7 @@
     <section class="pt-10 md:pt-14 lg:pt-16 pb-6 md:pb-7 lg:pb-8 relative overflow-hidden">
         <div class="absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
             <div class="aura animate-drift size-[34rem] -top-44 -start-40 bg-primary-soft/60"></div>
-            <div class="aura animate-drift delay-2 size-[26rem] top-1/4 -end-32 bg-mint-soft/70"></div>
+            <div class="aura animate-drift delay-2 size-[26rem] top-1/4 -end-32 bg-peach-soft/70"></div>
         </div>
 
         <div class="container relative">
@@ -69,7 +69,7 @@
 
             <!-- Quiet white cards on a hairline grid: one neutral surface, a single
                  muted icon each, and the rules doing the separating instead of colour. -->
-            <div class="mx-auto lg:max-w-5xl overflow-hidden rounded-2xl border border-default-200 bg-white"
+            <div class="mx-auto lg:max-w-6xl overflow-hidden rounded-2xl border border-default-200 bg-white"
                  data-reveal-group>
                 <div class="grid md:grid-cols-2 gap-px bg-default-200/70">
                     <div v-for="(sign, idx) in topic.recognition.signs" :key="idx"
@@ -78,7 +78,7 @@
                         <span class="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-full border border-default-200 text-default-500 transition-colors duration-500 ease-soft group-hover:border-default-300 group-hover:text-default-800">
                             <Icon :icon="sign.icon" class="size-4.5" />
                         </span>
-                        <p class="text-lg leading-relaxed text-default-700">{{ sign.text }}</p>
+                        <p class="text-lg leading-relaxed text-default-950">{{ sign.text }}</p>
                     </div>
                 </div>
             </div>
@@ -149,25 +149,25 @@
     <!-- ── How a session goes ───────────────────────────────────── -->
     <section class="pt-6 md:pt-7 lg:pt-8 pb-6 md:pb-7 lg:pb-8 relative overflow-hidden">
         <div class="container max-w-315!">
-            <div class="relative overflow-hidden rounded-3xl bg-mint grain lg:p-14 md:p-10 p-7" data-reveal="scale">
+            <div class="relative overflow-hidden rounded-3xl bg-peach grain lg:p-14 md:p-10 p-7" data-reveal="scale">
                 <div class="absolute inset-0" aria-hidden="true">
-                    <div class="aura animate-drift size-96 -top-28 -start-20 bg-white/45"></div>
-                    <div class="aura animate-drift delay-2 size-80 -bottom-24 start-1/3 bg-primary-soft/60"></div>
+                    <div class="aura animate-drift size-72 -top-24 -start-16 bg-white/15"></div>
+                    <div class="aura animate-drift delay-2 size-64 -bottom-20 start-1/3 bg-primary-soft/20"></div>
                 </div>
 
                 <div class="relative">
-                    <div class="eyebrow mb-5 text-mint-ink/70!">How a session goes</div>
-                    <h2 class="h-display text-mint-ink lg:text-4xl md:text-3xl text-2xl mb-9 lg:max-w-[22ch]">
+                    <div class="eyebrow mb-5 text-peach-ink/70!">How a session goes</div>
+                    <h2 class="h-display text-peach-ink lg:text-4xl md:text-3xl text-2xl mb-9 lg:max-w-[22ch]">
                         Fifty minutes that belong entirely to you
                     </h2>
 
                     <ol class="grid md:grid-cols-2 lg:grid-cols-4 gap-7" data-reveal-group>
                         <li v-for="(step, idx) in STEPS" :key="idx" data-reveal="up">
-                            <span class="mb-4 flex size-9 items-center justify-center rounded-full bg-white/75 font-heading text-mint-ink">
+                            <span class="mb-4 flex size-9 items-center justify-center rounded-full bg-white/75 font-heading text-peach-ink">
                                 {{ idx + 1 }}
                             </span>
-                            <h3 class="h-display text-mint-ink! text-lg mb-2">{{ step.title }}</h3>
-                            <p class="text-sm text-mint-ink/80">{{ step.body }}</p>
+                            <h3 class="h-display text-peach-ink! text-lg mb-2">{{ step.title }}</h3>
+                            <p class="text-sm text-peach-ink/80">{{ step.body }}</p>
                         </li>
                     </ol>
 
@@ -180,7 +180,7 @@
                                   class="size-4 shrink-0 transition-transform duration-500 ease-soft group-hover:translate-x-1" />
                         </button>
 
-                        <p class="text-sm text-mint-ink/75">
+                        <p class="text-sm text-peach-ink/75">
                             Real availability, confirmed straight away.
                         </p>
                     </div>

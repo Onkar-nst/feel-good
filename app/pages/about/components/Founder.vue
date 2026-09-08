@@ -23,11 +23,11 @@
                         </div>
 
                         <div class="animate-float mt-4 sm:mt-0 sm:absolute sm:end-0 sm:top-10 sm:w-[47%] rounded-2xl bg-white p-5 shadow-[0_20px_50px_-24px_rgb(28_22_20/0.45)]">
-                            <div class="mb-2.5 flex size-9 items-center justify-center rounded-full bg-mint-soft text-mint">
+                            <div class="mb-2.5 flex size-9 items-center justify-center rounded-full bg-peach-soft text-peach">
                                 <Icon icon="tabler:ear" class="size-5" />
                             </div>
                             <p class="text-sm text-default-700">
-                                &ldquo;I'm not here to fix you. I'm here to hear you.&rdquo;
+                                &ldquo;Sometimes, being heard is enough to feel lighter.&rdquo;
                             </p>
                         </div>
 
@@ -99,7 +99,7 @@
                     <!-- Signature -->
                     <div class="mt-9 flex flex-wrap items-end justify-between gap-6" data-reveal="up">
                         <div>
-                            <img src="/images/other/sign-kinjal.png" alt="Kinjal Shah's signature" class="h-14">
+                            <img src="/images/other/sign-kinjal.png" alt="Kinjal Shah's signature" class="signature h-14">
 
                             <div class="mt-3">
                                 <h3 class="text-lg h-display mb-1">Kinjal Shah</h3>

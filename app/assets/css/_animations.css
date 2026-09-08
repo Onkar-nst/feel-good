@@ -177,7 +177,7 @@ html.reveal-ready [data-reveal].is-visible {
     inset-inline: 0;
     height: 2px;
     z-index: 60;
-    background: linear-gradient(to right, var(--color-primary), var(--color-mint));
+    background: linear-gradient(to right, var(--color-primary), var(--color-peach));
     transform-origin: 0 50%;
     transform: scaleX(0);
     pointer-events: none;

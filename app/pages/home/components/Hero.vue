@@ -110,8 +110,8 @@
                                     You're not alone in how you feel
                                 </div>
 
-                                <img src="/images/other/hero-calm-2.jpg"
-                                     alt="Two friends laughing together over a conversation"
+                                <img src="/images/other/cafe-conversation.jpg"
+                                     alt="Two friends talking over coffee at a cafe table"
                                      class="mt-4 rounded-xl">
                             </div>
                         </div>

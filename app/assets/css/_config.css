@@ -15,7 +15,7 @@
 
          1. Butter  #F6CF71  primary   warmth, CTAs, highlights
          2. Blush   #FE88B1  accent    emphasis, numerals, emotional beats
-         3. Mint    #8BE0A4  calm      safe-space surfaces, icon chips
+         3. Peach   #F89C74  calm      safe-space surfaces, icon chips
 
        All three are LIGHT colours, so text never sits on them in white —
        each carries its own -ink. Every ink pairing clears 5.6:1.
@@ -31,10 +31,10 @@
     --color-pink-soft: #FFD9E4;
     --color-pink-ink: #5A1F33;
 
-    /* 3 — Mint green. The calm counterweight to the two warm tones. */
-    --color-mint: #8BE0A4;
-    --color-mint-soft: #DFF5E6;
-    --color-mint-ink: #0F3D22;
+    /* 3 — Peach. Warmer than the mint it replaced, at the client's request. */
+    --color-peach: #F89C74;
+    --color-peach-soft: #FDE6DA;
+    --color-peach-ink: #3B1606;
 
     /* Warm neutrals — grounds, not colours. */
     --color-cream: #FAF6F1;

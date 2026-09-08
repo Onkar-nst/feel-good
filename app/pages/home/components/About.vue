@@ -53,7 +53,7 @@
 
                     <!-- Floating card, drifting gently over the portrait -->
                     <div class="animate-float absolute -bottom-5 -start-3 md:start-6 max-w-[17rem] rounded-2xl bg-white p-5 shadow-[0_20px_50px_-24px_rgb(28_22_20/0.45)]">
-                        <div class="mb-2.5 flex size-9 items-center justify-center rounded-full bg-mint-soft text-mint">
+                        <div class="mb-2.5 flex size-9 items-center justify-center rounded-full bg-peach-soft text-peach">
                             <Icon icon="tabler:ear" class="size-5" />
                         </div>
                         <p class="text-sm text-default-700">
