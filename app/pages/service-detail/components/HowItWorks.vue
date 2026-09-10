@@ -27,7 +27,7 @@
                             </div>
                         </div>
 
-                        <NuxtLink to="/contact" class="group py-5 px-10 inline-flex text-nowrap items-center justify-center rounded-lg bg-white text-primary-ink font-medium transition-all">
+                        <NuxtLink to="/contact" class="group py-5 px-10 inline-flex text-nowrap items-center justify-center rounded-lg bg-white text-default-950 font-medium transition-all">
                             <span class="relative block overflow-hidden">
                                 <span class="block group-hover:-translate-y-7 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">
                                     Contact us

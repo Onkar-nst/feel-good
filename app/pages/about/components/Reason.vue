@@ -44,7 +44,7 @@
                             <li v-for="(point, idx) in pointData" :key="idx"
                                 data-reveal="left"
                                 class="group flex items-start gap-4 rounded-xl p-3 -m-3 transition-colors duration-500 hover:bg-white/25">
-                                <span class="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-white/70 text-pink-ink transition-all duration-500 ease-soft group-hover:bg-white group-hover:scale-110">
+                                <span class="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-white/70 text-pink transition-all duration-500 ease-soft group-hover:bg-white group-hover:scale-110">
                                     <Icon icon="tabler:check" class="size-3.5" />
                                 </span>
                                 <span class="text-lg text-pink-ink/85 transition-colors duration-500 group-hover:text-pink-ink">{{ point }}</span>

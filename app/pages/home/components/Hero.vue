@@ -32,8 +32,8 @@
                         </h1>
 
                         <p class="text-lg text-default-600 lg:max-w-[46ch]" data-reveal="up" style="--reveal-delay:320ms">
-                            A safe, judgment free space to talk, express, and feel lighter.
-                            One session. One conversation. One step toward emotional ease.
+                            A safe, judgement free space to talk, express, and feel lighter.
+                            One session. One conversation. One step towards emotional ease.
                         </p>
 
                         <div class="mt-9 flex flex-wrap items-center gap-4" data-reveal="up" style="--reveal-delay:420ms">
@@ -74,8 +74,8 @@
                 <div class="grid md:grid-cols-2 gap-3.5" data-reveal-group>
                     <div class="hero-image-one-wrap relative group overflow-hidden rounded-2xl" data-reveal="scale">
                         <img class="size-full object-cover rounded-2xl transition-transform duration-[1.2s] ease-soft group-hover:scale-[1.04]"
-                             src="/images/other/hero-calm-1.jpg"
-                             alt="Two friends laughing together outdoors">
+                             src="/images/other/corporate-desk.jpg"
+                             alt="A group in warm conversation around a sunlit table">
                         <div class="absolute inset-0 rounded-2xl bg-linear-to-t from-default-950/25 to-transparent"></div>
                     </div>
 

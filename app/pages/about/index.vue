@@ -16,7 +16,7 @@ import Hero from './components/Hero.vue'
 import Founder from './components/Founder.vue'
 import Commitment from './components/Commitment.vue'
 import Journey from './components/Journey.vue'
-import Credentials from './components/Credentials.vue'
+import Credentials from '~/components/Credentials.vue'
 
 usePageTitle('About')
 

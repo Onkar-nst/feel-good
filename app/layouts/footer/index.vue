@@ -18,7 +18,7 @@
           </div>
 
           <p class="text-peach-ink/70 text-sm mb-5 max-w-[34ch]">
-            A safe, judgment free space to talk, express, and feel lighter.
+            A safe, judgement free space to talk, express, and feel lighter.
           </p>
 
           <div class="space-y-1.5">

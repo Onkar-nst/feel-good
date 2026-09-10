@@ -74,24 +74,24 @@
                     </NuxtLink>
                 </div>
 
-                <div class="lg:col-span-2 card-lift group relative overflow-hidden rounded-2xl p-7 lg:p-9 bg-peach text-peach-ink" data-reveal="up" style="--reveal-delay:120ms">
+                <div class="lg:col-span-2 card-lift group relative overflow-hidden rounded-2xl p-7 lg:p-9 bg-peach text-white" data-reveal="up" style="--reveal-delay:120ms">
                     <div class="aura animate-breathe size-52 -bottom-16 -end-10 bg-white/40"></div>
 
                     <div class="relative">
-                        <h3 class="h-display text-2xl text-peach-ink mb-2">And what this isn't</h3>
+                        <h3 class="h-display text-2xl text-white mb-2">And what this isn't</h3>
 
-                        <p class="text-peach-ink/75 mb-6">
+                        <p class="text-white/75 mb-6">
                             Being clear about this matters as much as anything we do offer.
                         </p>
 
                         <ul role="list" class="space-y-3">
                             <li v-for="(item, idx) in notData" :key="idx" class="flex items-start gap-3">
-                                <Icon icon="tabler:x" class="mt-1 size-4 shrink-0 text-peach-ink/50" />
-                                <span class="text-peach-ink/80">{{ item }}</span>
+                                <Icon icon="tabler:x" class="mt-1 size-4 shrink-0 text-white/50" />
+                                <span class="text-white/80">{{ item }}</span>
                             </li>
                         </ul>
 
-                        <p class="mt-6 pt-5 border-t border-peach-ink/15 text-sm text-peach-ink/75">
+                        <p class="mt-6 pt-5 border-t border-white/20 text-sm text-white/75">
                             Listening helps, but it isn't treatment. If you're in immediate distress, please call
                             Tele MANAS on 14416. It's free and open 24 hours a day.
                         </p>

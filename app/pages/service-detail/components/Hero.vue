@@ -10,7 +10,7 @@
 
                             <h1 class="h-display lg:text-[64px] md:text-5xl text-[38px] leading-[1.08] mb-5">Understanding and Supporting Your Journey</h1>
 
-                            <p>A safe, judgment free space to talk, express, and feel lighter. One session. One conversation. One step toward emotional ease.</p>
+                            <p>A safe, judgement free space to talk, express, and feel lighter. One session. One conversation. One step towards emotional ease.</p>
 
                             <div class="mt-11 inline-flex items-center lg:gap-7.5 md:gap-20 gap-4">
                                 <NuxtLink to="/contact" class="group py-5 px-10 inline-flex items-center justify-center gap-5 rounded-lg bg-primary text-primary-ink font-medium transition-all">

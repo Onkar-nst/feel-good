@@ -22,7 +22,7 @@
             <div class="grid md:grid-cols-2 gap-5 mb-5">
                 <div class="card-lift card-wash group relative overflow-hidden border border-default-200 rounded-2xl p-7 lg:p-9 bg-white hover:border-primary/30"
                      data-reveal="up">
-                    <span class="relative mb-6 flex size-11 items-center justify-center rounded-full bg-primary-soft text-primary-ink">
+                    <span class="relative mb-6 flex size-11 items-center justify-center rounded-full bg-primary-soft text-primary">
                         <Icon icon="tabler:target-arrow" class="size-5.5" />
                     </span>
 

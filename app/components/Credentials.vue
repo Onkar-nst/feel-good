@@ -60,7 +60,7 @@
             <div class="mt-5 rounded-2xl border border-default-200/70 bg-white p-7 lg:p-9 flex flex-wrap items-center justify-between gap-6"
                  data-reveal="up">
                 <div class="flex items-start gap-4">
-                    <span class="mt-0.5 flex size-11 shrink-0 items-center justify-center rounded-full bg-primary-soft text-primary-ink">
+                    <span class="mt-0.5 flex size-11 shrink-0 items-center justify-center rounded-full bg-primary-soft text-primary">
                         <Icon icon="tabler:building-bank" class="size-5.5" />
                     </span>
 

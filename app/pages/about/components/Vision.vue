@@ -22,7 +22,7 @@
             <div class="grid md:grid-cols-2 gap-5 mb-5">
                 <div class="card-lift card-wash group relative overflow-hidden border border-default-200 rounded-2xl p-7 lg:p-9 bg-white hover:border-primary/30"
                      data-reveal="up">
-                    <span class="relative mb-6 flex size-11 items-center justify-center rounded-full bg-primary-soft text-primary-ink">
+                    <span class="relative mb-6 flex size-11 items-center justify-center rounded-full bg-primary-soft text-primary">
                         <Icon icon="tabler:target-arrow" class="size-5.5" />
                     </span>
 
@@ -94,8 +94,8 @@
                 </div>
 
                 <div class="relative mb-7.5">
-                    <div class="eyebrow mb-2.5 text-peach-ink/70!">Core Principles</div>
-                    <h3 class="h-display text-2xl text-peach-ink">Values That Drive Us</h3>
+                    <div class="eyebrow mb-2.5 text-white/70!">Core Principles</div>
+                    <h3 class="h-display text-2xl text-white">Values That Drive Us</h3>
                 </div>
 
                 <ul role="list" class="relative grid md:grid-cols-2 lg:grid-cols-3 gap-x-7.5 gap-y-4" data-reveal-group>
@@ -103,8 +103,8 @@
                         data-reveal="up"
                         class="group flex items-start gap-3">
                         <Icon icon="tabler:square-rounded-check"
-                              class="mt-0.5 size-5 shrink-0 text-peach-ink/45 transition-colors duration-500 group-hover:text-peach-ink" />
-                        <span class="text-peach-ink/85 transition-colors duration-500 group-hover:text-peach-ink">{{ value }}</span>
+                              class="mt-0.5 size-5 shrink-0 text-white/45 transition-colors duration-500 group-hover:text-white" />
+                        <span class="text-white/85 transition-colors duration-500 group-hover:text-white">{{ value }}</span>
                     </li>
                 </ul>
             </div>

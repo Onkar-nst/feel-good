@@ -51,35 +51,26 @@
     </section>
 
     <!-- ── Recognition ──────────────────────────────────────────── -->
-    <section class="pt-14 md:pt-20 lg:pt-24 pb-14 md:pb-20 lg:pb-24 relative overflow-hidden bg-cream">
-        <div class="absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
-            <div class="aura animate-drift size-[30rem] -bottom-52 -end-40 bg-primary-soft/45"></div>
-        </div>
-
+    <section class="pt-14 md:pt-20 lg:pt-24 pb-14 md:pb-20 lg:pb-24 relative overflow-hidden bg-peach-soft">
         <div class="container">
-            <div class="mx-auto lg:max-w-[52ch] text-center lg:mb-16 mb-12">
+            <div class="mx-auto lg:max-w-5xl lg:mb-10 mb-8">
                 <div class="eyebrow mb-6" data-reveal="soft">{{ topic.recognition.eyebrow }}</div>
-                <h2 class="h-display lg:text-4xl md:text-3xl text-2xl leading-[1.2] mb-5" data-reveal="up">
+                <h2 class="h-display lg:text-5xl md:text-4xl text-3xl leading-[1.1] mb-5" data-reveal="up">
 {{ topic.recognition.heading }}
                 </h2>
-                <p class="text-lg text-default-600" data-reveal="up" style="--reveal-delay:120ms">
+                <p class="text-lg md:text-xl text-default-600 leading-relaxed" data-reveal="up" style="--reveal-delay:120ms">
 {{ topic.recognition.intro }}
                 </p>
             </div>
 
-            <!-- Quiet white cards on a hairline grid: one neutral surface, a single
-                 muted icon each, and the rules doing the separating instead of colour. -->
-            <div class="mx-auto lg:max-w-6xl overflow-hidden rounded-2xl border border-default-200 bg-white"
-                 data-reveal-group>
-                <div class="grid md:grid-cols-2 gap-px bg-default-200/70">
-                    <div v-for="(sign, idx) in topic.recognition.signs" :key="idx"
-                         data-reveal="up"
-                         class="group flex items-start gap-4 bg-white p-7 md:p-8 transition-colors duration-500 ease-soft hover:bg-cream">
-                        <span class="mt-0.5 flex size-9 shrink-0 items-center justify-center rounded-full border border-default-200 text-default-500 transition-colors duration-500 ease-soft group-hover:border-default-300 group-hover:text-default-800">
-                            <Icon :icon="sign.icon" class="size-4.5" />
-                        </span>
-                        <p class="text-lg leading-relaxed text-default-950">{{ sign.text }}</p>
-                    </div>
+            <!-- Separate white cards on a warm ground, each opened by a short peach
+                 accent bar. Cards lift gently on hover instead of changing colour. -->
+            <div class="mx-auto grid md:grid-cols-2 gap-4 md:gap-5 lg:max-w-5xl" data-reveal-group>
+                <div v-for="(sign, idx) in topic.recognition.signs" :key="idx"
+                     data-reveal="up"
+                     class="rounded-2xl bg-white px-6 py-5 md:px-7 md:py-6 transition-all duration-500 ease-soft hover:-translate-y-1 hover:shadow-[0_18px_40px_-20px_rgba(59,22,6,0.25)]">
+                    <span class="block h-1 w-8 rounded-full bg-peach mb-4" aria-hidden="true"></span>
+                    <p class="text-lg md:text-xl leading-snug text-default-950">{{ sign.text }}</p>
                 </div>
             </div>
         </div>
@@ -99,48 +90,42 @@
                 </p>
             </div>
 
-            <!-- Two solid, opposed panels: the colour does the contrasting so the
-                 reader sees the difference before reading a word of either column. -->
-            <div class="mx-auto lg:max-w-5xl grid md:grid-cols-2 gap-6">
+            <!-- One ledger, split down the middle. The two halves share a single
+                 frame so they read as one statement with two sides, and the big
+                 Yes / No does the contrasting before a word of either list is read. -->
+            <div class="mx-auto lg:max-w-5xl overflow-hidden rounded-3xl border border-default-200 bg-white grid md:grid-cols-2"
+                 data-reveal="up">
 
-                <div class="relative overflow-hidden rounded-3xl bg-white border border-default-200 lg:p-9 p-7"
-                     data-reveal="up">
-                    <div class="relative">
-                        <h3 class="h-display text-xl flex items-center gap-3 mb-6 text-default-950">
-                            <span class="flex size-10 items-center justify-center rounded-full bg-cream-deep">
-                                <Icon icon="tabler:check" class="size-5 text-default-700" />
-                            </span>
-                            What it is
-                        </h3>
-
-                        <ul role="list" class="space-y-3">
-                            <li v-for="(item, idx) in IS_LIST" :key="idx"
-                                class="flex items-start gap-3 border-b border-default-200/70 pb-3.5 text-base leading-relaxed text-default-700 last:border-0 last:pb-0">
-                                <Icon icon="tabler:circle-check-filled" class="mt-0.5 size-5 shrink-0 text-default-700" />
-                                <span>{{ item }}</span>
-                            </li>
-                        </ul>
+                <div class="lg:p-10 p-7 md:border-e border-default-200">
+                    <div class="flex items-baseline gap-4 mb-8">
+                        <span class="h-display text-5xl lg:text-6xl leading-none text-default-950">Yes.</span>
+                        <span class="text-sm uppercase tracking-[0.18em] text-default-500">What a session is</span>
                     </div>
+
+                    <ol role="list" class="space-y-5">
+                        <li v-for="(item, idx) in IS_LIST" :key="idx" class="flex items-start gap-4">
+                            <span class="mt-1 font-heading text-sm tabular-nums text-peach-ink/60 w-6 shrink-0">
+                                0{{ idx + 1 }}
+                            </span>
+                            <span class="text-lg leading-relaxed text-default-950">{{ item }}</span>
+                        </li>
+                    </ol>
                 </div>
 
-                <div class="relative overflow-hidden rounded-3xl bg-cream border border-default-200 lg:p-9 p-7"
-                     data-reveal="up" style="--reveal-delay:140ms">
-                    <div class="relative">
-                        <h3 class="h-display text-xl flex items-center gap-3 mb-6 text-default-800">
-                            <span class="flex size-10 items-center justify-center rounded-full bg-cream-deep">
-                                <Icon icon="tabler:minus" class="size-5 text-default-500" />
-                            </span>
-                            What it is not
-                        </h3>
-
-                        <ul role="list" class="space-y-3">
-                            <li v-for="(item, idx) in IS_NOT_LIST" :key="idx"
-                                class="flex items-start gap-3 border-b border-default-200/70 pb-3.5 text-base leading-relaxed text-default-500 last:border-0 last:pb-0">
-                                <Icon icon="tabler:circle-minus" class="mt-0.5 size-5 shrink-0 text-default-400" />
-                                <span>{{ item }}</span>
-                            </li>
-                        </ul>
+                <div class="lg:p-10 p-7 bg-cream border-t md:border-t-0 border-default-200">
+                    <div class="flex items-baseline gap-4 mb-8">
+                        <span class="h-display text-5xl lg:text-6xl leading-none text-default-400">No.</span>
+                        <span class="text-sm uppercase tracking-[0.18em] text-default-500">What it is not</span>
                     </div>
+
+                    <ol role="list" class="space-y-5">
+                        <li v-for="(item, idx) in IS_NOT_LIST" :key="idx" class="flex items-start gap-4">
+                            <span class="mt-1 font-heading text-sm tabular-nums text-default-400 w-6 shrink-0">
+                                0{{ idx + 1 }}
+                            </span>
+                            <span class="text-lg leading-relaxed text-default-600">{{ item }}</span>
+                        </li>
+                    </ol>
                 </div>
             </div>
         </div>
@@ -156,18 +141,18 @@
                 </div>
 
                 <div class="relative">
-                    <div class="eyebrow mb-5 text-peach-ink/70!">How a session goes</div>
-                    <h2 class="h-display text-peach-ink lg:text-4xl md:text-3xl text-2xl mb-9 lg:max-w-[22ch]">
+                    <div class="eyebrow mb-5 text-white/70!">How a session goes</div>
+                    <h2 class="h-display text-white lg:text-4xl md:text-3xl text-2xl mb-9 lg:max-w-[22ch]">
                         Time that belongs entirely to you
                     </h2>
 
                     <ol class="grid md:grid-cols-2 lg:grid-cols-4 gap-7" data-reveal-group>
                         <li v-for="(step, idx) in STEPS" :key="idx" data-reveal="up">
-                            <span class="mb-4 flex size-9 items-center justify-center rounded-full bg-white/75 font-heading text-peach-ink">
+                            <span class="mb-4 flex size-9 items-center justify-center rounded-full bg-white/75 font-heading text-white">
                                 {{ idx + 1 }}
                             </span>
-                            <h3 class="h-display text-peach-ink! text-lg mb-2">{{ step.title }}</h3>
-                            <p class="text-sm text-peach-ink/80">{{ step.body }}</p>
+                            <h3 class="h-display text-white! text-lg mb-2">{{ step.title }}</h3>
+                            <p class="text-sm text-white/80">{{ step.body }}</p>
                         </li>
                     </ol>
 
@@ -180,7 +165,7 @@
                                   class="size-4 shrink-0 transition-transform duration-500 ease-soft group-hover:translate-x-1" />
                         </button>
 
-                        <p class="text-sm text-peach-ink/75">
+                        <p class="text-sm text-white/75">
                             Real availability, confirmed straight away.
                         </p>
                     </div>
@@ -261,6 +246,10 @@
         </div>
     </section>
 
+    <!-- Same credentials block as the About page, so a visitor who lands here
+         from search sees the training and registration before the closing ask. -->
+    <Credentials />
+
     <CtaSection />
 
     <BookingModal :open="bookingOpen" :service="bookingService" @close="bookingOpen = false" />
@@ -274,6 +263,7 @@ import { createError } from '#app'
 import { useHead } from '#unhead/composables'
 import CalendlyButton from '~/components/CalendlyButton.vue'
 import CtaSection from '~/components/CtaSection.vue'
+import Credentials from '~/components/Credentials.vue'
 import BookingModal from '~/components/BookingModal.vue'
 import SessionGrid from '~/components/SessionGrid.vue'
 import { EVENT_TYPES } from '~/utils/calendly'

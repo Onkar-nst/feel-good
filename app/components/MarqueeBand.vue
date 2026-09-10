@@ -22,7 +22,7 @@
 
             <div class="marquee-track gap-3.5 mt-3.5" style="animation-direction: reverse; animation-duration: 54s;">
                 <span v-for="(phrase, idx) in [...rowTwo, ...rowTwo]" :key="`b-${idx}`"
-                      class="shrink-0 rounded-full border border-primary/15 bg-primary-soft/50 px-5 py-2.5 text-primary-ink whitespace-nowrap">
+                      class="shrink-0 rounded-full border border-primary/20 bg-primary-soft/60 px-5 py-2.5 text-primary whitespace-nowrap">
                     {{ phrase }}
                 </span>
             </div>

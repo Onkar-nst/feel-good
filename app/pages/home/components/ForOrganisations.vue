@@ -13,15 +13,15 @@
 
                     <!-- ── Copy ─────────────────────────────────────── -->
                     <div class="lg:p-14 md:p-10 p-7">
-                        <div class="eyebrow mb-5 text-peach-ink/70!">
+                        <div class="eyebrow mb-5 text-white/70!">
                             For Organisations
                         </div>
 
-                        <h2 class="h-display text-peach-ink lg:text-4xl md:text-3xl text-2xl mb-4">
+                        <h2 class="h-display text-white lg:text-4xl md:text-3xl text-2xl mb-4">
                             Corporate Emotional Wellbeing
                         </h2>
 
-                        <p class="text-peach-ink/85 mb-8">
+                        <p class="text-white/85 mb-8">
                             Your people carry more than their workload. We bring the same confidential,
                             judgment free listening into teams, so nobody has to hold it together alone
                             just to get through the week.
@@ -31,10 +31,10 @@
                             <li v-for="(item, idx) in offeringData" :key="idx"
                                 data-reveal="left"
                                 class="group flex items-start gap-3.5">
-                                <span class="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-white/70 text-peach-ink transition-all duration-500 ease-soft group-hover:bg-white group-hover:scale-110">
+                                <span class="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-white/70 text-white transition-all duration-500 ease-soft group-hover:bg-white group-hover:scale-110">
                                     <Icon icon="tabler:check" class="size-3.5" />
                                 </span>
-                                <span class="text-peach-ink/85 transition-colors duration-500 group-hover:text-peach-ink">{{ item }}</span>
+                                <span class="text-white/85 transition-colors duration-500 group-hover:text-white">{{ item }}</span>
                             </li>
                         </ul>
 
@@ -46,15 +46,15 @@
                             </NuxtLink>
                         </div>
 
-                        <p class="mt-7 text-sm text-peach-ink/65">
+                        <p class="mt-7 text-sm text-white/65">
                             Sessions stay between us and your people. Organisations never hear what was said.
                         </p>
                     </div>
 
                     <!-- ── Image ────────────────────────────────────── -->
                     <div class="group relative overflow-hidden lg:min-h-[28rem] min-h-64 lg:rounded-none rounded-b-3xl">
-                        <img src="/images/other/contact-info.jpg" alt="The city our people work in"
-                             class="size-full object-cover transition-transform duration-[1.4s] ease-soft group-hover:scale-105">
+                        <img src="/images/other/hero-team-conversation.jpg" alt="A sunlit desk with a laptop, notebook and coffee, set up for a listening session"
+                             class="absolute inset-0 size-full object-cover transition-transform duration-[1.4s] ease-soft group-hover:scale-105">
                     </div>
                 </div>
             </div>

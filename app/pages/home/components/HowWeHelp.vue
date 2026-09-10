@@ -32,7 +32,7 @@
                     class="card-lift card-wash group relative overflow-hidden bg-cream rounded-2xl p-6 flex flex-col gap-5 border border-default-200/70 hover:border-primary/30"
                 >
                     <div class="relative flex items-center justify-between gap-3">
-                        <span class="flex size-11 items-center justify-center rounded-full bg-primary-soft text-primary-ink transition-transform duration-500 ease-soft group-hover:scale-110">
+                        <span class="flex size-11 items-center justify-center rounded-full bg-primary-soft text-primary transition-transform duration-500 ease-soft group-hover:scale-110">
                             <Icon :icon="feeling.icon" class="size-5.5" />
                         </span>
 

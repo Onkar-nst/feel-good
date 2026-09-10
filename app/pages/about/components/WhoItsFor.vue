@@ -30,7 +30,7 @@
                     data-reveal="up"
                     class="card-lift card-wash group relative overflow-hidden bg-white rounded-2xl p-6 flex flex-col gap-5 border border-default-200/70 hover:border-primary/30"
                 >
-                    <span class="relative flex size-11 items-center justify-center rounded-full bg-primary-soft text-primary-ink transition-transform duration-500 ease-soft group-hover:scale-110">
+                    <span class="relative flex size-11 items-center justify-center rounded-full bg-primary-soft text-primary transition-transform duration-500 ease-soft group-hover:scale-110">
                         <Icon :icon="person.icon" class="size-5.5" />
                     </span>
 

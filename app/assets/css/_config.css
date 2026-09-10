@@ -6,44 +6,40 @@
     --font-heading: "Fraunces", "Iowan Old Style", Georgia, serif;
 
     /* ────────────────────────────────────────────────────────────────
-       THE PALETTE — three colours only.
+       THE PALETTE — warm & premium.
 
-       Taken exactly from the client's pastel template. Everything on the
-       site is one of these three plus warm neutrals. Do not introduce a
-       fourth: if a surface needs to feel different, reach for a -soft tint
-       or a neutral, never a new hue.
+         Beige            #F4EBDF  site ground (unchanged)
+         Espresso         #2A1E1A  text and headings
+         Rust Terracotta  #BC5237  primary CTAs, emphasis
+         Pale Alabaster   #FAF6F0  cards and raised surfaces
+         Olive Drab       #6B705C  soft neutral accent: badges, chips, dividers
 
-         1. Butter  #F6CF71  primary   warmth, CTAs, highlights
-         2. Blush   #FE88B1  accent    emphasis, numerals, emotional beats
-         3. Peach   #F89C74  calm      safe-space surfaces, icon chips
-
-       All three are LIGHT colours, so text never sits on them in white —
-       each carries its own -ink. Every ink pairing clears 5.6:1.
+       Rust and olive are DARK colours, so their -ink is light; the soft
+       tints keep the old light-surface roles working unchanged.
        ──────────────────────────────────────────────────────────────── */
 
-    /* 1 — Butter yellow. The brand's primary. */
-    --color-primary: #F6CF71;
-    --color-primary-soft: #FDEEC4;
-    --color-primary-ink: #2E2E2E;
+    /* 1 — Rust Terracotta. The brand's primary: CTAs and highlights. */
+    --color-primary: #BC5237;
+    --color-primary-soft: #F3DCD3;
+    --color-primary-ink: #FFF7F3;
 
-    /* 2 — Blush pink. Emphasis and the warmer emotional surfaces. */
-    --color-pink: #FE88B1;
-    --color-pink-soft: #FFD9E4;
-    --color-pink-ink: #5A1F33;
+    /* 2 — Emphasis. Numerals and emotional beats now share the rust. */
+    --color-pink: #BC5237;
+    --color-pink-soft: #F3DCD3;
+    --color-pink-ink: #FFF7F3;
 
-    /* 3 — Peach. Warmer than the mint it replaced, at the client's request. */
-    --color-peach: #F89C74;
-    --color-peach-soft: #FDE6DA;
-    --color-peach-ink: #3B1606;
+    /* 3 — Olive Drab. Calm surfaces, icon chips, tag badges, dividers. */
+    --color-peach: #6B705C;
+    --color-peach-soft: #E9EAE3;
+    --color-peach-ink: #2A1E1A;
 
-    /* Warm neutrals — grounds, not colours. */
-    --color-cream: #FAF6F1;
-    --color-cream-deep: #F3ECE3;
+    /* Warm neutrals — grounds, not colours. Pale Alabaster for cards. */
+    --color-cream: #FAF6F0;
+    --color-cream-deep: #F1EBE2;
 
-    /* Site ground. Warm beige rather than white, so the cream cards and white
-       chips still lift off it. */
+    /* Site ground. Beige, kept as-is so the alabaster cards still lift off it. */
     --color-body-bg: #F4EBDF;
-    --color-body-color: var(--color-stone-600);
+    --color-body-color: #4A3D38;
 
     /* Neutrals moved from cold zinc to warm stone — this alone warms every surface. */
     --color-default-50: var(--color-stone-50);
@@ -55,8 +51,8 @@
     --color-default-600: var(--color-stone-600);
     --color-default-700: var(--color-stone-700);
     --color-default-800: var(--color-stone-800);
-    --color-default-900: var(--color-stone-900);
-    --color-default-950: #1C1614;
+    --color-default-900: #2A1E1A;
+    --color-default-950: #2A1E1A;
 
     --tw-leading: 1.5em;
     --text-xs--line-height: 1.5em;
