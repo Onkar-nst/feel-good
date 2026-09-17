@@ -126,23 +126,25 @@ const topics: ServiceTopic[] = [
     hero: {
       eyebrow: 'If work has taken over',
       heading: 'Need someone to talk to about work stress?',
-      intro: 'The job is fine on paper, and you are still running on empty. Nobody at work is the right person to say that to, and saying it at home only worries people.',
-      invitation: 'Book a private listening session and talk about work without it getting back to anyone.',
+      intro: 'Sometimes work doesn’t stay at work — it follows you home, into your evenings, your sleep, and even your mood.',
+      invitation: 'Whether it’s pressure, people, office politics, or simply feeling like you’ve had enough, you deserve a space to talk about what’s really going on without having to keep it all together.',
       image: '/images/service-detail/work-stress-burnout.jpg',
       imageAlt: 'A woman stepping away from work with a drink in a sunlit kitchen'
     },
     whatsappText: "Hi! Work has been a lot lately and I'd like to know more about a listening session.",
     recognition: {
-      eyebrow: 'Does this sound familiar',
+      eyebrow: 'You might be here because…',
       heading: 'Burnout does not always look like quitting',
       intro: 'Most people who book are still showing up, still delivering, and quietly running out of road.',
       signs: [
-        { icon: 'tabler:battery-1', text: "I am exhausted before the day has even started." },
-        { icon: 'tabler:device-laptop', text: "I check my messages the moment I wake up." },
-        { icon: 'tabler:clock-hour-9', text: "Sunday evening already feels heavy by the afternoon." },
-        { icon: 'tabler:mood-neutral', text: "Work I used to enjoy is now something to get through." },
-        { icon: 'tabler:users', text: "There is nobody at work I can safely say this to." },
-        { icon: 'tabler:home', text: "By the time I get home there is nothing left of me." }
+        { icon: 'tabler:battery-1', text: "I’m exhausted from work, but I still can’t seem to switch off." },
+        { icon: 'tabler:list-check', text: "I feel overwhelmed by everything that’s expected of me." },
+        { icon: 'tabler:message-circle', text: "Something a colleague said or did has been bothering me more than I’d like to admit." },
+        { icon: 'tabler:users', text: "I’m caught in office politics and don’t know how to deal with it without making things worse." },
+        { icon: 'tabler:mood-neutral', text: "I feel overlooked, unappreciated, or like I constantly have to prove myself." },
+        { icon: 'tabler:home', text: "I keep bringing work stress home, and it’s starting to affect the rest of my life." },
+        { icon: 'tabler:compass', text: "I’m losing the motivation I once had, and I don’t know why." },
+        { icon: 'tabler:ear', text: "I just need to vent about work without someone telling me to “just ignore it.”" }
       ]
     },
     quote: {
@@ -170,23 +172,23 @@ const topics: ServiceTopic[] = [
     hero: {
       eyebrow: 'If something has ended, or is ending',
       heading: 'Going through a breakup and do not want advice?',
-      intro: 'Everyone has an opinion about what you should do next. Sometimes you just need to say how it actually feels, without anyone taking sides.',
-      invitation: 'Book a private listening session and talk it through with someone who will not tell you what to do.',
+      intro: 'Relationships can be beautiful, complicated, confusing and sometimes painful.',
+      invitation: 'Whether you’re trying to understand your relationship, work through a difficult phase, or find your way through a breakup, you deserve a space to talk openly and make sense of what you’re feeling.',
       image: '/images/service-detail/breakup-relationship-support.jpg',
       imageAlt: 'A woman sitting on the floor against her sofa, arms folded in'
     },
     whatsappText: "Hi! I'm going through a breakup and would like to know more about a listening session.",
     recognition: {
-      eyebrow: 'Does this sound familiar',
+      eyebrow: 'You might be here because…',
       heading: 'You are allowed to still be sad about it',
       intro: 'There is no timeline for this, and no version of it you are supposed to be over by now.',
       signs: [
-        { icon: 'tabler:message-circle', text: "My friends have heard this story too many times already." },
-        { icon: 'tabler:phone', text: "I still reach for my phone before I remember." },
-        { icon: 'tabler:refresh', text: "I keep replaying the last conversation at night." },
-        { icon: 'tabler:users', text: "Everyone keeps telling me what I should do next." },
-        { icon: 'tabler:mood-neutral', text: "I say I am fine because explaining takes too long." },
-        { icon: 'tabler:heart-broken', text: "People think I should be over this by now." }
+        { icon: 'tabler:heart', text: "I love them, but lately I’m not sure where we stand." },
+        { icon: 'tabler:refresh', text: "We keep having the same fights and I don’t know how to move forward." },
+        { icon: 'tabler:message-2', text: "I’m struggling to say what I really need or feel." },
+        { icon: 'tabler:arrows-shuffle', text: "I’m confused about whether to stay, leave, or give it another chance." },
+        { icon: 'tabler:heart-broken', text: "I’m hurting after a breakup and finding it hard to let go." },
+        { icon: 'tabler:ear', text: "I just need someone to listen without taking sides or telling me what to do." }
       ]
     },
     quote: {
@@ -258,23 +260,23 @@ const topics: ServiceTopic[] = [
     hero: {
       eyebrow: 'If home comes with conditions',
       heading: 'Cannot tell your family what you are really feeling?',
-      intro: 'You love them, and you still cannot say this to them. Keeping the peace at home often means carrying it somewhere else.',
-      invitation: 'Book a private listening session and say the part you never get to say at home.',
+      intro: 'Sometimes the people who love you the most can also make you feel like you’re carrying the most.',
+      invitation: 'Whether it’s expectations, comparisons, marriage, career, money, or simply trying to be the “good child,” you deserve a space to talk about what you really feel.',
       image: '/images/service-detail/family-pressure.jpg',
       imageAlt: 'A woman moving quietly through a warm family home'
     },
     whatsappText: "Hi! I'd like to know more about a listening session. Things at home have been a lot.",
     recognition: {
-      eyebrow: 'Does this sound familiar',
+      eyebrow: 'You might be here because…',
       heading: 'Keeping the peace has a cost',
       intro: 'You can be close to your family and still have nowhere in the house to be honest.',
       signs: [
-        { icon: 'tabler:masks-theater', text: "I edit myself before I speak at home." },
-        { icon: 'tabler:message-2', text: "Every honest conversation turns into an argument." },
-        { icon: 'tabler:scale', text: "They want one life for me and I want another." },
-        { icon: 'tabler:mood-neutral', text: "I agree to things just to end the discussion." },
-        { icon: 'tabler:heart', text: "I feel guilty for wanting something different." },
-        { icon: 'tabler:door', text: "There is nowhere in this house to be honest." }
+        { icon: 'tabler:scale', text: "I feel like I’m constantly trying to live up to my family’s expectations." },
+        { icon: 'tabler:compass', text: "I want to make my own choices, but I’m scared of disappointing my family." },
+        { icon: 'tabler:message-2', text: "Every conversation somehow turns into an argument." },
+        { icon: 'tabler:mood-neutral', text: "I’m tired of being compared to other people or told what I “should” be doing." },
+        { icon: 'tabler:masks-theater', text: "I want to say no sometimes, but I feel too guilty to do it." },
+        { icon: 'tabler:heart', text: "I love my family, but sometimes I just need to talk about how I really feel without feeling guilty." }
       ]
     },
     quote: {
@@ -346,23 +348,23 @@ const topics: ServiceTopic[] = [
     hero: {
       eyebrow: 'If home is a long way away',
       heading: 'Moved away from home and feeling alone?',
-      intro: 'New city, new time zone, and nobody who knew you before. You do not want to worry the people back home, so you tell them it is going well.',
-      invitation: 'Book a private listening session and talk to someone who has time for the whole story.',
+      intro: 'Living away from home can bring freedom, excitement and new experiences — but sometimes, it can also feel incredibly lonely.',
+      invitation: 'When you’re building a life far from the people and places you know, you deserve a space to talk about the parts you don’t always share with home.',
       image: '/images/service-detail/living-away-from-home.jpg',
       imageAlt: 'A woman on a video call to people back home from a bright, unfamiliar flat'
     },
     whatsappText: "Hi! I'm living away from home and would like to know more about a listening session.",
     recognition: {
-      eyebrow: 'Does this sound familiar',
+      eyebrow: 'You might be here because…',
       heading: 'Homesick is not the same as regretting it',
       intro: 'You can be glad you moved and still find it lonelier than you expected.',
       signs: [
-        { icon: 'tabler:phone', text: "I tell them it is going great." },
-        { icon: 'tabler:world', text: "The time difference eats every real conversation." },
-        { icon: 'tabler:users', text: "I know people here, but nobody really knows me." },
-        { icon: 'tabler:mood-neutral', text: "I thought I would feel settled by now." },
-        { icon: 'tabler:home', text: "Small everyday things suddenly remind me of home." },
-        { icon: 'tabler:message-2', text: "I do not want to worry anyone back home." }
+        { icon: 'tabler:home', text: "I miss home more than I let people know." },
+        { icon: 'tabler:phone', text: "I wish I could just sit with my family and talk, instead of fitting everything into a phone call." },
+        { icon: 'tabler:users', text: "I’m surrounded by people, but somehow I still feel alone." },
+        { icon: 'tabler:world', text: "I’m going through something, but I don’t want to worry my family back home." },
+        { icon: 'tabler:mood-neutral', text: "I’m tired of figuring everything out on my own." },
+        { icon: 'tabler:ear', text: "Sometimes I just want to talk to someone who understands what it feels like to be far from home." }
       ]
     },
     quote: {
@@ -434,23 +436,23 @@ const topics: ServiceTopic[] = [
     hero: {
       eyebrow: 'If you are the one everyone leans on',
       heading: 'Always the strong one, with nowhere to put it down?',
-      intro: 'You are the person everyone calls. Being reliable becomes its own kind of quiet, because nobody thinks to ask how you are doing.',
-      invitation: 'Book a private listening session and be the one who gets listened to for once.',
+      intro: 'You’re the person everyone comes to when they need someone — but that doesn’t mean you never need someone too.',
+      invitation: 'Sometimes, even the person who holds everything together needs a place where they don’t have to.',
       image: '/images/service-detail/the-strong-one.jpg',
       imageAlt: 'A woman leaning back into the sunlight, letting her shoulders drop'
     },
     whatsappText: "Hi! I'm usually the one others lean on, and I'd like to know more about a listening session for myself.",
     recognition: {
-      eyebrow: 'Does this sound familiar',
+      eyebrow: 'You might be here because…',
       heading: 'Being dependable is not the same as being fine',
       intro: 'The people who hold everything together are usually the last ones anyone checks on.',
       signs: [
-        { icon: 'tabler:phone', text: "I am the first person everyone calls when something goes wrong." },
-        { icon: 'tabler:mood-neutral', text: "Nobody asks how I am, because they assume I am fine." },
-        { icon: 'tabler:shield', text: "I play down my own week so it does not add to anyone's load." },
-        { icon: 'tabler:message-2', text: "Saying I am struggling feels like letting people down." },
-        { icon: 'tabler:battery-1', text: "I give advice all day and have nowhere to take my own." },
-        { icon: 'tabler:heart', text: "Just once, I would like to be on the other side of it." }
+        { icon: 'tabler:phone', text: "Everyone comes to me when they need help, but no one really asks how I’m doing." },
+        { icon: 'tabler:mood-neutral', text: "I keep saying “I’m fine” because I don’t know how to tell people I’m not." },
+        { icon: 'tabler:shield', text: "I’m tired of always having to be the responsible one." },
+        { icon: 'tabler:message-2', text: "I don’t want to burden anyone with what I’m going through." },
+        { icon: 'tabler:masks-theater', text: "I hold it together in front of everyone and let it out only when I’m alone." },
+        { icon: 'tabler:heart', text: "I just want one place where I don’t have to be strong, and I can simply be me." }
       ]
     },
     quote: {
