@@ -1,4 +1,4 @@
-import { CALENDLY_URL, EVENT_TYPES } from '~/utils/calendly'
+import { EVENT_TYPES } from '~/utils/booking'
 import type { BookableService } from '~/types/booking'
 
 export type ServiceType = BookableService & {
@@ -7,15 +7,16 @@ export type ServiceType = BookableService & {
   link: string
   priceLabel?: string
   badge?: string
-  /** Straight to this session's calendar where one exists, else the account page. */
-  calendlyUrl: string
+  /** The Cal.com link this session books onto. */
+  bookingUrl: string
 }
 
 /** The bookable sessions, shown on the home page and on every service page. */
 export const serviceData: ServiceType[] = [
   {
+    id: 'first-conversation',
     title: 'First Feel-Good Conversation',
-    calendlyUrl: CALENDLY_URL,
+    bookingUrl: EVENT_TYPES.first30,
     duration: '30 min',
     price: '₹799',
     badge: 'Start here',
@@ -25,8 +26,9 @@ export const serviceData: ServiceType[] = [
     link: '/service-detail/personal'
   },
   {
+    id: 'listening-50',
     title: 'Feel-Good Listening Session',
-    calendlyUrl: EVENT_TYPES.listening50,
+    bookingUrl: EVENT_TYPES.listening50,
     duration: '50 min',
     price: '₹1,799',
     badge: 'Most booked',
@@ -36,8 +38,9 @@ export const serviceData: ServiceType[] = [
     link: '/service-detail/personal'
   },
   {
+    id: 'deep-75',
     title: 'Deep Listening Session',
-    calendlyUrl: EVENT_TYPES.deep75,
+    bookingUrl: EVENT_TYPES.deep75,
     duration: '75 min',
     price: '₹2,499',
     image: '/images/service/session-deep.jpg',
@@ -46,8 +49,9 @@ export const serviceData: ServiceType[] = [
     link: '/service-detail/personal'
   },
   {
+    id: 'checkin-monthly',
     title: 'Emotional Check-In Plans',
-    calendlyUrl: CALENDLY_URL,
+    bookingUrl: EVENT_TYPES.listening50,
     duration: '4 sessions / month',
     price: '₹6,500',
     priceLabel: '/ month',
@@ -57,8 +61,9 @@ export const serviceData: ServiceType[] = [
     link: '/service-detail/personal'
   },
   {
+    id: 'gift-50',
     title: 'Gift a Session',
-    calendlyUrl: CALENDLY_URL,
+    bookingUrl: EVENT_TYPES.listening50,
     duration: '50 min',
     price: '₹1,799',
     image: '/images/service/session-gift.jpg',

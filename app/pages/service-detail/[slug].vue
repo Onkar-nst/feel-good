@@ -24,7 +24,7 @@
                     </p>
 
                     <div class="flex flex-wrap items-center gap-4" data-reveal="up" style="--reveal-delay:280ms">
-                        <CalendlyButton :url="EVENT_TYPES.listening50">Book a Session</CalendlyButton>
+                        <BookNowButton :url="EVENT_TYPES.listening50">Book a Session</BookNowButton>
 
                         <a :href="whatsappLink" target="_blank" rel="noopener noreferrer" class="btn-outline btn-lg group">
                             <Icon icon="tabler:brand-whatsapp" class="size-5" />
@@ -261,12 +261,12 @@ import { Icon } from '@iconify/vue'
 import { useRoute } from 'vue-router'
 import { createError } from '#app'
 import { useHead } from '#unhead/composables'
-import CalendlyButton from '~/components/CalendlyButton.vue'
+import BookNowButton from '~/components/BookNowButton.vue'
 import CtaSection from '~/components/CtaSection.vue'
 import Credentials from '~/components/Credentials.vue'
 import BookingModal from '~/components/BookingModal.vue'
 import SessionGrid from '~/components/SessionGrid.vue'
-import { EVENT_TYPES } from '~/utils/calendly'
+import { EVENT_TYPES } from '~/utils/booking'
 import type { BookableService } from '~/types/booking'
 import { findTopic, IS_LIST, IS_NOT_LIST, STEPS } from '~/data/serviceTopics'
 
@@ -286,11 +286,12 @@ const topic = computed(() => {
 })
 
 /* The session this page sells: the modal collects a few details, then hands
-   over to the Calendly event type for that session. */
+   over to the Cal.com booking link for that session. */
 const bookingOpen = ref(false)
 const bookingService: BookableService = {
+  id: 'listening-50',
   title: 'Feel-Good Listening Session',
-  calendlyUrl: EVENT_TYPES.listening50,
+  bookingUrl: EVENT_TYPES.listening50,
   duration: '50 min',
   price: '₹1,799',
   image: '/images/service/session-core.jpg'

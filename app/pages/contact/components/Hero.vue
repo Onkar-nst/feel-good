@@ -50,31 +50,31 @@
                 <!-- ── Form ─────────────────────────────────────────── -->
                 <div class="lg:col-span-3 rounded-2xl border border-default-200 bg-white lg:p-8 p-6 shadow-[0_24px_60px_-40px_rgb(28_22_20/0.35)]"
                      data-reveal="up">
-                    <form @submit.prevent>
+                    <form v-if="!sent" @submit.prevent="submit">
                         <div class="grid md:grid-cols-2 gap-x-5 gap-y-4 mb-4" data-reveal-group>
                             <div class="md:col-span-2" data-reveal="up">
                                 <label for="name" :class="labelClass">Name *</label>
-                                <input type="text" id="name" required placeholder="Your name" :class="fieldClass">
+                                <input type="text" id="name" v-model="form.name" required placeholder="Your name" :class="fieldClass">
                             </div>
 
                             <div data-reveal="up">
                                 <label for="mobile-number" :class="labelClass">Mobile Number *</label>
-                                <input type="tel" id="mobile-number" required placeholder="+91" :class="fieldClass">
+                                <input type="tel" id="mobile-number" v-model="form.phone" required placeholder="+91" :class="fieldClass">
                             </div>
 
                             <div data-reveal="up">
                                 <label for="email" :class="labelClass">Email *</label>
-                                <input type="email" id="email" required placeholder="you@example.com" :class="fieldClass">
+                                <input type="email" id="email" v-model="form.email" required placeholder="you@example.com" :class="fieldClass">
                             </div>
 
                             <div data-reveal="up">
                                 <label for="age" :class="labelClass">Age *</label>
-                                <input type="number" id="age" required placeholder="Your age" :class="fieldClass">
+                                <input type="number" id="age" v-model="form.age" required placeholder="Your age" :class="fieldClass">
                             </div>
 
                             <div data-reveal="up">
                                 <label for="gender" :class="labelClass">Gender *</label>
-                                <select id="gender" name="gender" required :class="fieldClass">
+                                <select id="gender" name="gender" v-model="form.gender" required :class="fieldClass">
                                     <option value="">Select one...</option>
                                     <option value="Female">Female</option>
                                     <option value="Male">Male</option>
@@ -86,13 +86,24 @@
 
                         <div class="mb-6">
                             <label for="query" :class="labelClass">What would you like to talk about?</label>
-                            <textarea id="query" rows="4" placeholder="A sentence is enough. You don't have to explain everything here."
+                            <textarea id="query" v-model="form.message" rows="4" placeholder="A sentence is enough. You don't have to explain everything here."
                                       :class="fieldClass"></textarea>
                         </div>
 
-                        <button type="submit" class="btn-primary btn-fill btn-lg group w-full sm:w-auto">
-                            <span>Send Message</span>
-                            <Icon icon="tabler:arrow-right"
+                        <!-- Honeypot: hidden from people, filled by bots -->
+                        <div class="hidden" aria-hidden="true">
+                            <label for="website">Website</label>
+                            <input type="text" id="website" v-model="form.website" tabindex="-1" autocomplete="off">
+                        </div>
+
+                        <p v-if="error" role="alert" class="mb-5 rounded-lg border border-primary/30 bg-primary-soft/60 px-3.5 py-2.5 text-sm text-default-800">
+                            {{ error }}
+                        </p>
+
+                        <button type="submit" :disabled="sending" class="btn-primary btn-fill btn-lg group w-full sm:w-auto disabled:opacity-60 disabled:cursor-wait">
+                            <Icon v-if="sending" icon="tabler:loader-2" class="size-5 animate-spin" />
+                            <span>{{ sending ? 'Sending…' : 'Send Message' }}</span>
+                            <Icon v-if="!sending" icon="tabler:arrow-right"
                                   class="size-5 transition-transform duration-500 ease-soft group-hover:translate-x-1" />
                         </button>
 
@@ -100,6 +111,20 @@
                             Your details stay between you and Kinjal. Nothing is shared with anyone.
                         </p>
                     </form>
+
+                    <!-- Sent state -->
+                    <div v-else class="flex flex-col items-start gap-4 py-6" role="status">
+                        <span class="flex size-12 items-center justify-center rounded-full bg-primary-soft text-primary">
+                            <Icon icon="tabler:check" class="size-6" />
+                        </span>
+                        <h3 class="h-display text-2xl">Thank you, {{ form.name || 'friend' }}.</h3>
+                        <p class="text-default-600 max-w-[46ch]">
+                            Your message has reached Kinjal. You will usually hear back within a day. If it feels urgent, WhatsApp is the quickest way to reach us.
+                        </p>
+                        <button type="button" class="text-sm text-default-500 underline underline-offset-4 hover:text-default-950" @click="startAgain">
+                            Send another message
+                        </button>
+                    </div>
                 </div>
 
                 <!-- ── Reassurance panel ────────────────────────────── -->
@@ -166,6 +191,21 @@ const assuranceData: AssuranceType[] = [
 ]
 
 import { Icon } from '@iconify/vue'
+import { reactive } from 'vue'
+import { useFormSubmit } from '~/composables/useFormSubmit'
+
+const blank = () => ({ name: '', phone: '', email: '', age: '', gender: '', message: '', website: '' })
+const form = reactive(blank())
+const { sending, sent, error, post, reset } = useFormSubmit('/api/contact')
+
+async function submit() {
+  await post({ ...form })
+}
+
+function startAgain() {
+  Object.assign(form, blank())
+  reset()
+}
 
 const labelClass = 'mb-1.5 block text-sm font-medium text-default-700'
 

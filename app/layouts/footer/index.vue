@@ -101,7 +101,8 @@ const pageLinkData: LinkType[] = [
   { name: 'Home', link: '/' },
   { name: 'About', link: '/about' },
   { name: 'Blog', link: '/blog' },
-  { name: 'Contact', link: '/contact' }
+  { name: 'Contact', link: '/contact' },
+  { name: 'Policies', link: '/policies' }
 ]
 
 const serviceLinkData: LinkType[] = [

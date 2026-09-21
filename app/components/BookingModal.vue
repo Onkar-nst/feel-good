@@ -28,8 +28,41 @@
                         </div>
                     </div>
 
-                    <!-- Booking form -->
-                    <form class="p-6" @submit.prevent="submit">
+                    <!-- Step 2: paid, now pick a time -->
+                    <div v-if="paid" class="p-6">
+                        <div class="mb-5 flex items-center gap-3">
+                            <span class="flex size-11 shrink-0 items-center justify-center rounded-full bg-primary-soft text-primary">
+                                <Icon icon="tabler:check" class="size-6" />
+                            </span>
+                            <div>
+                                <h4 class="h-display text-xl leading-snug">Payment received</h4>
+                                <p class="text-sm text-default-600">Thank you, {{ form.name || 'friend' }}. One more step.</p>
+                            </div>
+                        </div>
+
+                        <p class="mb-2 text-sm text-default-600">
+                            Your session is paid for. Now choose a time that suits you and it is confirmed straight away.
+                        </p>
+                        <p class="mb-6 text-xs text-default-500">
+                            Payment ID <span class="font-mono text-default-700">{{ paid.paymentId }}</span>.
+                            Keep this handy; a receipt has gone to {{ form.email }}.
+                        </p>
+
+                        <button type="button" class="btn-primary btn-fill btn-lg group w-full" @click="pickTime">
+                            <span>Pick your time</span>
+                            <Icon icon="tabler:calendar-heart"
+                                  class="size-5 transition-transform duration-500 ease-soft group-hover:translate-x-1" />
+                        </button>
+
+                        <a :href="whatsappLink" target="_blank" rel="noopener noreferrer"
+                           class="btn-outline btn-lg mt-3 w-full">
+                            <Icon icon="tabler:brand-whatsapp" class="size-5" />
+                            <span>Prefer to fix a time over WhatsApp?</span>
+                        </a>
+                    </div>
+
+                    <!-- Step 1: who is booking, then pay -->
+                    <form v-else class="p-6" @submit.prevent="submit">
                         <div class="grid sm:grid-cols-2 gap-x-4 gap-y-4">
                             <div class="sm:col-span-2">
                                 <label for="bk-name" :class="labelClass">Name *</label>
@@ -57,9 +90,15 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn-primary btn-fill btn-lg group mt-6 w-full">
-                            <span>Continue to pick a time</span>
-                            <Icon icon="tabler:arrow-right"
+                        <p v-if="error" role="alert"
+                           class="mt-4 rounded-lg border border-primary/30 bg-primary-soft/60 px-3.5 py-2.5 text-sm text-default-800">
+                            {{ error }}
+                        </p>
+
+                        <button type="submit" :disabled="paying" class="btn-primary btn-fill btn-lg group mt-6 w-full disabled:opacity-60 disabled:cursor-wait">
+                            <Icon v-if="paying" icon="tabler:loader-2" class="size-5 animate-spin" />
+                            <span>{{ paying ? 'Opening secure payment…' : `Pay ${service?.price} and book` }}</span>
+                            <Icon v-if="!paying" icon="tabler:arrow-right"
                                   class="size-5 transition-transform duration-500 ease-soft group-hover:translate-x-1" />
                         </button>
 
@@ -75,8 +114,9 @@
                             <span>Book over WhatsApp</span>
                         </a>
 
-                        <p class="mt-5 text-center text-xs text-default-500">
-                            Confidential &middot; You will choose your slot on the next step
+                        <p class="mt-5 flex items-center justify-center gap-1.5 text-center text-xs text-default-500">
+                            <Icon icon="tabler:lock" class="size-3.5" />
+                            Secure payment by Razorpay (UPI, cards, net banking) &middot; You choose your slot next
                         </p>
                     </form>
                 </div>
@@ -88,7 +128,8 @@
 <script setup lang="ts">
 import { computed, reactive, ref, watch } from 'vue'
 import { Icon } from '@iconify/vue'
-import { CALENDLY_URL, openCalendly } from '~/utils/calendly'
+import { CAL_URL, loadCal, openCal, withPrefill } from '~/utils/booking'
+import { loadRazorpay, payForSession, PaymentCancelled, type PaymentResult } from '~/utils/razorpay'
 
 import type { BookableService } from '~/types/booking'
 
@@ -103,6 +144,9 @@ const fieldClass =
   'focus:border-pink focus:ring-2 focus:ring-pink/20'
 
 const form = reactive({ name: '', phone: '', email: '', note: '' })
+const paying = ref(false)
+const paid = ref<PaymentResult | null>(null)
+const error = ref('')
 
 const whatsappLink = computed(() =>
   'https://wa.me/919004989199?text=' +
@@ -110,36 +154,70 @@ const whatsappLink = computed(() =>
 )
 
 function close() {
+  if (paying.value) return // Razorpay's window is up; closing ours underneath would strand it
   emit('close')
 }
 
-function submit() {
-  // The form collects who they are; Calendly collects when. Hand the details
-  // straight over as prefill so nobody types their name twice.
-  const url = new URL(props.service?.calendlyUrl || CALENDLY_URL)
-  url.searchParams.set('name', form.name)
-  url.searchParams.set('email', form.email)
+/**
+ * Step 1: take payment. The server prices the session from its id, Razorpay
+ * collects the money, the server verifies the signature. Only then do we
+ * move to step 2.
+ */
+async function submit() {
+  if (!props.service || paying.value) return
+  error.value = ''
+  paying.value = true
+  try {
+    paid.value = await payForSession(props.service.id, {
+      name: form.name.trim(),
+      email: form.email.trim(),
+      phone: form.phone.trim(),
+      note: form.note.trim()
+    })
+    // Warm the Cal.com embed so the next click opens instantly.
+    loadCal().catch(() => {})
+  } catch (e) {
+    if (!(e instanceof PaymentCancelled)) {
+      const data = (e as { data?: { statusMessage?: string } })?.data
+      error.value = data?.statusMessage || (e as Error).message || 'Something went wrong. Nothing has been charged.'
+    }
+  } finally {
+    paying.value = false
+  }
+}
 
-  // Calendly only keeps these if the event has a custom question / SMS
-  // reminders switched on. Harmless when it does not.
-  if (form.phone) url.searchParams.set('text_reminder_number', form.phone)
-
-  const context = [
+/**
+ * Step 2: pick a time. The form collected who they are; Cal.com collects
+ * when. Hand the details over as prefill so nobody types their name twice,
+ * and pin the payment ID to the booking notes so it is easy to match up.
+ */
+function pickTime() {
+  const notes = [
     props.service?.title ? `Session: ${props.service.title}` : '',
+    paid.value ? `Paid: ${paid.value.paymentId}` : '',
     form.phone ? `Mobile: ${form.phone}` : '',
     form.note
-  ].filter(Boolean).join(' — ')
-  if (context) url.searchParams.set('a1', context)
+  ].filter(Boolean).join(' | ')
+
+  const url = withPrefill(props.service?.bookingUrl || CAL_URL, {
+    name: form.name,
+    email: form.email,
+    notes
+  })
 
   // Close ours first so the calendar is not stacked on top of a dead modal.
   close()
-  openCalendly(url.toString())
+  openCal(url)
 }
 
 // Reset between openings, and stop the page scrolling behind the panel.
 watch(() => props.open, (isOpen) => {
   if (isOpen) {
     Object.assign(form, { name: '', phone: '', email: '', note: '' })
+    paid.value = null
+    error.value = ''
+    paying.value = false
+    loadRazorpay().catch(() => { /* surfaced on submit if it still fails */ })
   }
   if (typeof document !== 'undefined') {
     document.body.style.overflow = isOpen ? 'hidden' : ''

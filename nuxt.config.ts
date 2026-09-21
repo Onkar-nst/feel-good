@@ -11,6 +11,21 @@ export default defineNuxtConfig({
     compatibilityVersion: 4,
   },
 
+  // Razorpay keys come from .env (NUXT_RAZORPAY_KEY_ID etc). Only the key id
+  // reaches the browser; the secret stays on the server for order creation
+  // and signature verification.
+  runtimeConfig: {
+    razorpayKeyId: '',
+    razorpayKeySecret: '',
+    // Gmail App Password for outgoing mail (forms + booking notices).
+    gmailUser: '',
+    gmailAppPassword: '',
+    notifyEmail: '',
+    public: {
+      razorpayKeyId: ''
+    }
+  },
+
   // Redirection rules
   routeRules: {
     '/': { redirect: '/home' }

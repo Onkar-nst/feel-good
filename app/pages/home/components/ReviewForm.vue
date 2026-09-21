@@ -15,7 +15,7 @@
                             If a session helped, saying so helps the next person decide to book.
                         </p>
 
-                        <form @submit.prevent>
+                        <form v-if="!sent" @submit.prevent="submit">
                             <!-- Rating — stars you actually click, not a dropdown -->
                             <div class="mb-6">
                                 <span class="field-label">Your overall rating</span>
@@ -52,32 +52,32 @@
 
                             <div class="mb-6">
                                 <label for="review-title" class="field-label">Title of your review</label>
-                                <input type="text" id="review-title" class="field"
+                                <input type="text" id="review-title" v-model="form.title" class="field"
                                        placeholder="Sum it up in a few words">
                             </div>
 
                             <div class="mb-6">
                                 <label for="review-body" class="field-label">Your review</label>
-                                <textarea id="review-body" rows="6" class="field resize-y"
+                                <textarea id="review-body" v-model="form.review" rows="6" required class="field resize-y"
                                           placeholder="What was the session like? Take your time."></textarea>
                             </div>
 
                             <div class="grid md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-5 mb-6">
                                 <div>
                                     <label for="review-name" class="field-label">Your name</label>
-                                    <input type="text" id="review-name" class="field"
+                                    <input type="text" id="review-name" v-model="form.name" required class="field"
                                            placeholder="First name is enough">
                                 </div>
 
                                 <div>
                                     <label for="review-email" class="field-label">Your email</label>
-                                    <input type="email" id="review-email" class="field"
+                                    <input type="email" id="review-email" v-model="form.email" class="field"
                                            placeholder="you@example.com">
                                 </div>
                             </div>
 
                             <label for="review-consent" class="mb-8 flex items-start gap-3 cursor-pointer">
-                                <input type="checkbox" id="review-consent" class="peer sr-only">
+                                <input type="checkbox" id="review-consent" v-model="form.consent" class="peer sr-only">
                                 <span class="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-md border border-default-300 bg-white transition-all duration-300 ease-soft peer-checked:border-pink peer-checked:bg-pink peer-checked:[&>svg]:opacity-100 peer-focus-visible:ring-4 peer-focus-visible:ring-pink/25">
                                     <Icon icon="tabler:check" class="size-3.5 text-white opacity-0 transition-opacity duration-200" />
                                 </span>
@@ -86,14 +86,34 @@
                                 </span>
                             </label>
 
+                            <div class="hidden" aria-hidden="true">
+                                <label for="review-website">Website</label>
+                                <input type="text" id="review-website" v-model="form.website" tabindex="-1" autocomplete="off">
+                            </div>
+
+                            <p v-if="error" role="alert" class="mb-5 rounded-lg border border-primary/30 bg-primary-soft/60 px-3.5 py-2.5 text-sm text-default-800">
+                                {{ error }}
+                            </p>
+
                             <div class="flex justify-center">
-                                <button type="submit" class="btn-primary btn-fill btn-lg group w-full sm:w-auto">
-                                    <span>Submit Review</span>
-                                    <Icon icon="tabler:arrow-right"
+                                <button type="submit" :disabled="sending" class="btn-primary btn-fill btn-lg group w-full sm:w-auto disabled:opacity-60 disabled:cursor-wait">
+                                    <Icon v-if="sending" icon="tabler:loader-2" class="size-5 animate-spin" />
+                                    <span>{{ sending ? 'Sending…' : 'Submit Review' }}</span>
+                                    <Icon v-if="!sending" icon="tabler:arrow-right"
                                           class="size-5 transition-transform duration-500 ease-soft group-hover:translate-x-1" />
                                 </button>
                             </div>
                         </form>
+
+                        <div v-else class="flex flex-col items-start gap-4 py-6" role="status">
+                            <span class="flex size-12 items-center justify-center rounded-full bg-primary-soft text-primary">
+                                <Icon icon="tabler:check" class="size-6" />
+                            </span>
+                            <h3 class="h-display text-2xl">Thank you, {{ form.name || 'friend' }}.</h3>
+                            <p class="text-default-600 max-w-[46ch]">
+                                Your review has been sent to Kinjal. It means a lot, and it helps the next person decide to reach out.
+                            </p>
+                        </div>
                     </div>
                 </div>
 
@@ -156,8 +176,20 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, reactive, ref } from 'vue'
 import { Icon } from '@iconify/vue'
+import { useFormSubmit } from '~/composables/useFormSubmit'
+
+const form = reactive({ title: '', review: '', name: '', email: '', consent: false, website: '' })
+const { sending, sent, error, post } = useFormSubmit('/api/review')
+
+async function submit() {
+  if (!rating.value) {
+    error.value = 'Please pick a star rating first.'
+    return
+  }
+  await post({ ...form, rating: rating.value })
+}
 
 type FaqType = { q: string, a: string }
 
