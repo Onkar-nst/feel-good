@@ -46,9 +46,27 @@ export function loadRazorpay(): Promise<void> {
   return pending
 }
 
-export type PaymentCustomer = { name: string, email: string, phone: string, note?: string }
+export type PaymentCustomer = {
+  name: string
+  email: string
+  phone: string
+  note?: string
+  slotStartIso?: string
+  slotEndIso?: string
+  slotDate?: string
+  slotLabel?: string
+}
 
-export type PaymentResult = { paymentId: string, orderId: string }
+export type PaymentResult = {
+  paymentId: string
+  orderId: string
+  meetingUrl?: string
+  calendarEventUrl?: string | null
+  slot?: {
+    date: string
+    time: string
+  }
+}
 
 export class PaymentCancelled extends Error {
   constructor() { super('Payment cancelled') }
@@ -102,9 +120,21 @@ export async function payForSession(sessionId: SessionId, customer: PaymentCusto
         try {
           const result = await $fetch<PaymentResult & { success: boolean }>('/api/razorpay/verify', {
             method: 'POST',
-            body: response
+            body: {
+              ...response,
+              slotStartIso: customer.slotStartIso,
+              slotEndIso: customer.slotEndIso,
+              slotDate: customer.slotDate,
+              slotLabel: customer.slotLabel
+            }
           })
-          resolve({ paymentId: result.paymentId, orderId: result.orderId })
+          resolve({
+            paymentId: result.paymentId,
+            orderId: result.orderId,
+            meetingUrl: result.meetingUrl,
+            calendarEventUrl: result.calendarEventUrl,
+            slot: result.slot
+          })
         } catch {
           reject(new Error('We received your payment but could not verify it automatically. Please WhatsApp us with your payment ID and we will sort it out.'))
         }

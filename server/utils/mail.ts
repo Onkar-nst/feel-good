@@ -25,10 +25,10 @@ export function getMailer(event: H3Event) {
 
   return {
     /** Sends to the client's inbox. `replyTo` lets them hit reply to answer the visitor. */
-    notify: (opts: { subject: string, html: string, text: string, replyTo?: string }) =>
+    notify: (opts: { subject: string, html: string, text: string, replyTo?: string, icalEvent?: { filename?: string, method?: string, content?: string } }) =>
       transporter.sendMail({ from, to, ...opts }),
     /** Sends to a visitor (booking receipts). */
-    send: (opts: { to: string, subject: string, html: string, text: string }) =>
+    send: (opts: { to: string, subject: string, html: string, text: string, icalEvent?: { filename?: string, method?: string, content?: string } }) =>
       transporter.sendMail({ from, replyTo: to, ...opts })
   }
 }

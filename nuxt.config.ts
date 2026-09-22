@@ -21,6 +21,11 @@ export default defineNuxtConfig({
     gmailUser: '',
     gmailAppPassword: '',
     notifyEmail: '',
+    // Google Calendar direct sync
+    googleClientId: '',
+    googleClientSecret: '',
+    googleRefreshToken: '',
+    googleCalendarId: '',
     public: {
       razorpayKeyId: ''
     }

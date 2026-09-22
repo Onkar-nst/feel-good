@@ -1,4 +1,3 @@
-import { EVENT_TYPES } from '~/utils/booking'
 import type { BookableService } from '~/types/booking'
 
 export type ServiceType = BookableService & {
@@ -7,8 +6,7 @@ export type ServiceType = BookableService & {
   link: string
   priceLabel?: string
   badge?: string
-  /** The Cal.com link this session books onto. */
-  bookingUrl: string
+  durationMinutes: number
 }
 
 /** The bookable sessions, shown on the home page and on every service page. */
@@ -16,32 +14,32 @@ export const serviceData: ServiceType[] = [
   {
     id: 'first-conversation',
     title: 'First Feel-Good Conversation',
-    bookingUrl: EVENT_TYPES.first30,
     duration: '30 min',
+    durationMinutes: 30,
     price: '₹799',
     badge: 'Start here',
     image: '/images/service/session-first.jpg',
     imageAlt: 'A woman waving hello at the start of a video call',
-    description: "A gentle first step. See how it feels to be listened to, with nothing expected of you after.",
+    description: 'A gentle first step. See how it feels to be listened to, with nothing expected of you after.',
     link: '/service-detail/personal'
   },
   {
     id: 'listening-50',
     title: 'Feel-Good Listening Session',
-    bookingUrl: EVENT_TYPES.listening50,
     duration: '50 min',
+    durationMinutes: 50,
     price: '₹1,799',
     badge: 'Most booked',
     image: '/images/service/session-core.jpg',
     imageAlt: 'A woman talking openly from her sofa during a call',
-    description: "Our core session. Room to say the whole thing, not just the headline.",
+    description: 'Our core session. Room to say the whole thing, not just the headline.',
     link: '/service-detail/personal'
   },
   {
     id: 'deep-75',
     title: 'Deep Listening Session',
-    bookingUrl: EVENT_TYPES.deep75,
     duration: '75 min',
+    durationMinutes: 75,
     price: '₹2,499',
     image: '/images/service/session-deep.jpg',
     imageAlt: 'A woman sitting quietly with her laptop, unhurried',
@@ -51,8 +49,8 @@ export const serviceData: ServiceType[] = [
   {
     id: 'checkin-monthly',
     title: 'Emotional Check-In Plans',
-    bookingUrl: EVENT_TYPES.listening50,
     duration: '4 sessions / month',
+    durationMinutes: 50,
     price: '₹6,500',
     priceLabel: '/ month',
     image: '/images/service/session-checkin.jpg',
@@ -63,8 +61,8 @@ export const serviceData: ServiceType[] = [
   {
     id: 'gift-50',
     title: 'Gift a Session',
-    bookingUrl: EVENT_TYPES.listening50,
     duration: '50 min',
+    durationMinutes: 50,
     price: '₹1,799',
     image: '/images/service/session-gift.jpg',
     imageAlt: 'A woman smiling warmly into the camera',
