@@ -1,224 +1,733 @@
 <template>
-    <Teleport to="body">
-        <Transition name="modal">
-            <div v-if="open" class="fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-0 sm:p-6"
-                 role="dialog" aria-modal="true" :aria-label="`Book ${service?.title}`">
+  <Teleport to="body">
+    <Transition name="modal">
+      <div
+        v-if="open"
+        class="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-5"
+        role="dialog"
+        aria-modal="true"
+        :aria-label="`Book ${activeService?.title || 'Session'}`"
+      >
+        <!-- Backdrop -->
+        <div class="fixed inset-0 bg-default-950/50 backdrop-blur-sm" @click="close"></div>
 
-                <!-- Backdrop -->
-                <div class="absolute inset-0 bg-default-950/45 backdrop-blur-sm" @click="close"></div>
+        <!-- 2-Column Modal Card with Top Progress Bar (Zero Scroll) -->
+        <div
+          ref="panel"
+          class="relative w-full max-w-5xl max-h-[96vh] max-md:overflow-y-auto rounded-3xl bg-[#FAF7F2] border border-default-200/90 shadow-[0_24px_70px_-25px_rgba(28,22,20,0.45)] z-10 flex flex-col md:overflow-hidden"
+        >
+          <!-- ================= TOP: HORIZONTAL PROGRESS BAR ================= -->
+          <BookingStepper
+            :current-step="currentStep"
+            :is-success="isSuccess"
+            @prev="prevStep"
+            @close="close"
+          />
 
-                <div ref="panel"
-                     class="relative w-full sm:max-w-lg max-h-[92vh] overflow-y-auto rounded-t-3xl sm:rounded-3xl bg-cream border border-default-200 shadow-[0_40px_100px_-40px_rgb(28_22_20/0.55)]">
-
-                    <button type="button" @click="close" aria-label="Close"
-                            class="absolute top-4 end-4 z-10 flex size-9 items-center justify-center rounded-full bg-white/80 text-default-700 transition-colors hover:bg-white hover:text-default-950">
-                        <Icon icon="tabler:x" class="size-5" />
+          <!-- ================= MAIN BODY AREA ================= -->
+          <div class="flex-1 flex flex-col justify-between">
+            <!-- ---------- STEP 1: SESSIONS & DATE/SLOTS (2 COLUMNS) ---------- -->
+            <div v-if="currentStep === 1" class="flex-1 flex flex-col justify-between p-4 sm:p-6">
+              <div class="grid md:grid-cols-2 gap-5 lg:gap-7 items-start">
+                <!-- COLUMN 1: ALL SESSIONS (CARDS - NOT A DROPDOWN) -->
+                <div class="space-y-3">
+                  <!-- Category Switcher Pill -->
+                  <div class="flex items-center gap-1 p-1 rounded-xl bg-default-200/60 w-fit">
+                    <button
+                      type="button"
+                      @click="setCategory('individual')"
+                      :class="[
+                        'flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all',
+                        sessionCategory === 'individual'
+                          ? 'bg-white text-default-950 shadow-2xs'
+                          : 'text-default-600 hover:text-default-950'
+                      ]"
+                    >
+                      <Icon icon="tabler:user" class="size-3.5" />
+                      <span>For Individual</span>
                     </button>
 
-                    <!-- Summary of what is being booked -->
-                    <div class="flex items-center gap-4 border-b border-default-200 bg-white/60 p-6 pe-16">
-                        <img v-if="service?.image" :src="service.image" alt=""
-                             class="size-16 shrink-0 rounded-xl object-cover" />
-                        <div>
-                            <h3 class="h-display text-xl leading-snug">{{ service?.title }}</h3>
-                            <p class="mt-1 text-sm text-default-600">
-                                <span v-if="service?.duration">{{ service.duration }} &middot; </span>
-                                <span class="font-medium text-default-950">{{ service?.price }}</span>
-                            </p>
+                    <button
+                      type="button"
+                      @click="setCategory('gift')"
+                      :class="[
+                        'flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all',
+                        sessionCategory === 'gift'
+                          ? 'bg-white text-default-950 shadow-2xs'
+                          : 'text-default-600 hover:text-default-950'
+                      ]"
+                    >
+                      <Icon icon="tabler:gift" class="size-3.5 text-peach" />
+                      <span>Gift a Session</span>
+                    </button>
+                  </div>
+
+                  <div class="text-[0.68rem] font-bold tracking-wider uppercase text-default-500">
+                    Session Option
+                  </div>
+
+                  <!-- Session Cards List -->
+                  <div class="space-y-2">
+                    <button
+                      v-for="svc in displayedServices"
+                      :key="svc.id"
+                      type="button"
+                      @click="selectService(svc.id)"
+                      :class="[
+                        'w-full text-start p-3 rounded-2xl border transition-all duration-200 flex items-center justify-between gap-3 group relative cursor-pointer',
+                        activeServiceId === svc.id
+                          ? 'bg-white border-[#E07A5F] shadow-2xs ring-2 ring-[#E07A5F]/20 -translate-y-0.5'
+                          : 'bg-white/70 border-default-200/80 hover:border-default-300 hover:bg-white'
+                      ]"
+                    >
+                      <div class="min-w-0 flex-1">
+                        <div class="flex items-center gap-2 mb-0.5">
+                          <span class="font-heading text-xs sm:text-sm font-semibold text-default-950 truncate">
+                            {{ svc.title }}
+                          </span>
+                          <span
+                            v-if="svc.badge"
+                            class="shrink-0 text-[0.6rem] font-bold px-1.5 py-0.5 rounded-md bg-peach-soft text-peach-ink leading-tight"
+                          >
+                            {{ svc.badge }}
+                          </span>
                         </div>
-                    </div>
-
-                    <!-- Step 2: paid, now pick a time -->
-                    <div v-if="paid" class="p-6">
-                        <div class="mb-5 flex items-center gap-3">
-                            <span class="flex size-11 shrink-0 items-center justify-center rounded-full bg-primary-soft text-primary">
-                                <Icon icon="tabler:check" class="size-6" />
-                            </span>
-                            <div>
-                                <h4 class="h-display text-xl leading-snug">Payment received</h4>
-                                <p class="text-sm text-default-600">Thank you, {{ form.name || 'friend' }}. One more step.</p>
-                            </div>
+                        <div class="text-[0.7rem] text-default-500">
+                          {{ svc.duration }} &middot; 1 session
                         </div>
+                      </div>
 
-                        <p class="mb-2 text-sm text-default-600">
-                            Your session is paid for. Now choose a time that suits you and it is confirmed straight away.
-                        </p>
-                        <p class="mb-6 text-xs text-default-500">
-                            Payment ID <span class="font-mono text-default-700">{{ paid.paymentId }}</span>.
-                            Keep this handy; a receipt has gone to {{ form.email }}.
-                        </p>
+                      <div class="shrink-0 text-end">
+                        <span
+                          :class="[
+                            'font-heading text-sm sm:text-base font-bold transition-colors',
+                            activeServiceId === svc.id ? 'text-primary' : 'text-default-900'
+                          ]"
+                        >
+                          {{ svc.price }}
+                        </span>
+                      </div>
+                    </button>
+                  </div>
 
-                        <button type="button" class="btn-primary btn-fill btn-lg group w-full" @click="pickTime">
-                            <span>Pick your time</span>
-                            <Icon icon="tabler:calendar-heart"
-                                  class="size-5 transition-transform duration-500 ease-soft group-hover:translate-x-1" />
-                        </button>
-
-                        <a :href="whatsappLink" target="_blank" rel="noopener noreferrer"
-                           class="btn-outline btn-lg mt-3 w-full">
-                            <Icon icon="tabler:brand-whatsapp" class="size-5" />
-                            <span>Prefer to fix a time over WhatsApp?</span>
-                        </a>
-                    </div>
-
-                    <!-- Step 1: who is booking, then pay -->
-                    <form v-else class="p-6" @submit.prevent="submit">
-                        <div class="grid sm:grid-cols-2 gap-x-4 gap-y-4">
-                            <div class="sm:col-span-2">
-                                <label for="bk-name" :class="labelClass">Name *</label>
-                                <input id="bk-name" v-model="form.name" type="text" required
-                                       placeholder="A first name is enough" :class="fieldClass" />
-                            </div>
-
-                            <div>
-                                <label for="bk-phone" :class="labelClass">Mobile Number *</label>
-                                <input id="bk-phone" v-model="form.phone" type="tel" required
-                                       placeholder="+91" :class="fieldClass" />
-                            </div>
-
-                            <div>
-                                <label for="bk-email" :class="labelClass">Email *</label>
-                                <input id="bk-email" v-model="form.email" type="email" required
-                                       placeholder="you@example.com" :class="fieldClass" />
-                            </div>
-
-                            <div class="sm:col-span-2">
-                                <label for="bk-note" :class="labelClass">Anything you'd like to say first?</label>
-                                <textarea id="bk-note" v-model="form.note" rows="3"
-                                          placeholder="Optional. A single line is completely fine."
-                                          :class="fieldClass"></textarea>
-                            </div>
-                        </div>
-
-                        <p v-if="error" role="alert"
-                           class="mt-4 rounded-lg border border-primary/30 bg-primary-soft/60 px-3.5 py-2.5 text-sm text-default-800">
-                            {{ error }}
-                        </p>
-
-                        <button type="submit" :disabled="paying" class="btn-primary btn-fill btn-lg group mt-6 w-full disabled:opacity-60 disabled:cursor-wait">
-                            <Icon v-if="paying" icon="tabler:loader-2" class="size-5 animate-spin" />
-                            <span>{{ paying ? 'Opening secure payment…' : `Pay ${service?.price} and book` }}</span>
-                            <Icon v-if="!paying" icon="tabler:arrow-right"
-                                  class="size-5 transition-transform duration-500 ease-soft group-hover:translate-x-1" />
-                        </button>
-
-                        <div class="mt-3 flex items-center gap-3 text-xs text-default-400">
-                            <span class="h-px flex-1 bg-default-200"></span>
-                            <span>or</span>
-                            <span class="h-px flex-1 bg-default-200"></span>
-                        </div>
-
-                        <a :href="whatsappLink" target="_blank" rel="noopener noreferrer"
-                           class="btn-outline btn-lg mt-3 w-full">
-                            <Icon icon="tabler:brand-whatsapp" class="size-5" />
-                            <span>Book over WhatsApp</span>
-                        </a>
-
-                        <p class="mt-5 flex items-center justify-center gap-1.5 text-center text-xs text-default-500">
-                            <Icon icon="tabler:lock" class="size-3.5" />
-                            Secure payment by Razorpay (UPI, cards, net banking) &middot; You choose your slot next
-                        </p>
-                    </form>
+                  <!-- Virtual Video Call Mode Badge (In-person removed) -->
+                  <div class="flex items-center gap-2 px-3 py-2 rounded-xl bg-[#1E4635]/10 text-[#1E4635] text-xs font-medium border border-[#1E4635]/20">
+                    <Icon icon="tabler:video" class="size-4 shrink-0" />
+                    <span class="truncate">Virtual Video Call &middot; Google Meet</span>
+                  </div>
                 </div>
+
+                <!-- COLUMN 2: DATE AND TIME SLOTS -->
+                <div class="bg-white/50 md:bg-transparent rounded-2xl p-2.5 md:p-0 border md:border-0 border-default-200/70">
+                  <DateSlotPicker
+                    :days="carouselDays"
+                    :active-date="activeDate"
+                    :slots="daySlots"
+                    :selected-slot="selectedSlot"
+                    :loading="slotsLoading"
+                    @change-date="onDateChange"
+                    @select-slot="onSlotSelect"
+                  />
+                </div>
+              </div>
+
+              <!-- Step 1 Bottom Action Bar -->
+              <div class="pt-4 border-t border-default-200/80 mt-4 flex items-center justify-between gap-3">
+                <div class="text-xs text-default-600 truncate">
+                  <span v-if="selectedSlot">
+                    Selected: <strong class="text-default-950 font-semibold">{{ activeService.title }}</strong> &middot; <strong class="text-default-950">{{ selectedSlot.label }}</strong> on {{ formatNiceDate(selectedSlot.date) }}
+                  </span>
+                  <span v-else class="text-amber-700 flex items-center gap-1">
+                    <Icon icon="tabler:hand-point-up" class="size-3.5 shrink-0" />
+                    <span>Please pick a date and time slot</span>
+                  </span>
+                </div>
+
+                <button
+                  type="button"
+                  :disabled="!selectedSlot || slotsLoading"
+                  @click="goToStep2"
+                  class="btn-primary btn-fill px-6 py-2.5 text-xs font-semibold uppercase tracking-wider rounded-xl disabled:opacity-40 disabled:cursor-not-allowed shrink-0"
+                >
+                  <span>Continue</span>
+                  <Icon icon="tabler:arrow-right" class="size-4" />
+                </button>
+              </div>
             </div>
-        </Transition>
-    </Teleport>
+
+            <!-- ---------- STEP 2: ENTER DETAILS ---------- -->
+            <div v-else-if="currentStep === 2" class="flex-1 flex flex-col justify-between p-4 sm:p-6">
+              <div class="grid md:grid-cols-12 gap-5 lg:gap-6 items-start">
+                <!-- Left summary box (col-span-5) -->
+                <div class="md:col-span-5 rounded-2xl bg-white border border-default-200/90 p-4 space-y-3 shadow-xs">
+                  <div class="flex items-center justify-between border-b border-default-100 pb-2.5">
+                    <div>
+                      <h4 class="font-heading text-sm font-semibold text-default-950">{{ activeService?.title }}</h4>
+                      <span class="text-[0.72rem] text-default-500">{{ activeService?.duration }}</span>
+                    </div>
+                    <span class="font-heading text-base font-bold text-primary">{{ activeService?.price }}</span>
+                  </div>
+
+                  <div class="space-y-2 text-xs">
+                    <div>
+                      <span class="text-default-500 block text-[0.68rem] uppercase font-semibold">Date &amp; Time</span>
+                      <strong class="text-default-900 font-medium">
+                        {{ formatNiceDate(selectedSlot?.date) }} at {{ selectedSlot?.label }}
+                      </strong>
+                    </div>
+
+                    <div>
+                      <span class="text-default-500 block text-[0.68rem] uppercase font-semibold">Mode</span>
+                      <strong class="text-default-900 font-medium flex items-center gap-1">
+                        <Icon icon="tabler:video" class="size-3.5 text-[#1E4635]" />
+                        <span>Google Meet Call</span>
+                      </strong>
+                    </div>
+                  </div>
+
+                  <button
+                    type="button"
+                    @click="currentStep = 1"
+                    class="text-[0.72rem] text-primary hover:underline font-semibold block pt-1"
+                  >
+                    &larr; Change session or slot
+                  </button>
+                </div>
+
+                <!-- Right form fields (col-span-7) -->
+                <div class="md:col-span-7">
+                  <div class="mb-3">
+                    <h3 class="h-display text-lg font-medium text-default-950">Enter your details</h3>
+                    <p class="text-xs text-default-600">A safe space. Your information is never shared.</p>
+                  </div>
+
+                  <form @submit.prevent="goToStep3" class="space-y-3">
+                    <div>
+                      <label for="bk-name" class="block text-xs font-semibold text-default-700 mb-1">Name *</label>
+                      <input
+                        id="bk-name"
+                        v-model="customer.name"
+                        type="text"
+                        required
+                        placeholder="Your first name is enough"
+                        class="w-full rounded-xl border border-default-300 bg-white px-3 py-2 text-xs text-default-950 placeholder:text-default-400 focus:border-[#1E4635] focus:ring-2 focus:ring-[#1E4635]/20 transition-all"
+                      />
+                    </div>
+
+                    <div class="grid sm:grid-cols-2 gap-2.5">
+                      <div>
+                        <label for="bk-phone" class="block text-xs font-semibold text-default-700 mb-1">Mobile Number (+91) *</label>
+                        <input
+                          id="bk-phone"
+                          v-model="customer.phone"
+                          type="tel"
+                          required
+                          placeholder="e.g. 9876543210"
+                          class="w-full rounded-xl border border-default-300 bg-white px-3 py-2 text-xs text-default-950 placeholder:text-default-400 focus:border-[#1E4635] focus:ring-2 focus:ring-[#1E4635]/20 transition-all"
+                        />
+                      </div>
+
+                      <div>
+                        <label for="bk-email" class="block text-xs font-semibold text-default-700 mb-1">Email Address *</label>
+                        <input
+                          id="bk-email"
+                          v-model="customer.email"
+                          type="email"
+                          required
+                          placeholder="you@example.com"
+                          class="w-full rounded-xl border border-default-300 bg-white px-3 py-2 text-xs text-default-950 placeholder:text-default-400 focus:border-[#1E4635] focus:ring-2 focus:ring-[#1E4635]/20 transition-all"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label for="bk-notes" class="block text-xs font-semibold text-default-700 mb-1">What would you like to talk about?</label>
+                      <textarea
+                        id="bk-notes"
+                        v-model="customer.note"
+                        rows="2"
+                        placeholder="Optional. A sentence is completely fine."
+                        class="w-full rounded-xl border border-default-300 bg-white px-3 py-2 text-xs text-default-950 placeholder:text-default-400 focus:border-[#1E4635] focus:ring-2 focus:ring-[#1E4635]/20 transition-all resize-none"
+                      ></textarea>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+              <!-- Step 2 Bottom Action Bar -->
+              <div class="pt-4 border-t border-default-200/80 mt-4 flex items-center justify-between gap-3">
+                <button
+                  type="button"
+                  @click="currentStep = 1"
+                  class="text-xs text-default-500 hover:text-default-950 font-medium transition-colors"
+                >
+                  &larr; Back to slots
+                </button>
+
+                <button
+                  type="button"
+                  :disabled="!canProceedToStep3"
+                  @click="goToStep3"
+                  class="btn-primary btn-fill px-6 py-2.5 text-xs font-semibold uppercase tracking-wider rounded-xl disabled:opacity-40 disabled:cursor-not-allowed shrink-0"
+                >
+                  <span>Continue to Payment</span>
+                  <Icon icon="tabler:arrow-right" class="size-4" />
+                </button>
+              </div>
+            </div>
+
+            <!-- ---------- STEP 3: REVIEW & PAY ---------- -->
+            <div v-else-if="currentStep === 3 && !isSuccess" class="flex-1 flex flex-col justify-between p-4 sm:p-6">
+              <div class="grid md:grid-cols-12 gap-5 lg:gap-6 items-start">
+                <div class="md:col-span-7 space-y-3">
+                  <div>
+                    <h3 class="h-display text-lg font-medium text-default-950 mb-0.5">Complete your booking</h3>
+                    <p class="text-xs text-default-600">Review your details and confirm your slot.</p>
+                  </div>
+
+                  <!-- Summary Box -->
+                  <div class="rounded-2xl bg-white border border-default-200/90 p-4 space-y-2.5 shadow-xs">
+                    <div class="flex items-center justify-between border-b border-default-100 pb-2.5">
+                      <div>
+                        <h4 class="font-heading text-sm font-semibold text-default-950">{{ activeService?.title }}</h4>
+                        <p class="text-[0.72rem] text-default-500">1:1 Virtual Session with Kinjal Shah</p>
+                      </div>
+                      <span class="font-heading text-base text-primary font-bold">{{ activeService?.price }}</span>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-2.5 text-xs">
+                      <div>
+                        <span class="text-default-500 block text-[0.68rem]">Date &amp; Time</span>
+                        <strong class="text-default-900 font-medium">
+                          {{ formatNiceDate(selectedSlot?.date) }} &middot; {{ selectedSlot?.label }}
+                        </strong>
+                      </div>
+
+                      <div>
+                        <span class="text-default-500 block text-[0.68rem]">Mode</span>
+                        <strong class="text-default-900 font-medium flex items-center gap-1">
+                          <Icon icon="tabler:video" class="size-3.5 text-[#1E4635]" />
+                          <span>Google Meet Call</span>
+                        </strong>
+                      </div>
+
+                      <div>
+                        <span class="text-default-500 block text-[0.68rem]">Client</span>
+                        <strong class="text-default-900 font-medium truncate block">{{ customer.name }}</strong>
+                      </div>
+
+                      <div>
+                        <span class="text-default-500 block text-[0.68rem]">Contact</span>
+                        <strong class="text-default-900 font-medium truncate block">{{ customer.email }}</strong>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Payment error alert if any -->
+                  <div v-if="paymentError" role="alert" class="p-3 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-900 flex items-start gap-2">
+                    <Icon icon="tabler:alert-triangle" class="size-4 shrink-0 text-amber-600 mt-0.5" />
+                    <div>
+                      <strong>Payment not completed:</strong>
+                      <p>{{ paymentError }}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="md:col-span-5 space-y-3">
+                  <div class="rounded-2xl bg-white border border-default-200/90 p-4 space-y-3 shadow-xs">
+                    <div class="text-xs font-semibold text-default-900">Payment Breakdown</div>
+                    <div class="flex items-center justify-between text-xs text-default-600">
+                      <span>Session Fee</span>
+                      <span>{{ activeService?.price }}</span>
+                    </div>
+                    <div class="flex items-center justify-between text-xs text-default-600">
+                      <span>Platform &amp; Taxes</span>
+                      <span class="text-emerald-700 font-medium">Included</span>
+                    </div>
+                    <div class="pt-2 border-t border-default-200 flex items-center justify-between text-sm font-bold text-default-950">
+                      <span>Total Payable</span>
+                      <span class="text-primary font-heading text-base">{{ activeService?.price }}</span>
+                    </div>
+
+                    <button
+                      type="button"
+                      :disabled="paying"
+                      @click="triggerPayment"
+                      class="w-full btn-primary btn-fill py-2.5 text-xs font-semibold uppercase tracking-wider rounded-xl disabled:opacity-60 disabled:cursor-wait mt-2"
+                    >
+                      <Icon v-if="paying" icon="tabler:loader-2" class="size-4 animate-spin" />
+                      <span>{{ paying ? 'Processing…' : `Pay ${activeService?.price} &amp; Confirm` }}</span>
+                    </button>
+                  </div>
+
+                  <div class="p-2.5 rounded-xl bg-default-100/70 text-[0.7rem] text-default-600 flex items-center gap-1.5">
+                    <Icon icon="tabler:lock" class="size-3.5 text-default-500 shrink-0" />
+                    <span>Slot is only locked after payment. If cancelled, the slot stays free.</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 3 Bottom Action Bar -->
+              <div class="pt-4 border-t border-default-200/80 mt-4 flex items-center justify-between gap-3">
+                <button
+                  type="button"
+                  @click="currentStep = 2"
+                  class="text-xs text-default-500 hover:text-default-950 font-medium transition-colors"
+                >
+                  &larr; Back to details
+                </button>
+              </div>
+            </div>
+
+            <!-- ---------- SUCCESS CONFIRMATION ---------- -->
+            <div v-else-if="isSuccess" class="flex-1 flex flex-col items-center justify-center text-center p-6 py-8">
+              <div class="size-14 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mb-3.5">
+                <Icon icon="tabler:check" class="size-8 stroke-[2.5]" />
+              </div>
+
+              <h3 class="h-display text-2xl font-medium text-default-950 mb-1">Booking Confirmed!</h3>
+              <p class="text-xs text-default-600 max-w-[42ch] mb-5">
+                Thank you, {{ customer.name }}. Your session with Kinjal is locked in. We've emailed the confirmation and calendar invite to {{ customer.email }}.
+              </p>
+
+              <div class="w-full max-w-sm rounded-2xl bg-white border border-default-200 p-4 text-start space-y-2.5 mb-5 shadow-xs text-xs">
+                <div class="flex items-center justify-between border-b border-default-100 pb-2">
+                  <span class="text-default-500">Session</span>
+                  <strong class="text-default-900">{{ activeService?.title }}</strong>
+                </div>
+
+                <div class="flex items-center justify-between border-b border-default-100 pb-2">
+                  <span class="text-default-500">Date &amp; Time</span>
+                  <strong class="text-default-900">
+                    {{ formatNiceDate(selectedSlot?.date) }} at {{ selectedSlot?.label }}
+                  </strong>
+                </div>
+
+                <div class="flex items-center justify-between border-b border-default-100 pb-2">
+                  <span class="text-default-500">Payment ID</span>
+                  <span class="font-mono text-default-700">{{ bookingResult?.paymentId }}</span>
+                </div>
+
+                <div v-if="bookingResult?.meetingUrl" class="flex items-center justify-between border-b border-default-100 pb-2">
+                  <span class="text-default-500">Video Call</span>
+                  <a
+                    :href="bookingResult.meetingUrl"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-1 font-semibold text-emerald-700 hover:text-emerald-800 hover:underline"
+                  >
+                    <Icon icon="tabler:video" class="size-3.5 text-emerald-600" />
+                    <span>Join Google Meet</span>
+                    <Icon icon="tabler:arrow-up-right" class="size-3" />
+                  </a>
+                </div>
+
+                <!-- Calendar Add Actions -->
+                <div class="pt-2.5 space-y-2">
+                  <a
+                    :href="googleCalendarUrl"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="w-full flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-[#1E4635] text-white font-medium text-xs hover:bg-[#163528] transition-colors shadow-2xs"
+                  >
+                    <Icon icon="tabler:brand-google" class="size-3.5 shrink-0" />
+                    <span>Add to Google Calendar</span>
+                    <Icon icon="tabler:arrow-up-right" class="size-3 shrink-0" />
+                  </a>
+
+                  <p class="text-[0.68rem] text-default-500 text-center pt-1 leading-normal">
+                    Calendar invite &amp; Google Meet link sent to <strong>{{ customer.email }}</strong> and Kinjal's calendar.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3">
+                <button
+                  type="button"
+                  @click="close"
+                  class="btn-primary btn-fill px-6 py-2 text-xs font-semibold rounded-xl"
+                >
+                  <span>Done</span>
+                </button>
+
+                <a
+                  :href="whatsappDirectLink"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn-outline px-4 py-2 text-xs font-medium rounded-xl inline-flex items-center gap-1.5"
+                >
+                  <Icon icon="tabler:brand-whatsapp" class="size-4 text-emerald-600" />
+                  <span>WhatsApp</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Transition>
+  </Teleport>
 </template>
 
 <script setup lang="ts">
 import { computed, reactive, ref, watch } from 'vue'
 import { Icon } from '@iconify/vue'
-import { CAL_URL, loadCal, openCal, withPrefill } from '~/utils/booking'
-import { loadRazorpay, payForSession, PaymentCancelled, type PaymentResult } from '~/utils/razorpay'
+import BookingStepper from '~/components/booking/BookingStepper.vue'
+import DateSlotPicker, { type DaySummary } from '~/components/booking/DateSlotPicker.vue'
+import { serviceData, type ServiceType } from '~/data/sessions'
+import type { BookableService, BookingCustomer, ConfirmedBookingResult, SelectedSlot } from '~/types/booking'
+import { loadRazorpay, payForSession, PaymentCancelled } from '~/utils/razorpay'
 
-import type { BookableService } from '~/types/booking'
+const props = defineProps<{
+  open: boolean
+  service: BookableService | null
+}>()
 
-const props = defineProps<{ open: boolean, service: BookableService | null }>()
-const emit = defineEmits<{ close: [] }>()
+const emit = defineEmits<{
+  close: []
+}>()
 
-const labelClass = 'mb-1.5 block text-sm font-medium text-default-700'
+const currentStep = ref(1)
+const isSuccess = ref(false)
 
-const fieldClass =
-  'w-full rounded-lg border border-default-200 bg-white px-3.5 py-2.5 text-sm text-default-950 ' +
-  'placeholder:text-default-400 transition-all duration-200 ' +
-  'focus:border-pink focus:ring-2 focus:ring-pink/20'
+const sessionCategory = ref<'individual' | 'gift'>('individual')
+const activeServiceId = ref<string>('listening-50')
 
-const form = reactive({ name: '', phone: '', email: '', note: '' })
+const displayedServices = computed(() => {
+  if (sessionCategory.value === 'gift') {
+    return serviceData.filter(s => s.id === 'gift-50')
+  }
+  return serviceData.filter(s => s.id !== 'gift-50')
+})
+
+const activeService = computed(() => {
+  return serviceData.find(s => s.id === activeServiceId.value) || serviceData[1]
+})
+
+const customer = reactive<BookingCustomer>({
+  name: '',
+  phone: '',
+  email: '',
+  note: ''
+})
+
+const activeDate = ref<string>('')
+const carouselDays = ref<DaySummary[]>([])
+const daySlots = reactive<{
+  morning: SelectedSlot[]
+  afternoon: SelectedSlot[]
+  evening: SelectedSlot[]
+  total: number
+}>({
+  morning: [],
+  afternoon: [],
+  evening: [],
+  total: 0
+})
+const selectedSlot = ref<SelectedSlot | null>(null)
+const slotsLoading = ref(false)
+
 const paying = ref(false)
-const paid = ref<PaymentResult | null>(null)
-const error = ref('')
+const paymentError = ref('')
+const bookingResult = ref<ConfirmedBookingResult | null>(null)
 
-const whatsappLink = computed(() =>
-  'https://wa.me/919004989199?text=' +
-  encodeURIComponent(`Hi! I'd like to book the ${props.service?.title ?? 'listening session'}.`)
-)
+const canProceedToStep3 = computed(() => {
+  return customer.name.trim().length > 1 &&
+    customer.phone.trim().length >= 8 &&
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customer.email.trim())
+})
+
+const whatsappDirectLink = computed(() => {
+  const text = `Hi Kinjal! I've booked the ${activeService.value.title} for ${selectedSlot.value?.label} on ${selectedSlot.value?.date}. (Payment ID: ${bookingResult.value?.paymentId || ''})`
+  return `https://wa.me/919004989199?text=${encodeURIComponent(text)}`
+})
+
+const googleCalendarUrl = computed(() => {
+  if (!selectedSlot.value) return '#'
+  try {
+    const toUtc = (iso: string) => {
+      const d = new Date(iso)
+      return d.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z'
+    }
+    const dates = `${toUtc(selectedSlot.value.startIso)}/${toUtc(selectedSlot.value.endIso)}`
+    const meetUrl = bookingResult.value?.meetingUrl
+    const details = [
+      `Confidential 1:1 Listening Session with Kinjal Shah (The Feel Good Centre)`,
+      `Client: ${customer.name}`,
+      `Payment ID: ${bookingResult.value?.paymentId || ''}`,
+      meetUrl ? `Google Meet Link: ${meetUrl}` : ''
+    ].filter(Boolean).join('\n')
+
+    const params = new URLSearchParams({
+      action: 'TEMPLATE',
+      text: `Listening Session: ${activeService.value.title} with Kinjal Shah`,
+      dates,
+      details,
+      location: meetUrl || 'Google Meet (Virtual Video Call)'
+    })
+    return `https://calendar.google.com/calendar/render?${params.toString()}`
+  } catch {
+    return '#'
+  }
+})
+
+
+function setCategory(cat: 'individual' | 'gift') {
+  sessionCategory.value = cat
+  if (cat === 'gift') {
+    selectService('gift-50')
+  } else {
+    if (activeServiceId.value === 'gift-50') {
+      selectService('listening-50')
+    }
+  }
+}
+
+function selectService(svcId: string) {
+  if (activeServiceId.value === svcId && selectedSlot.value) return
+  activeServiceId.value = svcId
+  selectedSlot.value = null
+  fetchSlots(activeDate.value, activeService.value.durationMinutes || 50)
+}
+
+function onDateChange(newDate: string) {
+  activeDate.value = newDate
+  selectedSlot.value = null
+  fetchSlots(newDate, activeService.value.durationMinutes || 50)
+}
+
+function onSlotSelect(slot: SelectedSlot) {
+  selectedSlot.value = slot
+}
+
+async function fetchSlots(dateStr: string, durationMinutes = 50) {
+  slotsLoading.value = true
+  try {
+    const data = await $fetch<{
+      activeDate: string
+      days: DaySummary[]
+      slots: {
+        all: SelectedSlot[]
+        morning: SelectedSlot[]
+        afternoon: SelectedSlot[]
+        evening: SelectedSlot[]
+        total: number
+      }
+    }>(`/api/booking/slots`, {
+      params: {
+        date: dateStr || undefined,
+        duration: durationMinutes,
+        days: 7
+      }
+    })
+
+    carouselDays.value = data.days || []
+    activeDate.value = data.activeDate
+    daySlots.morning = data.slots?.morning || []
+    daySlots.afternoon = data.slots?.afternoon || []
+    daySlots.evening = data.slots?.evening || []
+    daySlots.total = data.slots?.total || 0
+
+    if (daySlots.total === 0 && !selectedSlot.value) {
+      const firstAvailable = carouselDays.value.find(d => d.slotCount > 0)
+      if (firstAvailable && firstAvailable.date !== activeDate.value) {
+        onDateChange(firstAvailable.date)
+      }
+    }
+  } catch (err) {
+    console.error('Failed to fetch slots:', err)
+  } finally {
+    slotsLoading.value = false
+  }
+}
+
+function goToStep2() {
+  if (!selectedSlot.value) return
+  currentStep.value = 2
+}
+
+function goToStep3() {
+  if (!canProceedToStep3.value) return
+  paymentError.value = ''
+  currentStep.value = 3
+}
+
+function prevStep() {
+  if (currentStep.value > 1) {
+    currentStep.value--
+  }
+}
 
 function close() {
-  if (paying.value) return // Razorpay's window is up; closing ours underneath would strand it
+  if (paying.value) return
   emit('close')
 }
 
-/**
- * Step 1: take payment. The server prices the session from its id, Razorpay
- * collects the money, the server verifies the signature. Only then do we
- * move to step 2.
- */
-async function submit() {
-  if (!props.service || paying.value) return
-  error.value = ''
+async function triggerPayment() {
+  if (paying.value || !selectedSlot.value) return
+  paymentError.value = ''
   paying.value = true
+
   try {
-    paid.value = await payForSession(props.service.id, {
-      name: form.name.trim(),
-      email: form.email.trim(),
-      phone: form.phone.trim(),
-      note: form.note.trim()
+    const res = await payForSession(activeService.value.id, {
+      name: customer.name.trim(),
+      email: customer.email.trim(),
+      phone: customer.phone.trim(),
+      note: customer.note?.trim() || '',
+      slotStartIso: selectedSlot.value.startIso,
+      slotEndIso: selectedSlot.value.endIso,
+      slotDate: selectedSlot.value.date,
+      slotLabel: selectedSlot.value.label
     })
-    // Warm the Cal.com embed so the next click opens instantly.
-    loadCal().catch(() => {})
-  } catch (e) {
-    if (!(e instanceof PaymentCancelled)) {
-      const data = (e as { data?: { statusMessage?: string } })?.data
-      error.value = data?.statusMessage || (e as Error).message || 'Something went wrong. Nothing has been charged.'
+
+    bookingResult.value = res
+    isSuccess.value = true
+  } catch (err) {
+    if (!(err instanceof PaymentCancelled)) {
+      paymentError.value = (err as Error).message || 'Payment could not be completed. Please try again or reach out on WhatsApp.'
     }
   } finally {
     paying.value = false
   }
 }
 
-/**
- * Step 2: pick a time. The form collected who they are; Cal.com collects
- * when. Hand the details over as prefill so nobody types their name twice,
- * and pin the payment ID to the booking notes so it is easy to match up.
- */
-function pickTime() {
-  const notes = [
-    props.service?.title ? `Session: ${props.service.title}` : '',
-    paid.value ? `Paid: ${paid.value.paymentId}` : '',
-    form.phone ? `Mobile: ${form.phone}` : '',
-    form.note
-  ].filter(Boolean).join(' | ')
-
-  const url = withPrefill(props.service?.bookingUrl || CAL_URL, {
-    name: form.name,
-    email: form.email,
-    notes
-  })
-
-  // Close ours first so the calendar is not stacked on top of a dead modal.
-  close()
-  openCal(url)
+function formatNiceDate(dStr?: string) {
+  if (!dStr) return ''
+  try {
+    const [y, m, d] = dStr.split('-').map(Number)
+    const dt = new Date(y, m - 1, d)
+    return dt.toLocaleDateString('en-IN', {
+      weekday: 'short',
+      day: 'numeric',
+      month: 'short'
+    })
+  } catch {
+    return dStr
+  }
 }
 
-// Reset between openings, and stop the page scrolling behind the panel.
 watch(() => props.open, (isOpen) => {
   if (isOpen) {
-    Object.assign(form, { name: '', phone: '', email: '', note: '' })
-    paid.value = null
-    error.value = ''
+    currentStep.value = 1
+    isSuccess.value = false
+    paymentError.value = ''
+    selectedSlot.value = null
     paying.value = false
-    loadRazorpay().catch(() => { /* surfaced on submit if it still fails */ })
+    bookingResult.value = null
+
+    if (props.service) {
+      activeServiceId.value = props.service.id
+      sessionCategory.value = props.service.id === 'gift-50' ? 'gift' : 'individual'
+    } else {
+      activeServiceId.value = 'listening-50'
+      sessionCategory.value = 'individual'
+    }
+
+    const todayIst = new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Kolkata' })
+    activeDate.value = todayIst
+    fetchSlots(todayIst, activeService.value.durationMinutes || 50)
+    loadRazorpay().catch(() => {})
   }
+
   if (typeof document !== 'undefined') {
     document.body.style.overflow = isOpen ? 'hidden' : ''
   }
@@ -227,14 +736,22 @@ watch(() => props.open, (isOpen) => {
 
 <style scoped>
 .modal-enter-active,
-.modal-leave-active { transition: opacity 0.3s ease; }
+.modal-leave-active {
+  transition: opacity 0.25s ease;
+}
 
 .modal-enter-from,
-.modal-leave-to { opacity: 0; }
+.modal-leave-to {
+  opacity: 0;
+}
 
 .modal-enter-active > div:last-child,
-.modal-leave-active > div:last-child { transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1); }
+.modal-leave-active > div:last-child {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
 
 .modal-enter-from > div:last-child,
-.modal-leave-to > div:last-child { transform: translateY(24px) scale(0.98); }
+.modal-leave-to > div:last-child {
+  transform: translateY(16px) scale(0.99);
+}
 </style>

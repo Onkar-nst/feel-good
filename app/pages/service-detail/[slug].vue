@@ -24,7 +24,7 @@
                     </p>
 
                     <div class="flex flex-wrap items-center gap-4" data-reveal="up" style="--reveal-delay:280ms">
-                        <BookNowButton :url="EVENT_TYPES.listening50">Book a Session</BookNowButton>
+                        <BookNowButton @click="bookingOpen = true">Book a Session</BookNowButton>
 
                         <a :href="whatsappLink" target="_blank" rel="noopener noreferrer" class="btn-outline btn-lg group">
                             <Icon icon="tabler:brand-whatsapp" class="size-5" />
@@ -51,7 +51,7 @@
     </section>
 
     <!-- ── Recognition ──────────────────────────────────────────── -->
-    <section class="pt-14 md:pt-20 lg:pt-24 pb-14 md:pb-20 lg:pb-24 relative overflow-hidden bg-peach-soft">
+    <section class="pt-14 md:pt-20 lg:pt-24 pb-14 md:pb-20 lg:pt-24 pb-14 md:pb-20 lg:pb-24 relative overflow-hidden bg-peach-soft">
         <div class="container">
             <div class="mx-auto lg:max-w-5xl lg:mb-10 mb-8">
                 <div class="eyebrow mb-6" data-reveal="soft">{{ topic.recognition.eyebrow }}</div>
@@ -266,7 +266,6 @@ import CtaSection from '~/components/CtaSection.vue'
 import Credentials from '~/components/Credentials.vue'
 import BookingModal from '~/components/BookingModal.vue'
 import SessionGrid from '~/components/SessionGrid.vue'
-import { EVENT_TYPES } from '~/utils/booking'
 import type { BookableService } from '~/types/booking'
 import { findTopic, IS_LIST, IS_NOT_LIST, STEPS } from '~/data/serviceTopics'
 
@@ -285,14 +284,13 @@ const topic = computed(() => {
   return found
 })
 
-/* The session this page sells: the modal collects a few details, then hands
-   over to the Cal.com booking link for that session. */
+/* The session this page sells */
 const bookingOpen = ref(false)
 const bookingService: BookableService = {
   id: 'listening-50',
   title: 'Feel-Good Listening Session',
-  bookingUrl: EVENT_TYPES.listening50,
   duration: '50 min',
+  durationMinutes: 50,
   price: '₹1,799',
   image: '/images/service/session-core.jpg'
 }

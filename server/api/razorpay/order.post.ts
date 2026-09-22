@@ -26,6 +26,10 @@ export default defineEventHandler(async (event) => {
     email?: unknown
     phone?: unknown
     note?: unknown
+    slotStartIso?: unknown
+    slotEndIso?: unknown
+    slotDate?: unknown
+    slotLabel?: unknown
   }>(event)
 
   if (!isSessionId(body?.sessionId)) {
@@ -49,7 +53,11 @@ export default defineEventHandler(async (event) => {
         name: str(body.name),
         email: str(body.email),
         phone: str(body.phone, 30),
-        note: str(body.note, 500)
+        note: str(body.note, 500),
+        slot_start: str(body.slotStartIso, 50),
+        slot_end: str(body.slotEndIso, 50),
+        slot_date: str(body.slotDate, 50),
+        slot_label: str(body.slotLabel, 50)
       }
     })
   } catch (err) {
