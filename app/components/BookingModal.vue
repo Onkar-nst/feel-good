@@ -128,6 +128,9 @@
                     @change-date="onDateChange"
                     @select-slot="onSlotSelect"
                   />
+                  <p v-if="slotsError" role="alert" class="mt-2 rounded-xl bg-amber-50 border border-amber-200 px-3 py-2 text-xs text-amber-900">
+                    {{ slotsError }}
+                  </p>
                 </div>
               </div>
 
@@ -240,8 +243,39 @@
                       </div>
                     </div>
 
+                    <div v-if="sessionCategory === 'gift'" class="rounded-xl border border-peach/40 bg-peach-soft/40 p-3 space-y-2.5">
+                      <p class="text-xs font-semibold text-default-800 flex items-center gap-1.5">
+                        <Icon icon="tabler:gift" class="size-3.5 text-peach" /> Who is this session for?
+                      </p>
+                      <div class="grid sm:grid-cols-2 gap-2.5">
+                        <div>
+                          <label for="bk-recipient-name" class="block text-xs font-semibold text-default-700 mb-1">Their name *</label>
+                          <input
+                            id="bk-recipient-name"
+                            v-model="customer.recipientName"
+                            type="text"
+                            required
+                            placeholder="First name is enough"
+                            class="w-full rounded-xl border border-default-300 bg-white px-3 py-2 text-xs text-default-950 placeholder:text-default-400 focus:border-[#1E4635] focus:ring-2 focus:ring-[#1E4635]/20 transition-all"
+                          />
+                        </div>
+                        <div>
+                          <label for="bk-recipient-email" class="block text-xs font-semibold text-default-700 mb-1">Their email *</label>
+                          <input
+                            id="bk-recipient-email"
+                            v-model="customer.recipientEmail"
+                            type="email"
+                            required
+                            placeholder="They receive the video link here"
+                            class="w-full rounded-xl border border-default-300 bg-white px-3 py-2 text-xs text-default-950 placeholder:text-default-400 focus:border-[#1E4635] focus:ring-2 focus:ring-[#1E4635]/20 transition-all"
+                          />
+                        </div>
+                      </div>
+                      <p class="text-[0.68rem] text-default-500">Pick a time that works for them. They can reschedule with Kinjal on WhatsApp if needed.</p>
+                    </div>
+
                     <div>
-                      <label for="bk-notes" class="block text-xs font-semibold text-default-700 mb-1">What would you like to talk about?</label>
+                      <label for="bk-notes" class="block text-xs font-semibold text-default-700 mb-1">{{ sessionCategory === 'gift' ? 'A message for them, or anything Kinjal should know' : 'What would you like to talk about?' }}</label>
                       <textarea
                         id="bk-notes"
                         v-model="customer.note"
@@ -312,8 +346,8 @@
                       </div>
 
                       <div>
-                        <span class="text-default-500 block text-[0.68rem]">Client</span>
-                        <strong class="text-default-900 font-medium truncate block">{{ customer.name }}</strong>
+                        <span class="text-default-500 block text-[0.68rem]">{{ sessionCategory === 'gift' ? 'Gift for' : 'Client' }}</span>
+                        <strong class="text-default-900 font-medium truncate block">{{ sessionCategory === 'gift' ? customer.recipientName : customer.name }}</strong>
                       </div>
 
                       <div>
@@ -385,8 +419,13 @@
                 <Icon icon="tabler:check" class="size-8 stroke-[2.5]" />
               </div>
 
-              <h3 class="h-display text-2xl font-medium text-default-950 mb-1">Booking Confirmed!</h3>
-              <p class="text-xs text-default-600 max-w-[42ch] mb-5">
+              <h3 class="h-display text-2xl font-medium text-default-950 mb-1">
+                {{ bookingResult?.clash ? 'Payment received' : 'Booking Confirmed!' }}
+              </h3>
+              <p v-if="bookingResult?.clash" class="text-xs text-default-600 max-w-[42ch] mb-5">
+                Thank you, {{ customer.name }}. The time you chose was booked by someone else moments before you paid. Kinjal will message you on WhatsApp shortly to agree a new time. Your payment is safe.
+              </p>
+              <p v-else class="text-xs text-default-600 max-w-[42ch] mb-5">
                 Thank you, {{ customer.name }}. Your session with Kinjal is locked in. We've emailed the confirmation and calendar invite to {{ customer.email }}.
               </p>
 
@@ -500,17 +539,21 @@ const displayedServices = computed(() => {
 })
 
 const activeService = computed(() => {
-  return serviceData.find(s => s.id === activeServiceId.value) || serviceData[1]
+  return (serviceData.find(s => s.id === activeServiceId.value) || serviceData[1]) as ServiceType
 })
 
 const customer = reactive<BookingCustomer>({
   name: '',
   phone: '',
   email: '',
-  note: ''
+  note: '',
+  recipientName: '',
+  recipientEmail: ''
 })
 
 const activeDate = ref<string>('')
+/** First day of the carousel: today. Selecting a day never moves it. */
+const windowStart = ref<string>('')
 const carouselDays = ref<DaySummary[]>([])
 const daySlots = reactive<{
   morning: SelectedSlot[]
@@ -525,15 +568,21 @@ const daySlots = reactive<{
 })
 const selectedSlot = ref<SelectedSlot | null>(null)
 const slotsLoading = ref(false)
+const slotsError = ref('')
 
 const paying = ref(false)
 const paymentError = ref('')
 const bookingResult = ref<ConfirmedBookingResult | null>(null)
 
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const canProceedToStep3 = computed(() => {
-  return customer.name.trim().length > 1 &&
+  const base = customer.name.trim().length > 1 &&
     customer.phone.trim().length >= 8 &&
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customer.email.trim())
+    EMAIL_RE.test(customer.email.trim())
+  if (sessionCategory.value !== 'gift') return base
+  return base &&
+    (customer.recipientName || '').trim().length > 1 &&
+    EMAIL_RE.test((customer.recipientEmail || '').trim())
 })
 
 const whatsappDirectLink = computed(() => {
@@ -601,6 +650,7 @@ function onSlotSelect(slot: SelectedSlot) {
 
 async function fetchSlots(dateStr: string, durationMinutes = 50) {
   slotsLoading.value = true
+  slotsError.value = ''
   try {
     const data = await $fetch<{
       activeDate: string
@@ -615,8 +665,9 @@ async function fetchSlots(dateStr: string, durationMinutes = 50) {
     }>(`/api/booking/slots`, {
       params: {
         date: dateStr || undefined,
-        duration: durationMinutes,
-        days: 7
+        from: windowStart.value || undefined,
+        sessionId: activeService.value.id,
+        days: 21
       }
     })
 
@@ -635,6 +686,10 @@ async function fetchSlots(dateStr: string, durationMinutes = 50) {
     }
   } catch (err) {
     console.error('Failed to fetch slots:', err)
+    const data = (err as { data?: { statusMessage?: string } })?.data
+    slotsError.value = data?.statusMessage || 'We could not load available times. Please try again or book over WhatsApp.'
+    carouselDays.value = []
+    daySlots.morning = []; daySlots.afternoon = []; daySlots.evening = []; daySlots.total = 0
   } finally {
     slotsLoading.value = false
   }
@@ -673,6 +728,8 @@ async function triggerPayment() {
       email: customer.email.trim(),
       phone: customer.phone.trim(),
       note: customer.note?.trim() || '',
+      recipientName: sessionCategory.value === 'gift' ? (customer.recipientName || '').trim() : '',
+      recipientEmail: sessionCategory.value === 'gift' ? (customer.recipientEmail || '').trim() : '',
       slotStartIso: selectedSlot.value.startIso,
       slotEndIso: selectedSlot.value.endIso,
       slotDate: selectedSlot.value.date,
@@ -693,7 +750,7 @@ async function triggerPayment() {
 function formatNiceDate(dStr?: string) {
   if (!dStr) return ''
   try {
-    const [y, m, d] = dStr.split('-').map(Number)
+    const [y = 0, m = 1, d = 1] = dStr.split('-').map(Number)
     const dt = new Date(y, m - 1, d)
     return dt.toLocaleDateString('en-IN', {
       weekday: 'short',
@@ -723,6 +780,7 @@ watch(() => props.open, (isOpen) => {
     }
 
     const todayIst = new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Kolkata' })
+    windowStart.value = todayIst
     activeDate.value = todayIst
     fetchSlots(todayIst, activeService.value.durationMinutes || 50)
     loadRazorpay().catch(() => {})

@@ -142,7 +142,7 @@ const topics: ServiceTopic[] = [
         { icon: 'tabler:message-circle', text: "Something a colleague said or did has been bothering me more than I’d like to admit." },
         { icon: 'tabler:users', text: "I’m caught in office politics and don’t know how to deal with it without making things worse." },
         { icon: 'tabler:mood-neutral', text: "I feel overlooked, unappreciated, or like I constantly have to prove myself." },
-        { icon: 'tabler:home', text: "I keep bringing work stress home, and it’s starting to affect the rest of my life." },
+        { icon: 'tabler:home', text: "I really want to quit my job but can’t due to my responsibilities." },
         { icon: 'tabler:compass', text: "I’m losing the motivation I once had, and I don’t know why." },
         { icon: 'tabler:ear', text: "I just need to vent about work without someone telling me to “just ignore it.”" }
       ]
@@ -171,7 +171,7 @@ const topics: ServiceTopic[] = [
     navTitle: 'Breakup & Relationship Support',
     hero: {
       eyebrow: 'If something has ended, or is ending',
-      heading: 'Going through a breakup and do not want advice?',
+      heading: 'Whether it’s love, confusion or heartbreak, sometimes you just need someone to be there.',
       intro: 'Relationships can be beautiful, complicated, confusing and sometimes painful.',
       invitation: 'Whether you’re trying to understand your relationship, work through a difficult phase, or find your way through a breakup, you deserve a space to talk openly and make sense of what you’re feeling.',
       image: '/images/service-detail/breakup-relationship-support.jpg',

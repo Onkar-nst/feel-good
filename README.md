@@ -85,4 +85,8 @@ Booking a session takes payment through Razorpay Checkout before handing over to
 5. Test with card `4111 1111 1111 1111`, any future expiry, any CVV. Without keys in `.env` the booking modal shows "Online payment is not configured yet."
 6. To go live: complete KYC in the dashboard, swap the `rzp_test_` keys for `rzp_live_` keys in the host's environment variables, and redeploy.
 
+**Webhook (recommended before going live).** In Razorpay Dashboard → Settings → Webhooks add `https://<domain>/api/razorpay/webhook` for the event `payment.captured` with a secret of your choice, and put the same secret in `NUXT_RAZORPAY_WEBHOOK_SECRET`. This books the slot even if the visitor's browser disconnects after paying.
+
+**Google Calendar.** Run `node scripts/setup-google-oauth.mjs` once, logged in as the client's Google account, to fill the `NUXT_GOOGLE_*` values. Slots and bookings are disabled until these exist.
+
 The site must be deployed as a server (Vercel, Netlify, Cloudflare, Node) rather than with `nuxt generate`, because the order and verify routes under `server/api/razorpay/` run on the server.

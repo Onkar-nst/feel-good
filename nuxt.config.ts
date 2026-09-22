@@ -17,6 +17,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     razorpayKeyId: '',
     razorpayKeySecret: '',
+    razorpayWebhookSecret: '',
     // Gmail App Password for outgoing mail (forms + booking notices).
     gmailUser: '',
     gmailAppPassword: '',

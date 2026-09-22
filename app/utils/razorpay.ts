@@ -51,6 +51,8 @@ export type PaymentCustomer = {
   email: string
   phone: string
   note?: string
+  recipientName?: string
+  recipientEmail?: string
   slotStartIso?: string
   slotEndIso?: string
   slotDate?: string
@@ -60,6 +62,8 @@ export type PaymentCustomer = {
 export type PaymentResult = {
   paymentId: string
   orderId: string
+  /** The chosen slot was taken during payment; Kinjal will reschedule. */
+  clash?: boolean
   meetingUrl?: string
   calendarEventUrl?: string | null
   slot?: {
@@ -118,19 +122,16 @@ export async function payForSession(sessionId: SessionId, customer: PaymentCusto
       },
       handler: async (response: RazorpaySuccess) => {
         try {
-          const result = await $fetch<PaymentResult & { success: boolean }>('/api/razorpay/verify', {
+          const result = await $fetch<PaymentResult & { success: boolean, clash?: boolean }>('/api/razorpay/verify', {
             method: 'POST',
-            body: {
-              ...response,
-              slotStartIso: customer.slotStartIso,
-              slotEndIso: customer.slotEndIso,
-              slotDate: customer.slotDate,
-              slotLabel: customer.slotLabel
-            }
+            // Only Razorpay's three fields. The slot is read back from the
+            // order on the server, so it cannot be swapped after paying.
+            body: response
           })
           resolve({
             paymentId: result.paymentId,
             orderId: result.orderId,
+            clash: result.clash,
             meetingUrl: result.meetingUrl,
             calendarEventUrl: result.calendarEventUrl,
             slot: result.slot

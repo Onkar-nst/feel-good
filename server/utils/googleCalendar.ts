@@ -31,6 +31,16 @@ export type BookingEventData = {
   endIso: string
   paymentId: string
   amountInr: number
+  /** Set when the slot was taken between choosing it and paying. */
+  clash?: boolean
+}
+
+export type CalendarResult = {
+  /** false when no event exists in Google Calendar and Kinjal must add it by hand. */
+  created: boolean
+  eventId: string
+  meetingUrl: string
+  calendarEventUrl: string | null
 }
 
 // Operating hours in Asia/Kolkata (+05:30)
@@ -39,41 +49,20 @@ const WORK_START_HOUR = 10 // 10:00 AM
 const WORK_LAST_SLOT_HOUR = 19 // 7:00 PM (last slot starts at 7:00 PM)
 const BUFFER_MINUTES = 15
 
-import fs from 'node:fs'
-import path from 'node:path'
-
 function getGoogleCredentials(event: H3Event) {
   const config = useRuntimeConfig(event)
-  let clientId = config.googleClientId || process.env.NUXT_GOOGLE_CLIENT_ID
-  let clientSecret = config.googleClientSecret || process.env.NUXT_GOOGLE_CLIENT_SECRET
-  let refreshToken = config.googleRefreshToken || process.env.NUXT_GOOGLE_REFRESH_TOKEN
-  let calendarId = config.googleCalendarId || process.env.NUXT_GOOGLE_CALENDAR_ID || 'primary'
-
-  // Dynamic fallback: read directly from .env file on disk if runtimeConfig didn't have them
-  if (!clientId || !clientSecret || !refreshToken) {
-    try {
-      const envPath = path.resolve(process.cwd(), '.env')
-      if (fs.existsSync(envPath)) {
-        const envContent = fs.readFileSync(envPath, 'utf8')
-        for (const line of envContent.split('\n')) {
-          const trimmed = line.trim()
-          if (!trimmed || trimmed.startsWith('#')) continue
-          const eqIdx = trimmed.indexOf('=')
-          if (eqIdx === -1) continue
-          const key = trimmed.slice(0, eqIdx).trim()
-          const val = trimmed.slice(eqIdx + 1).trim().replace(/^["']|["']$/g, '')
-          if (key === 'NUXT_GOOGLE_CLIENT_ID' && !clientId) clientId = val
-          if (key === 'NUXT_GOOGLE_CLIENT_SECRET' && !clientSecret) clientSecret = val
-          if (key === 'NUXT_GOOGLE_REFRESH_TOKEN' && !refreshToken) refreshToken = val
-          if (key === 'NUXT_GOOGLE_CALENDAR_ID' && calendarId === 'primary') calendarId = val
-        }
-      }
-    } catch (e) {
-      console.warn('[GoogleCalendar] Failed to read .env file dynamically:', e)
-    }
+  return {
+    clientId: config.googleClientId,
+    clientSecret: config.googleClientSecret,
+    refreshToken: config.googleRefreshToken,
+    calendarId: config.googleCalendarId || 'primary'
   }
+}
 
-  return { clientId, clientSecret, refreshToken, calendarId }
+/** True when the three OAuth values are present. Booking must not run without them. */
+export function isGoogleConfigured(event: H3Event): boolean {
+  const { clientId, clientSecret, refreshToken } = getGoogleCredentials(event)
+  return Boolean(clientId && clientSecret && refreshToken)
 }
 
 function getGoogleAuth(event: H3Event) {
@@ -157,12 +146,19 @@ function generateCandidateSlots(dateStr: string, durationMinutes: number): Slot[
 /**
  * Queries Google Calendar Free/Busy intervals for a time range
  */
+export class CalendarUnavailable extends Error {
+  constructor(msg = 'Calendar is not reachable right now') { super(msg) }
+}
+
+/**
+ * Busy intervals from Google. Throws CalendarUnavailable when Google is not
+ * configured or not reachable: callers must never treat "unknown" as "free".
+ */
 async function queryGoogleBusy(event: H3Event, startIso: string, endIso: string): Promise<{ start: Date, end: Date }[]> {
   const auth = getGoogleAuth(event)
-  if (!auth) return []
+  if (!auth) throw new CalendarUnavailable('Google Calendar is not configured')
 
-  const config = useRuntimeConfig(event)
-  const calendarId = config.googleCalendarId || 'primary'
+  const { calendarId } = getGoogleCredentials(event)
   const calendar = google.calendar({ version: 'v3', auth })
 
   try {
@@ -174,15 +170,69 @@ async function queryGoogleBusy(event: H3Event, startIso: string, endIso: string)
         items: [{ id: calendarId }]
       }
     })
-
     const busyList = res.data.calendars?.[calendarId]?.busy || []
-    return busyList.map(b => ({
-      start: new Date(b.start!),
-      end: new Date(b.end!)
-    }))
+    return busyList.map(b => ({ start: new Date(b.start!), end: new Date(b.end!) }))
   } catch (err) {
     console.error('[GoogleCalendar] freebusy query error:', err)
-    return []
+    throw new CalendarUnavailable()
+  }
+}
+
+const MIN_NOTICE_MS = 90 * 60 * 1000
+const MAX_DAYS_AHEAD = 60
+
+/**
+ * Server side truth about a requested slot. The browser only ever sends back
+ * a slot we generated, so anything else (odd times, wrong length, the past,
+ * far future) is rejected before money moves.
+ */
+export function isValidCandidateSlot(startIso: string, endIso: string, durationMinutes: number): boolean {
+  const m = /^(\d{4}-\d{2}-\d{2})T\d{2}:\d{2}:00\+05:30$/.exec(startIso)
+  if (!m) return false
+  const start = new Date(startIso)
+  const end = new Date(endIso)
+  if (isNaN(start.getTime()) || isNaN(end.getTime())) return false
+  if (end.getTime() - start.getTime() !== durationMinutes * 60 * 1000) return false
+  const now = Date.now()
+  if (start.getTime() < now + MIN_NOTICE_MS) return false
+  if (start.getTime() > now + MAX_DAYS_AHEAD * 24 * 60 * 60 * 1000) return false
+  return generateCandidateSlots(m[1]!, durationMinutes).some(s => s.startIso === startIso && s.endIso === endIso)
+}
+
+/** Live check against Google that nothing overlaps this window. */
+export async function isSlotFree(event: H3Event, startIso: string, endIso: string): Promise<boolean> {
+  const start = new Date(startIso)
+  const end = new Date(endIso)
+  const busy = await queryGoogleBusy(event, start.toISOString(), end.toISOString())
+  return !busy.some(b => start < b.end && end > b.start)
+}
+
+/**
+ * Finds a booking already created for this payment, so a repeated verify
+ * call (network retry, double click, replayed request) never books twice.
+ */
+export async function findBookingByPaymentId(event: H3Event, paymentId: string) {
+  const auth = getGoogleAuth(event)
+  if (!auth) return null
+  const { calendarId } = getGoogleCredentials(event)
+  const calendar = google.calendar({ version: 'v3', auth })
+  try {
+    const res = await calendar.events.list({
+      calendarId,
+      privateExtendedProperty: [`paymentId=${paymentId}`],
+      maxResults: 1,
+      singleEvents: true
+    })
+    const found = res.data.items?.[0]
+    if (!found) return null
+    return {
+      eventId: found.id || '',
+      meetingUrl: found.hangoutLink || found.conferenceData?.entryPoints?.find(ep => ep.entryPointType === 'video')?.uri || '',
+      calendarEventUrl: found.htmlLink || null
+    }
+  } catch (err) {
+    console.error('[GoogleCalendar] lookup by paymentId failed:', err)
+    return null
   }
 }
 
@@ -294,11 +344,11 @@ export async function getMultiDayAvailability(event: H3Event, startDateStr: stri
 /**
  * Creates confirmed Google Calendar Event with Google Meet conference data.
  */
-export async function createCalendarBooking(event: H3Event, data: BookingEventData) {
+export async function createCalendarBooking(event: H3Event, data: BookingEventData): Promise<CalendarResult> {
   const auth = getGoogleAuth(event)
   const { calendarId } = getGoogleCredentials(event)
 
-  const eventTitle = `Listening Session: ${data.customerName} (${data.sessionTitle})`
+  const eventTitle = `${data.clash ? '⚠ CLASH, RESCHEDULE: ' : ''}Listening Session: ${data.customerName} (${data.sessionTitle})`
   const eventDescription = [
     `The Feel Good Centre — 1:1 Virtual Listening Session`,
     ``,
@@ -308,18 +358,15 @@ export async function createCalendarBooking(event: H3Event, data: BookingEventDa
     `Session: ${data.sessionTitle}`,
     `Amount Paid: ₹${data.amountInr.toLocaleString('en-IN')}`,
     `Payment ID: ${data.paymentId}`,
+    data.clash ? `⚠ This slot was taken while the client was paying. Please agree a new time with them.` : '',
     data.customerNote ? `Client Note: "${data.customerNote}"` : '',
     ``,
     `Confidential & Judgment-Free Space.`
   ].filter(Boolean).join('\n')
 
   if (!auth) {
-    console.warn('[GoogleCalendar] Google OAuth credentials not configured. Please run node scripts/setup-google-oauth.mjs')
-    return {
-      eventId: `pending-${Date.now()}`,
-      meetingUrl: '',
-      calendarEventUrl: null
-    }
+    console.warn('[GoogleCalendar] Google OAuth credentials not configured. Run: node scripts/setup-google-oauth.mjs')
+    return { created: false, eventId: '', meetingUrl: '', calendarEventUrl: null }
   }
 
   const calendar = google.calendar({ version: 'v3', auth })
@@ -340,9 +387,10 @@ export async function createCalendarBooking(event: H3Event, data: BookingEventDa
           dateTime: data.endIso,
           timeZone: TIMEZONE
         },
-        attendees: [
-          { email: data.customerEmail, displayName: data.customerName }
-        ],
+        attendees: data.customerEmail
+          ? [{ email: data.customerEmail, displayName: data.customerName }]
+          : [],
+        extendedProperties: { private: { paymentId: data.paymentId } },
         conferenceData: {
           createRequest: {
             requestId: `fgc-${data.paymentId}-${Date.now()}`.slice(0, 40),
@@ -364,17 +412,9 @@ export async function createCalendarBooking(event: H3Event, data: BookingEventDa
       created.hangoutLink ||
       created.conferenceData?.entryPoints?.find(ep => ep.entryPointType === 'video')?.uri || ''
 
-    return {
-      eventId: created.id || '',
-      meetingUrl,
-      calendarEventUrl: created.htmlLink || null
-    }
+    return { created: true, eventId: created.id || '', meetingUrl, calendarEventUrl: created.htmlLink || null }
   } catch (err) {
     console.error('[GoogleCalendar] Event creation failed:', err)
-    return {
-      eventId: `fallback-${Date.now()}`,
-      meetingUrl: '',
-      calendarEventUrl: null
-    }
+    return { created: false, eventId: '', meetingUrl: '', calendarEventUrl: null }
   }
 }

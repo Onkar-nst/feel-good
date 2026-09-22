@@ -24,11 +24,15 @@ export type BookingCustomer = {
   email: string
   phone: string
   note?: string
+  /** Gift a Session only: who actually attends. */
+  recipientName?: string
+  recipientEmail?: string
 }
 
 export type ConfirmedBookingResult = {
   paymentId: string
   orderId: string
+  clash?: boolean
   meetingUrl?: string
   calendarEventUrl?: string | null
   slot?: {

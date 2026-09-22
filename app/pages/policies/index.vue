@@ -65,10 +65,9 @@ const sections = [
     title: 'Cancellation and refund policy',
     body: [
       'Sessions are booked and paid for in advance. If you need to move a session, you can reschedule free of charge up to 24 hours before the start time using the link in your booking confirmation, or by messaging us on WhatsApp.',
-      'Cancellations made at least 24 hours before the session are refunded in full to the original payment method. Refunds take 5 to 7 working days to reflect, depending on your bank.',
-      'Cancellations with less than 24 hours notice, and sessions you do not join, are not refundable, because the time was held for you and cannot be offered to someone else. We understand life happens, so if something urgent comes up, message us and we will do our best to find another slot.',
-      'If we have to cancel a session for any reason, you can choose a full refund or a new time. Either way, you will not be out of pocket.',
-      'Check-in plans are billed monthly. Unused sessions within a month can be moved to the following month once, and a plan can be stopped at any time before the next billing date.'
+      'All bookings are non-refundable. Cancellations, including those made with more than 24 hours notice, and sessions you do not join are not refunded, because the time was held for you. Cancellations with less than 24 hours notice cannot be rescheduled either.',
+      'If we have to cancel a session for any reason, we will offer you a new time.',
+      'Check-in plans are paid upfront for one month at a time. There is no auto-debit or recurring charge; you choose whether to renew at the end of each month. Sessions not used within the month lapse and do not carry over.'
     ]
   },
   {
@@ -79,7 +78,7 @@ const sections = [
       'If you are in immediate danger or thinking about harming yourself, please contact local emergency services or a crisis helpline right away. Our sessions are not designed for emergencies.',
       'Sessions are held on video call at the time you booked. Please join on time; a session that starts late still ends at the scheduled time. You must be 18 or older to book, or have a parent or guardian book on your behalf.',
       'Prices are shown in Indian rupees and include all applicable charges. Payment is collected securely by Razorpay at the time of booking. We do not see or store your card, UPI or bank details.',
-      'We may decline or end a session if a participant is abusive or if the conversation is clearly outside what a listening session can safely hold. In that case any remaining time is refunded.'
+      'We may decline or end a session if a participant is abusive or if the conversation is clearly outside what a listening session can safely hold.'
     ]
   },
   {
