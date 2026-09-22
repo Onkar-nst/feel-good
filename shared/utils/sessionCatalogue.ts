@@ -26,7 +26,7 @@ export const SESSION_CATALOGUE: Record<SessionId, CatalogueEntry> = {
   'first-conversation': { id: 'first-conversation', title: 'First Feel-Good Conversation', amountInr: 799, durationMinutes: 30 },
   'listening-50': { id: 'listening-50', title: 'Feel-Good Listening Session', amountInr: 1799, durationMinutes: 50 },
   'deep-75': { id: 'deep-75', title: 'Deep Listening Session', amountInr: 2499, durationMinutes: 75 },
-  'checkin-monthly': { id: 'checkin-monthly', title: 'Emotional Check-In Plans (monthly)', amountInr: 6500, durationMinutes: 50 },
+  'checkin-monthly': { id: 'checkin-monthly', title: 'Emotional Check-In Plans (monthly)', amountInr: 6000, durationMinutes: 50 },
   'gift-50': { id: 'gift-50', title: 'Gift a Session', amountInr: 1799, durationMinutes: 50 }
 }
 

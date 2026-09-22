@@ -51,7 +51,7 @@ export const serviceData: ServiceType[] = [
     title: 'Emotional Check-In Plans',
     duration: '4 sessions / month',
     durationMinutes: 50,
-    price: '₹6,500',
+    price: '₹6,000',
     priceLabel: '/ month',
     image: '/images/service/session-checkin.jpg',
     imageAlt: 'A woman laughing over a warm drink during a check in',

@@ -41,7 +41,7 @@ const planData: PlanType[] = [
     number: '02.',
     title: 'Monthly or Weekly Emotional Check In Plans (50 mins)',
     prices: [
-      'Weekly Plan: ₹6,500/month (4 sessions)',
+      'Weekly Plan: ₹6,000/month (4 sessions)',
       'Monthly Plan: ₹1,800/month (1 session)',
       'Bulk Package: 5 sessions at ₹8,500'
     ],
