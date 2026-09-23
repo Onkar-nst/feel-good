@@ -1,5 +1,5 @@
 <template>
-    <section class="pt-12 md:pt-20 pb-6 md:pb-7 lg:pb-8 relative size-full overflow-hidden">
+    <section class="pt-8 md:pt-12 pb-10 md:pb-15 lg:pb-16 relative size-full overflow-hidden">
 
         <!-- Ambient colour fields. Slow, low-contrast, purely atmospheric. -->
         <div class="absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
