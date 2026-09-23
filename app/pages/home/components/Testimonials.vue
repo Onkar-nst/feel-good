@@ -21,13 +21,13 @@
                 </p>
             </div>
 
-            <div class="columns-1 md:columns-2 lg:columns-3 gap-5" data-reveal-group>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 items-stretch" data-reveal-group>
                 <div
                     v-for="(review, idx) in reviewData"
                     :key="idx"
                     data-reveal="up"
                     :class="[
-                        'card-lift group relative overflow-hidden break-inside-avoid mb-5 rounded-2xl p-7 flex flex-col gap-5',
+                        'card-lift group relative overflow-hidden rounded-2xl p-7 flex flex-col gap-5',
                         review.featured
                             ? 'bg-peach-soft border border-peach/35'
                             : 'bg-cream border border-default-200'
@@ -110,11 +110,11 @@ const reviewData: ReviewType[] = [
     avatar: '/images/reviews/manvi-gupta.jpg'
   },
   {
-    title: 'A true listener and healer',
-    date: 'January 12, 2026',
-    content: "Kinjal is one of those people you can instantly connect with! She makes you feel heard & seen! She's very generous with her guidance and never have I felt the need to doubt her! She's someone you can vouch for being an amazing listener for all your problems!",
-    author: 'Heta',
-    avatar: '/images/reviews/heta.jpg'
+    title: 'A healer you want on your speed dial 😎',
+    date: 'November 24, 2025',
+    content: 'In today\'s chaotic & busy times, Kinjal is someone who can calm you down in few minutes. One of the most purest & generous soul I have met in my life. With her by my side I have learnt how to become patient in my most difficult times. She has helped me keep my hopes alive in the most positive manner. If you haven\'t spoken to her yet, now is the time 🙌🤩',
+    author: 'Kinnari Kamdar',
+    avatar: '/images/reviews/kinnari-kamdar.jpg'
   },
   {
     title: "You're in good hands here",
@@ -125,32 +125,25 @@ const reviewData: ReviewType[] = [
     featured: true
   },
   {
-    title: 'One Call to Kinjal = Peace Restored',
-    date: 'December 5, 2025',
-    content: "Whenever I'm stressed or anxious, a single conversation with Kinjal works like magic. She has this natural ability to calm someone down, clear their head, and make everything feel lighter. Her listening skills are incredible. She understands even what I don't fully say. Honestly, she's my go to person for instant peace and positivity.",
-    author: 'Jash Shah',
-    avatar: '/images/reviews/jash-shah.jpg'
-  },
-  {
-    title: 'Definitely a safe space and makes you feel heard',
-    date: 'December 5, 2025',
-    content: 'At times you just want someone to listen to you and not fix any problems. Kinjal exactly does that. Overall a great experience 😃',
-    author: 'Jinal',
-    avatar: '/images/reviews/jinal.jpg'
-  },
-  {
-    title: 'A healer you want on your speed dial 😎',
-    date: 'November 24, 2025',
-    content: 'In today\'s chaotic & busy times, Kinjal is someone who can calm you down in few minutes. One of the most purest & generous soul I have met in my life. With her by my side I have learnt how to become patient in my most difficult times. She has helped me keep my hopes alive in the most positive manner. If you haven\'t spoken to her yet, now is the time 🙌🤩',
-    author: 'Kinnari Kamdar',
-    avatar: '/images/reviews/kinnari-kamdar.jpg'
-  },
-  {
     title: 'One stop solution to all my problems',
     date: 'November 11, 2025',
     content: 'Kinjal is very sweet, genuine and most importantly she is there to listen. No judgements, no unnecessary advices. Her calmness helped me stay calm and it is indeed feel good center.',
     author: 'Harshit Shah',
     avatar: '/images/reviews/harshit-shah.jpg'
+  },
+  {
+    title: 'A true listener and healer',
+    date: 'January 12, 2026',
+    content: "Kinjal is one of those people you can instantly connect with! She makes you feel heard & seen! She's very generous with her guidance and never have I felt the need to doubt her! She's someone you can vouch for being an amazing listener for all your problems!",
+    author: 'Heta',
+    avatar: '/images/reviews/heta.jpg'
+  },
+  {
+    title: 'One Call to Kinjal = Peace Restored',
+    date: 'December 5, 2025',
+    content: "Whenever I'm stressed or anxious, a single conversation with Kinjal works like magic. She has this natural ability to calm someone down, clear their head, and make everything feel lighter. Her listening skills are incredible. She understands even what I don't fully say. Honestly, she's my go to person for instant peace and positivity.",
+    author: 'Jash Shah',
+    avatar: '/images/reviews/jash-shah.jpg'
   }
 ]
 </script>

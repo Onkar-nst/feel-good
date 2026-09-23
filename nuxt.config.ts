@@ -27,9 +27,21 @@ export default defineNuxtConfig({
     googleClientSecret: '',
     googleRefreshToken: '',
     googleCalendarId: '',
+    // Shared secret for POST /api/booking/reminders (external cron)
+    reminderSecret: '',
     public: {
       razorpayKeyId: ''
     }
+  },
+
+  // Client reminder emails, 3 hours before each session. The schedule below
+  // only fires on a long-running Node host. On Vercel (where the site lives)
+  // an external cron calls /api/booking/reminders every 10 minutes instead.
+  nitro: {
+    experimental: { tasks: true },
+    scheduledTasks: { '*/10 * * * *': ['booking:reminders'] },
+    // Sending a batch of reminder emails over Gmail can take longer than the 10s default.
+    vercel: { functions: { maxDuration: 60 } }
   },
 
   // Redirection rules

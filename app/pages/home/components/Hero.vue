@@ -105,14 +105,14 @@
                             <img src="/images/other/about-bg.jpg" alt=""
                                  class="rounded-2xl object-cover size-full">
 
-                            <div class="absolute inset-0 m-6 text-center">
-                                <div class="animate-float inline-block rounded-full bg-white/85 backdrop-blur-sm py-2.5 px-4 text-sm font-medium text-default-950 shadow-sm">
+                            <div class="absolute inset-0 m-2.5 flex flex-col items-center text-center">
+                                <div class="animate-float shrink-0 rounded-full bg-white/85 backdrop-blur-sm py-2.5 px-4 text-sm font-medium text-default-950 shadow-sm">
                                     You're not alone in how you feel
                                 </div>
 
-                                <img src="/images/other/cafe-conversation.jpg"
+                                <img src="/images/other/cafe-conversation-wide.jpg"
                                      alt="Two friends talking over coffee at a cafe table"
-                                     class="mt-4 rounded-xl">
+                                     class="mt-2 min-h-0 w-full flex-1 rounded-xl object-cover">
                             </div>
                         </div>
                     </div>

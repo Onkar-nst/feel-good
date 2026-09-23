@@ -390,7 +390,7 @@ export async function createCalendarBooking(event: H3Event, data: BookingEventDa
         attendees: data.customerEmail
           ? [{ email: data.customerEmail, displayName: data.customerName }]
           : [],
-        extendedProperties: { private: { paymentId: data.paymentId } },
+        extendedProperties: { private: { paymentId: data.paymentId, reminderSent: '0' } },
         conferenceData: {
           createRequest: {
             requestId: `fgc-${data.paymentId}-${Date.now()}`.slice(0, 40),
