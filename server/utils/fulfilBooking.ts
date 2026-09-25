@@ -512,7 +512,7 @@ async function notifyBooking(raw: {
         <div style="text-align:center;padding:24px 16px;color:#857A75;font-size:12px;line-height:1.6;">
           <p style="margin:0 0 8px;">
             Need to reschedule or have a question? Reply directly to this email or message Kinjal on
-            <a href="https://wa.me/919004989199" style="color:#BC5237;font-weight:600;text-decoration:none;">WhatsApp (+91 90049 89199)</a>.
+            <a href="https://wa.me/917400097501" style="color:#BC5237;font-weight:600;text-decoration:none;">WhatsApp (+91 74000 97501)</a>.
           </p>
           <p style="margin:0;color:#A99F9A;font-size:11px;">
             100% Confidential &middot; Safe Space &middot; &copy; The Feel Good Centre Mumbai
@@ -531,7 +531,7 @@ async function notifyBooking(raw: {
           ? `${raw.customerName} has gifted you a listening session - The Feel Good Centre`
           : `Your session is confirmed: ${raw.sessionTitle} - The Feel Good Centre`,
       html: clientHtml,
-      text: `${raw.isGift ? `${raw.customerName} has gifted you a listening session with Kinjal Shah.` : `Thank you, ${raw.customerName}!`}\n\n${raw.clash ? 'Your payment has gone through. The time you chose was taken moments before you paid, so Kinjal will message you on WhatsApp to agree a new time.' : `Your session is confirmed for ${raw.formattedDateTime}.`}\n\nSession: ${opts.sessionTitle}\nAmount Paid: ${opts.amount}\nPayment ID: ${opts.paymentId}${opts.meetingUrl ? `\nGoogle Meet Link: ${opts.meetingUrl}` : ''}\n\nNeed to reschedule? Message us on WhatsApp (+91 90049 89199).`
+      text: `${raw.isGift ? `${raw.customerName} has gifted you a listening session with Kinjal Shah.` : `Thank you, ${raw.customerName}!`}\n\n${raw.clash ? 'Your payment has gone through. The time you chose was taken moments before you paid, so Kinjal will message you on WhatsApp to agree a new time.' : `Your session is confirmed for ${raw.formattedDateTime}.`}\n\nSession: ${opts.sessionTitle}\nAmount Paid: ${opts.amount}\nPayment ID: ${opts.paymentId}${opts.meetingUrl ? `\nGoogle Meet Link: ${opts.meetingUrl}` : ''}\n\nNeed to reschedule? Message us on WhatsApp (+91 74000 97501).`
     })
   }
 

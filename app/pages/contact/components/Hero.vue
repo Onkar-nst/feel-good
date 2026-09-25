@@ -234,6 +234,6 @@ const stepData = [
 ]
 
 const whatsappLink =
-  'https://wa.me/919004989199?text=' +
+  'https://wa.me/917400097501?text=' +
   encodeURIComponent("Hi! I'd like to know more about booking a listening session.")
 </script>

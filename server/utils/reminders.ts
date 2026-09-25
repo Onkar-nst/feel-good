@@ -18,7 +18,7 @@ import { esc, getMailer } from './mail'
  */
 export const REMIND_BEFORE_MINUTES = 180
 const TIMEZONE = 'Asia/Kolkata'
-const WHATSAPP = 'https://wa.me/919004989199'
+const WHATSAPP = 'https://wa.me/917400097501'
 
 type RunResult = { checked: number, sent: string[], skipped: number, errors: string[] }
 

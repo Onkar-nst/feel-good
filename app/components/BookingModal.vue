@@ -587,7 +587,7 @@ const canProceedToStep3 = computed(() => {
 
 const whatsappDirectLink = computed(() => {
   const text = `Hi Kinjal! I've booked the ${activeService.value.title} for ${selectedSlot.value?.label} on ${selectedSlot.value?.date}. (Payment ID: ${bookingResult.value?.paymentId || ''})`
-  return `https://wa.me/919004989199?text=${encodeURIComponent(text)}`
+  return `https://wa.me/917400097501?text=${encodeURIComponent(text)}`
 })
 
 const googleCalendarUrl = computed(() => {

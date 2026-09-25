@@ -131,6 +131,6 @@ const { el: yearsEl, value: years } = useCountUp(7, 1100)
 const { el: clientsEl, value: clients } = useCountUp(2200, 2000)
 
 const whatsappLink =
-  'https://wa.me/919004989199?text=' +
+  'https://wa.me/917400097501?text=' +
   encodeURIComponent("Hi! I'd like to know more about booking a listening session.")
 </script>

@@ -302,7 +302,7 @@ const toggle = (idx: number) => { openIndex.value = openIndex.value === idx ? nu
 watch(() => topic.value.slug, () => { openIndex.value = 0 })
 
 const whatsappLink = computed(() =>
-  'https://wa.me/919004989199?text=' + encodeURIComponent(topic.value.whatsappText))
+  'https://wa.me/917400097501?text=' + encodeURIComponent(topic.value.whatsappText))
 
 useHead({
   title: computed(() => `${topic.value.navTitle} | The Feel Good Centre`),

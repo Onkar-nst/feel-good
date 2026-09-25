@@ -39,11 +39,12 @@ import { Icon } from '@iconify/vue'
  * They currently point at the platform home pages, not a profile, so an
  * unreplaced link is harmless rather than sending someone to a stranger.
  */
-const INSTAGRAM_URL = 'https://www.instagram.com/'
-const FACEBOOK_URL = 'https://www.facebook.com/'
+const INSTAGRAM_URL = 'https://www.instagram.com/the.feelgoodcentre/'
+// Facebook page not created yet (per Kinjal, Sep 2026). Leave empty to hide the button.
+const FACEBOOK_URL = ''
 
 // Digits only, wa.me rejects '+' and spaces.
-const WHATSAPP_PHONE = '919004989199'
+const WHATSAPP_PHONE = '917400097501'
 const WHATSAPP_MESSAGE = "Hi! I found The Feel Good Centre online and I'd like to know more about booking a listening session."
 
 type LinkType = {
@@ -55,7 +56,7 @@ type LinkType = {
   pulse?: boolean
 }
 
-const links: LinkType[] = [
+const links: LinkType[] = ([
   {
     label: 'Instagram',
     aria: 'The Feel Good Centre on Instagram',
@@ -82,5 +83,5 @@ const links: LinkType[] = [
       'bg-[#25D366] hover:bg-[#1EBE5A] shadow-[0_8px_24px_-6px_rgb(37_211_102_/_0.55)] hover:shadow-[0_12px_32px_-6px_rgb(37_211_102_/_0.65)] focus-visible:outline-[#1EBE5A]',
     pulse: true
   }
-]
+] as LinkType[]).filter(link => link.href)
 </script>

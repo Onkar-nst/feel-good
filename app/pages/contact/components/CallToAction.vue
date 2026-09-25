@@ -83,7 +83,7 @@ const channelData: ChannelType[] = [
     value: 'Message us',
     note: 'The quickest way to ask a question before you book.',
     icon: 'tabler:brand-whatsapp',
-    href: 'https://wa.me/919004989199',
+    href: 'https://wa.me/917400097501',
     action: 'Open WhatsApp',
     external: true,
     tint: 'bg-peach-soft text-peach'
