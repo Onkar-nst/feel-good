@@ -127,7 +127,7 @@ const reviewData: ReviewType[] = [
   {
     title: 'One stop solution to all my problems',
     date: 'November 11, 2025',
-    content: 'Kinjal is very sweet, genuine and most importantly she is there to listen. No judgements, no unnecessary advices. Her calmness helped me stay calm and it is indeed feel good center.',
+    content: 'Kinjal is very sweet, genuine and most importantly she is there to listen. No judgements, no unnecessary advices. Her calmness helped me stay calm and it is indeed feel good centre.',
     author: 'Harshit Shah',
     avatar: '/images/reviews/harshit-shah.jpg'
   },
