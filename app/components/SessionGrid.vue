@@ -1,5 +1,5 @@
 <template>
-    <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-6" data-reveal-group>
+    <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-6" data-reveal-group>
 
         <article
             v-for="(service, idx) in serviceData"
@@ -36,16 +36,9 @@
                 <!-- mt-auto pins the price and CTA to the bottom, so cards of
                      differing copy length still line up across the row. -->
                 <div class="mt-auto pt-5">
-                    <div class="flex items-baseline justify-between gap-3 border-t border-default-200 pt-4">
-                        <div class="flex items-baseline gap-1.5">
-                            <span class="h-display text-2xl leading-none">{{ service.price }}</span>
-                            <span class="text-xs text-default-500">{{ service.priceLabel ?? '' }}</span>
-                        </div>
-
-                        <NuxtLink :to="service.link"
-                                  class="text-sm text-default-500 underline underline-offset-4 decoration-default-300 transition-colors hover:text-default-950 hover:decoration-primary">
-                            Details
-                        </NuxtLink>
+                    <div class="flex items-baseline gap-1.5 border-t border-default-200 pt-4">
+                        <span class="h-display text-2xl leading-none">{{ service.price }}</span>
+                        <span class="text-xs text-default-500">{{ service.priceLabel ?? '' }}</span>
                     </div>
 
                     <button type="button" @click="openBooking(service)"
@@ -58,20 +51,22 @@
             </div>
         </article>
 
-        <!-- Sixth cell: catches anyone who didn't see themselves in the five above -->
+        <!-- Catches anyone who didn't see themselves in the six above. Spans the
+             two remaining cells of the second row, so the grid ends flush
+             instead of trailing a hole where a seventh card would sit. -->
         <NuxtLink
             to="/contact"
             data-reveal="up"
-            class="card-lift group relative overflow-hidden rounded-2xl p-7 flex flex-col justify-center gap-4 bg-peach-soft border border-peach/35"
+            class="card-lift group relative overflow-hidden rounded-2xl md:col-span-2 p-7 lg:p-9 flex flex-col justify-center gap-5 lg:flex-row lg:items-center lg:justify-between lg:gap-10 bg-peach-soft border border-peach/35"
         >
-            <div class="aura animate-breathe size-44 -bottom-14 -end-8 bg-peach/20"></div>
+            <div class="aura animate-breathe size-56 -bottom-20 -end-10 bg-peach/20"></div>
 
-            <div class="relative">
-                <h3 class="mb-2 text-2xl h-display">Not sure which one?</h3>
+            <div class="relative lg:max-w-md">
+                <h3 class="mb-2 text-2xl lg:text-3xl h-display">Not sure which one?</h3>
                 <p class="text-default-600">Tell us what's going on and we'll suggest the right starting point. No pressure either way.</p>
             </div>
 
-            <div class="relative inline-flex items-center gap-2 font-medium">
+            <div class="relative inline-flex shrink-0 items-center gap-2 font-medium">
                 <span>Start a conversation</span>
                 <Icon icon="tabler:arrow-narrow-right"
                       class="size-5 transition-transform duration-500 ease-soft group-hover:translate-x-1.5" />
@@ -84,7 +79,7 @@
 
 <script setup lang="ts">
 /*
- * The five bookable sessions plus the "not sure which one?" cell, as one
+ * The six bookable sessions plus the "not sure which one?" cell, as one
  * component so the home page and every service detail page show the same
  * cards from the same data instead of drifting apart.
  */

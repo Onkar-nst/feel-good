@@ -47,6 +47,17 @@ export const serviceData: ServiceType[] = [
     link: '/service-detail/personal'
   },
   {
+    id: 'followup-30',
+    title: 'Follow-Up Session',
+    duration: '30 min',
+    durationMinutes: 30,
+    price: '₹1,000',
+    image: '/images/other/cafe-conversation.jpg',
+    imageAlt: 'Two people picking up a conversation again over coffee',
+    description: 'A shorter check-back for when you have already spoken and just need to pick the thread up again.',
+    link: '/service-detail/personal'
+  },
+  {
     id: 'checkin-monthly',
     title: 'Emotional Check-In Plans',
     duration: '4 sessions / month',
